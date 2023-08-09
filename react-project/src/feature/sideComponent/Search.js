@@ -16,7 +16,7 @@ const Search = ({ size,value, onChange }) => {
     <input
       style={inputStyle}
       type="text"
-      placeholder="Search..."
+      placeholder="Search......🔍︎"
       value={value}
       onChange={onChange}
       className="search-component"
