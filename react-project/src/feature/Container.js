@@ -1,5 +1,8 @@
-import React from "react";
-import Proptypes from Proptypes;
+
+import React from 'react';
+
+import PropTypes from 'prop-types';
+
 
 //create function container
 function Container({children}){
@@ -8,7 +11,7 @@ function Container({children}){
 
 //check type of prop
 Container.propType = {
-    children: Proptypes.String.isRequired,
+    children: PropTypes.String.isRequired,
 };
 
 //export
