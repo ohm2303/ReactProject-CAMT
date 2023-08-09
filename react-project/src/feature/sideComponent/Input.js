@@ -13,6 +13,7 @@ const style = {
 
 const Input = ({ type, placeholder, value, onChange, size }) => {
   const inputStyle = size ? { ...style, width: size } : style;
+  
   return (
     <input
       type={type}
