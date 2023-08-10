@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Search from './feature/sideComponent/Search'; 
 import Input from './feature/sideComponent/Input';
-import Text from './feature/SideComponent/Text'; 
+import Text from './feature/sideComponent/Text'; 
 import './App.css';
 
 function App() {
