@@ -32,6 +32,7 @@ function App() {
       />
       <Text size={18}>test</Text>
     </div>
+    //test
   );
 }
 
