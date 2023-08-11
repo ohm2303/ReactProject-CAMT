@@ -6,7 +6,7 @@ import cross from "./Icon/cross-circle.png";
 import cross1 from "./Icon/cross-circle (1).png";
 import "./App.css";
 import ButtonIcon from "./feature/SubComponent/ButtonIcon";
-import PhotoSlid from "./feature/PhotoSlid";
+import PhotoSlide from "./feature/PhotoSlide";
 import OptionMain from "./feature/OptionMain";
 
 function App() {
@@ -48,8 +48,8 @@ function App() {
         title={"cancel"}
         className="icon-button"
       />
-      <div className="photoslid-container">
-        <PhotoSlid images={imageslide} />
+      <div className="photoslide-container">
+        <PhotoSlide images={imageslide} />
       </div>
       <OptionMain />
     </div>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './PhotoSlid.css'; // Make sure this path is correct based on your project structure
+import './PhotoSlide.css'; // Make sure this path is correct based on your project structure
 
-const PhotoSlid = ({ images }) => {
+const PhotoSlide = ({ images }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
@@ -27,8 +27,8 @@ const PhotoSlid = ({ images }) => {
   );
 };
 
-PhotoSlid.propTypes = {
+PhotoSlide.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default PhotoSlid;
+export default PhotoSlide;

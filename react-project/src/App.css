@@ -23,7 +23,7 @@ main{
   text-align: center;
 }
 
-.photoslid-container {
+.photoslide-container {
   display: flex; 
   justify-content: space-between; 
   margin: 20px; 
