@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef} from "react";
 import PropsTypes from "prop-types";
 
 const ImageToggleOnMouseOver = ({ defaultImg, hoveredImg }) => {
@@ -25,8 +25,9 @@ const ButtonIcon = ({ defaultImg, hoveredImg, url, title }) => {
     <button className="icon-button" onClick={handleLinkClick}>
       <ImageToggleOnMouseOver defaultImg={defaultImg} hoveredImg={hoveredImg} />
 
-      <a href={url} target="_blank" rel="noopener noreferrer"></a>
-      {title}
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        {title}
+      </a>
     </button>
   );
 };
