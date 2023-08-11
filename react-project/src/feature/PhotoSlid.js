@@ -13,8 +13,6 @@ const PhotoSlid = ({ images }) => {
     setCurrentSlide(prevSlide => (prevSlide - 1 + images.length) % images.length);
   };
 
-  
-
   return (
     
     <div className="image-slider" >

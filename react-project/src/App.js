@@ -7,6 +7,7 @@ import cross1 from "./Icon/cross-circle (1).png";
 import "./App.css";
 import ButtonIcon from "./feature/SubComponent/ButtonIcon";
 import PhotoSlid from "./feature/PhotoSlid";
+import OptionMain from "./feature/OptionMain";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -25,7 +26,7 @@ function App() {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZtBiLGUzd2KZeyWLkmY9fYJD8iIHwy9ZRkwqtGmFFrhX6XZNhmIVXaCibCcVdsKuJcrc&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOFdYghoN17eaN_SnZ1UiozwJKasfEpmCrVrBeLNWw3dhShfFVeAnmm72caVtpJQHIaRQ&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9VVTVl-kTz0iZ7x8AO-nx-UuHvcQPdk70FET3SnSeABqC-HONLYCvFQjqRkoM7C3mkBU&usqp=CAU",
-    "https://chytomo.com/wp-content/uploads/2022/12/creative-composition-for-world-book-day.jpg",
+    "https://chytomo.com/wp-content/uploads/2022/12/creative-composition-for-world-book-day.jpg", 
   ];
 
   return (
@@ -47,13 +48,14 @@ function App() {
         title={"cancel"}
         className="icon-button"
       />
-        
       <div className="photoslid-container">
         <PhotoSlid images={imageslide} />
         <PhotoSlid images={imageslide} />
         <PhotoSlid images={imageslide} />
       </div>
+      <OptionMain />
     </div>
+    
   );
 }
 
