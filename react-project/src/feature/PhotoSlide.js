@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import './PhotoSlide.css'; // Make sure this path is correct based on your project structure
 
 const PhotoSlide = ({ images }) => {
@@ -25,10 +24,6 @@ const PhotoSlide = ({ images }) => {
       </button>
     </div>
   );
-};
-
-PhotoSlide.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default PhotoSlide;

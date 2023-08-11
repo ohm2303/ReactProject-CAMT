@@ -7,7 +7,7 @@ import cross1 from "./Icon/cross-circle (1).png";
 import "./App.css";
 import ButtonIcon from "./feature/SubComponent/ButtonIcon";
 import PhotoSlide from "./feature/PhotoSlide";
-import OptionMain from "./feature/OptionMain";
+
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -22,6 +22,7 @@ function App() {
   };
 
   const imageslide = [
+    "pics/imgSlide/photoslide1.jpeg", 
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmOA0CrgQ3eGYvBvQTW9Qad3T8kR-8e2A1S2FGo_eTblluNq8PT62g4Ij5YwSuA98VmNk&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZtBiLGUzd2KZeyWLkmY9fYJD8iIHwy9ZRkwqtGmFFrhX6XZNhmIVXaCibCcVdsKuJcrc&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOFdYghoN17eaN_SnZ1UiozwJKasfEpmCrVrBeLNWw3dhShfFVeAnmm72caVtpJQHIaRQ&usqp=CAU",
@@ -50,10 +51,11 @@ function App() {
       />
       <div className="photoslide-container">
         <PhotoSlide images={imageslide} />
+        <PhotoSlide images={imageslide} />
+        <PhotoSlide images={imageslide} />
       </div>
-      <OptionMain />
     </div>
-    
+
   );
 }
 
