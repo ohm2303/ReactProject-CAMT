@@ -50,15 +50,6 @@ function App() {
 
       <OptionMain />
     </div>
-    //test
-
-
-    //adas
-    // test pu
-    //kanokwan
-
-    //jane
-//sadsad
   );
 }
 
