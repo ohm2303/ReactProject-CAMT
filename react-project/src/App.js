@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import Search from './feature/sideComponent/Search'; 
-import Input from './feature/sideComponent/Input';
-import Text from './feature/sideComponent/Text'; 
+
+import Search from './feature/SideComponent/Search'; 
+import Input from './feature/SideComponent/Input';
+import Text from './feature/SideComponent/Text'; 
+
 import './App.css';
 
 function App() {
@@ -21,14 +23,14 @@ function App() {
       <Search
         value={searchValue}
         onChange={handleSearchChange}
-        size="200px"
+        size={"small"}
       />
       <Input
         type="text"
         placeholder="Enter something..."
         value={inputValue}
         onChange={handleInputChange}
-        size="200px" 
+        size={"small" }
       />
       <Text size={18}>test</Text>
     </div>
