@@ -1,14 +1,14 @@
 
 import React, { useState } from "react";
 
-import Search from "./feature/sideComponent/Search";
-import Input from "./feature/sideComponent/Input";
-import Text from "./feature/sideComponent/Text";
+import Search from "./feature/SubComponent/Search";
+import Input from "./feature/SubComponent/Input";
+import Text from "./feature/SubComponent/Text";
 import cross from "./Icon/cross-circle.png"
 import cross1 from "./Icon/cross-circle (1).png"
 
 import "./App.css";
-import ButtonIcon from "./feature/sideComponent/ButtonIcon";
+import ButtonIcon from "./feature/SubComponent/ButtonIcon";
 import OptionMain from "./feature/OptionMain";
 
 function App() {
