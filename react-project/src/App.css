@@ -22,3 +22,11 @@ main{
   text-decoration: none;
   text-align: center;
 }
+
+.photoslid-container {
+  display: flex; 
+  justify-content: space-between; 
+  margin: 20px; 
+}
+
+
