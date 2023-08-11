@@ -50,8 +50,6 @@ function App() {
       />
       <div className="photoslid-container">
         <PhotoSlid images={imageslide} />
-        <PhotoSlid images={imageslide} />
-        <PhotoSlid images={imageslide} />
       </div>
       <OptionMain />
     </div>

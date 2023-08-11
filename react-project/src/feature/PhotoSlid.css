@@ -37,7 +37,7 @@
     right: 10px;
   }
   
-  /* Adjustments for responsiveness */
+
   @media (max-width: 768px) {
     .image-slider {
       max-width: 100%;

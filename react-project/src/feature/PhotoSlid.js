@@ -15,7 +15,7 @@ const PhotoSlid = ({ images }) => {
 
   return (
     
-    <div className="image-slider" >
+    <div className="image-slider" sty   >
       <button className="slider-button prev-button" onClick={prevSlide}>
         {'<'}
       </button>
