@@ -1,0 +1,25 @@
+
+.register-form input {
+    background-color: white;
+    border: 1px solid black;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+  
+
+  .register-form .checkbox-circle {
+    display: inline-block;
+    margin-right: 8px;
+  }
+  
+
+  .input-description {
+    margin-bottom: 8px;
+  }
+  
+  .input-description-side {
+    color: #888;
+    font-size: 12px;
+  }
+  

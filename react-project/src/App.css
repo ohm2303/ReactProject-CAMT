@@ -50,3 +50,9 @@ main{
   height: 100px;
   display: block;
 }
+
+.photoslide-container {
+  display: flex; 
+  justify-content: space-between; 
+  margin: 20px;
+}
