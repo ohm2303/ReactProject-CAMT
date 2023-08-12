@@ -56,3 +56,13 @@ main{
   justify-content: space-between; 
   margin: 20px;
 }
+
+.Register-Reader {
+  text-decoration: underline; 
+  color: lightblue;
+  cursor: pointer;
+}
+
+.Register-Reader:hover {
+  color: whitesmoke ; 
+}
