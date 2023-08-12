@@ -5,8 +5,8 @@ import Button from "./SubComponent/Button";
 import CheckBoxCircle from "./SubComponent/CheckBoxCircle";
 import './RegisterReaderStyles.css'; 
 
-const RegisterReader = ({ x }) => {
-  const [popupOpen, setPopupOpen] = useState(x);
+const RegisterReader = ({ input }) => {
+  const [popupOpen, setPopupOpen] = useState(input);
 
   const togglePopup = () => {
     setPopupOpen(!popupOpen);
