@@ -1,15 +1,16 @@
-
 import React, { useState } from "react";
 
 import Search from "./feature/SubComponent/Search";
 import Input from "./feature/SubComponent/Input";
 import Text from "./feature/SubComponent/Text";
-import cross from "./Icon/cross-circle.png"
-import cross1 from "./Icon/cross-circle (1).png"
+import cross from "./pics/Icon/cross-circle.png";
+import cross1 from "./pics/Icon/cross-circle (1).png";
 
 import "./App.css";
 import ButtonIcon from "./feature/SubComponent/ButtonIcon";
 import OptionMain from "./feature/OptionMain";
+import Report from "./feature/Report";
+import report from "./pics/Icon/edit.png"
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -21,6 +22,12 @@ function App() {
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
+  };
+
+  const [isReportOpen, setIsReportOpen] = useState(false);
+
+  const handleReportButtonClick = () => {
+    setIsReportOpen(!isReportOpen);
   };
 
   return (
@@ -40,23 +47,23 @@ function App() {
       <Text size={18}>test</Text>
 
       <ButtonIcon
-        
         defaultImg={cross}
         hoveredImg={cross1}
         url={"./feature/Home.js"}
         title={"cancle"}
-        className = "icon-button"
+        className="icon-button"
       />
 
       <OptionMain />
+      <div className="report">
+        <button onClick={handleReportButtonClick}>
+          <img src="/pics/edit.png" alt=" " />
+        </button>
+      </div>
+
+      {isReportOpen && <Report x={true} />}
+      
     </div>
-    //test
-
-    //lll
-
-
-    //jane
-//sadsad
   );
 }
 
