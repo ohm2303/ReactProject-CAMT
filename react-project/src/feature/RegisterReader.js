@@ -3,7 +3,7 @@ import Popup from "./SubComponent/Popup";
 import Input from "./SubComponent/Input";
 import Button from "./SubComponent/Button";
 import CheckBoxCircle from "./SubComponent/CheckBoxCircle";
-import './RegisterStyles.css'; 
+import './RegisterReaderStyles.css'; 
 
 const RegisterReader = ({ x }) => {
   const [popupOpen, setPopupOpen] = useState(x);
