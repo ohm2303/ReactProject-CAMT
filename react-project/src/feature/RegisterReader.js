@@ -5,7 +5,7 @@ import Button from "./SubComponent/Button";
 import CheckBoxCircle from "./SubComponent/CheckBoxCircle";
 import './RegisterStyles.css'; 
 
-const Register = ({ x }) => {
+const RegisterReader = ({ x }) => {
   const [popupOpen, setPopupOpen] = useState(x);
 
   const togglePopup = () => {
@@ -57,11 +57,11 @@ const Register = ({ x }) => {
             <div className="register-form">
               <h1>สมัครสมาชิก The book-buster Account</h1>
               <hr />
-              <p>กรุณาใส่ข้อมูลที่มีเครื่อง * ให้ครบถ้วน</p>
+              <p className = "form-desp">กรุณาใส่ข้อมูลที่มีเครื่งหมาย * ให้ครบถ้วน</p>
               <p className="input-description">
-                Username
-                <span className="input-description-side">
-                  * 4 - 32 chars [A-Z, 0-9,_-@.]
+                Username 
+                <span className="input-description-side"> 
+                * 4 - 32 chars [A-Z, 0-9,_-@.]
                 </span>
               </p>
               <Input
@@ -73,9 +73,9 @@ const Register = ({ x }) => {
               />
               
               <p className="input-description">
-                Password
-                <span className="input-description-side">
-                  * ระบุอย่างน้อย 8 ตัว
+                Password 
+                <span className="input-description-side"> 
+                * ระบุอย่างน้อย 8 ตัว
                 </span>
               </p>
               <Input
@@ -87,7 +87,7 @@ const Register = ({ x }) => {
               />
 
               <p className="input-description">
-                Retype Password
+                Retype Password 
                 <span className="input-description-side">
                   *
                 </span>
@@ -149,4 +149,4 @@ const Register = ({ x }) => {
   );
 };
 
-export default Register;
+export default RegisterReader;

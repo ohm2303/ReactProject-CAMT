@@ -11,7 +11,7 @@
   import OptionMain from "./feature/OptionMain";
   import Report from "./feature/Report";
   import PhotoSlide from "./feature/PhotoSlide";
-  import Register from "./feature/Register";
+  import RegisterReader from "./feature/RegisterReader";
 
   function App() {
     const [searchValue, setSearchValue] = useState("");
@@ -84,13 +84,13 @@
 
         {isReportOpen && <Report x={true} />}
 
-        <div className="Register">
-          <button onClick={handleRegisterButtonClick}>
-            Register
-          </button>
+        <div className="Register-Reader">
+          <p onClick={handleRegisterButtonClick}>
+            Register test
+          </p>
         </div>
         
-        {isRegisterOpen && <Register x={true} />}
+        {isRegisterOpen && <RegisterReader x={true} />}
         
       </div>
       
