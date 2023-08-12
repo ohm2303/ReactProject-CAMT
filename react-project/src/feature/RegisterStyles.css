@@ -8,12 +8,6 @@
   }
   
 
-  .register-form .checkbox-circle {
-    display: inline-block;
-    margin-right: 8px;
-  }
-  
-
   .input-description {
     margin-bottom: 8px;
   }
@@ -22,4 +16,22 @@
     color: #888;
     font-size: 12px;
   }
+
+
+  .submit-button-container {
+    text-align: right;
+    margin-top: 20px; /* Add some margin for spacing */
+  }
   
+  .submit-button-container button {
+    font-size: 18px;
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+  }
+  
+  .submit-button-container button:hover {
+    background-color: black; 
+    color: white;
+  }

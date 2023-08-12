@@ -137,7 +137,10 @@ const Register = ({ x }) => {
               <CheckBoxCircle value="Male" textBox="ชาย" checked={selectedGender === "Male"} onChange={() => handleGenderChange("Male")} />
               <CheckBoxCircle value="Female" textBox="หญิง" checked={selectedGender === "Female"} onChange={() => handleGenderChange("Female")} />
               <CheckBoxCircle value="Other" textBox="อื่นๆ" checked={selectedGender === "Other"} onChange={() => handleGenderChange("Other")} />
-              <Button value={'Register'} functionBtn={handleRegisterSubmit} handleClose={togglePopup} />
+              
+              <div className="submit-button-container">
+                <Button value="ส่งข้อมูล" functionBtn={handleRegisterSubmit} handleClose={togglePopup} />
+              </div>
             </div>
           }
         />
