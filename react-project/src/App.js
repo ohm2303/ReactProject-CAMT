@@ -12,6 +12,7 @@ import OptionMain from "./feature/OptionMain";
 import Report from "./feature/Report";
 import PhotoSlide from "./feature/PhotoSlide";
 import RegisterReader from "./feature/RegisterReader";
+import NovelMain from "./feature/NovelMain";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -91,6 +92,7 @@ function App() {
       </div>
       
       {isRegisterOpen && <RegisterReader x={true} />}
+      <NovelMain></NovelMain>
       
     </div>
     

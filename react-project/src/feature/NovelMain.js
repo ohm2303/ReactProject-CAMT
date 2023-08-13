@@ -9,7 +9,7 @@ function NovelMain() {
   const [novels, Setnovel] = useState(novelData);
   return (
     <>
-      <Text size={25}>ขายดี</Text>
+      <Text size={25} family={'Times New Roman'}>ขายดี sadsa</Text>
       {novels.length > 0 ? (
         <ul className="Novel__Product">
           {novels.map((novel) => (
