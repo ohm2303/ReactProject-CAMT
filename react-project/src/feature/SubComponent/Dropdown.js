@@ -1,6 +1,6 @@
 import React from "react";
 import Option from "../Option";
-import './Dropdown.css';
+import '../style/Dropdown.css';
 
 const Dropdown = ({ submenus, dropdown, depthLevel }) => {
   depthLevel = depthLevel + 1;

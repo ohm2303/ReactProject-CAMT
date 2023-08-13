@@ -1,5 +1,5 @@
 import React from 'react'
-import './CheckBoxCircle.css'
+import '../style/CheckBoxCircle.css'
 
 export default function CheckBoxCircle(props){
     const {value,textBox} = props

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Dropdown from "./sideComponent/Dropdown";
+import Dropdown from "./SubComponent/Dropdown";
 
 //create function option
 function Option({ items, depthLevel }) {

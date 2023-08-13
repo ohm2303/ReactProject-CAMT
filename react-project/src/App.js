@@ -6,6 +6,7 @@ import Input from "./feature/SubComponent/Input";
 import Text from "./feature/SubComponent/Text";
 import cross from "./Icon/cross-circle.png"
 import cross1 from "./Icon/cross-circle (1).png"
+import NovelMain from "./feature/NovelMain";
 
 import "./App.css";
 import ButtonIcon from "./feature/SubComponent/ButtonIcon";
@@ -49,6 +50,7 @@ function App() {
       />
 
       <OptionMain />
+      <NovelMain></NovelMain>
     </div>
   );
 }
