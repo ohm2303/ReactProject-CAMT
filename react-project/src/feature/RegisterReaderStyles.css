@@ -1,0 +1,44 @@
+
+.register-form input {
+    background-color: white;
+    border: 1px solid black;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+  
+
+  .input-description {
+    margin-bottom: 8px;
+  }
+  
+  .input-description-side {
+    color: #888;
+    font-size: 12px;
+  }
+
+
+  .submit-button-container {
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  .submit-button-container button {
+    font-size: 18px;
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+  }
+  
+  .submit-button-container button:hover {
+    background-color: black; 
+    color: white;
+  }
+
+
+  .form-desp {
+    text-align: center; 
+    margin-top: 10px;
+    color: gray;  
+  }
