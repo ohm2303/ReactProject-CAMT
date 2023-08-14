@@ -1,5 +1,5 @@
-import React,{useRef} from "react";
-import PropsTypes from "prop-types";
+import React, { useRef } from "react";
+import PropTypes from "prop-types";
 
 const ImageToggleOnMouseOver = ({ defaultImg, hoveredImg }) => {
   const imageRef = useRef();
@@ -15,27 +15,19 @@ const ImageToggleOnMouseOver = ({ defaultImg, hoveredImg }) => {
   );
 };
 
-const ButtonIcon = ({ defaultImg, hoveredImg, url, title }) => {
-
-    const handleLinkClick = () => {
-        window.location.href = url;
-      };
-
+const ButtonIcon = ({ defaultImg, hoveredImg, onClick }) => {
   return (
-    <button className="icon-button" onClick={handleLinkClick}>
+    <button className="icon-button" onClick={onClick}>
       <ImageToggleOnMouseOver defaultImg={defaultImg} hoveredImg={hoveredImg} />
-
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        {title}
-      </a>
+      <span>ปิด</span>
     </button>
   );
 };
 
-ButtonIcon.propsTypes = {
-  defaultImg: PropsTypes.string.isRequired,
-  hoveredImg: PropsTypes.string.isRequired,
-  url: PropsTypes.string,
-  title: PropsTypes.string,
+ButtonIcon.propTypes = {
+  defaultImg: PropTypes.string.isRequired,
+  hoveredImg: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired, // รับ prop onClick เพื่อใช้ในการปิด Popup
 };
+
 export default ButtonIcon;

@@ -42,6 +42,8 @@ function App() {
     setIsOpen(!isOpen);
   };
 
+  const editIcon = require("./pics/Icon/edit.png")
+
   const imageslide = [
     "pics/imgSlide/photoslide1.jpeg",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmOA0CrgQ3eGYvBvQTW9Qad3T8kR-8e2A1S2FGo_eTblluNq8PT62g4Ij5YwSuA98VmNk&usqp=CAU",
@@ -84,7 +86,7 @@ function App() {
 
       <div className="report">
         <button onClick={handleReportButtonClick}>
-          <img src="/pics/edit.png" alt=" " />
+          <img src={editIcon} alt=" " />
         </button>
       </div>
 
