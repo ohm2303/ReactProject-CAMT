@@ -15,11 +15,11 @@ const ImageToggleOnMouseOver = ({ defaultImg, hoveredImg }) => {
   );
 };
 
-const ButtonIcon = ({ defaultImg, hoveredImg, onClick }) => {
+const ButtonIcon = ({ defaultImg, hoveredImg, onClick, text }) => {
   return (
     <button className="icon-button" onClick={onClick}>
       <ImageToggleOnMouseOver defaultImg={defaultImg} hoveredImg={hoveredImg} />
-      <span>ปิด</span>
+      <span>{text}</span>
     </button>
   );
 };
@@ -27,7 +27,20 @@ const ButtonIcon = ({ defaultImg, hoveredImg, onClick }) => {
 ButtonIcon.propTypes = {
   defaultImg: PropTypes.string.isRequired,
   hoveredImg: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired, // รับ prop onClick เพื่อใช้ในการปิด Popup
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string,
 };
 
 export default ButtonIcon;
+
+/* 
+Kanokwan Mahakham
+วิธีการใช้
+    <ButtonIcon
+        defaultImg={cross}   //เป็นรูปแรกที่เห็น
+        hoveredImg={cross1}  //เป็นรูปที่เปลี่ยนไปเมื่อเอาเมาส์ไปชี้
+        text={""}           //ข้อความให้ปุ่มicon
+        onClick={handleClosePopup} // ส่งฟังก์ชันที่จะทำงานเมื่อปุ่มถูกคลิก 
+        อันนี้แล้วแต่ว่าต้องการเขียนคำสั่งลงไปเมื่อกด click
+    />
+*/

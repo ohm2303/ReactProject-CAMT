@@ -18,3 +18,8 @@ const OptionMain = () => {
 }
 
 export default OptionMain;
+/* 
+Kanokwan
+วิธีการใช้
+<OptionMain />
+*/

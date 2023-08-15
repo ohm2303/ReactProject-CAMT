@@ -93,3 +93,16 @@ function Option({ items, depthLevel }) {
 
 //export
 export default Option;
+
+/* 
+Kanokwan Mahakham
+วิธีการใช้
+  1.ต้องสร้างไฟล์ data ที่ต้องการใช้ใน floder asset ก่อน(ตัวอย่างอยู่ใน menuItems.js)
+
+  2.ดึงมาใช้โดย
+    {menuItems.map((menu,index) => {
+        const depthLevel = 0;
+          return <Option items={menu} key={index} depthLevel={depthLevel}/>
+    })}
+
+*/
