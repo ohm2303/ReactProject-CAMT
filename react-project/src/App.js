@@ -13,7 +13,7 @@ import Report from "./feature/Report";
 import PhotoSlide from "./feature/PhotoSlide";
 import RegisterReader from "./feature/RegisterReader";
 import NovelMain from "./feature/NovelMain";
-
+import RegisterArthor from "./feature/RegisterAuthor";
 function App() {
   const [searchValue, setSearchValue] = useState("");
   const [inputValue, setInputValue] = useState("");
@@ -26,33 +26,40 @@ function App() {
     setInputValue(event.target.value);
   };
 
-
+  //Report
   const [isReportOpen, setIsReportOpen] = useState(false);
-
   const handleReportButtonClick = () => {
     setIsReportOpen(!isReportOpen);
   };
-
 
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const handleRegisterButtonClick = () => {
     setIsRegisterOpen(!isRegisterOpen);
   };
-  
+
+  const [isOpen, setIsOpen] = useState(false);
+  const handleRegisterArButtonClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const editIcon = require("./pics/Icon/edit.png")
 
   const imageslide = [
-    "pics/imgSlide/photoslide1.jpeg", 
+    "pics/imgSlide/photoslide1.jpeg",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmOA0CrgQ3eGYvBvQTW9Qad3T8kR-8e2A1S2FGo_eTblluNq8PT62g4Ij5YwSuA98VmNk&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZtBiLGUzd2KZeyWLkmY9fYJD8iIHwy9ZRkwqtGmFFrhX6XZNhmIVXaCibCcVdsKuJcrc&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOFdYghoN17eaN_SnZ1UiozwJKasfEpmCrVrBeLNWw3dhShfFVeAnmm72caVtpJQHIaRQ&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9VVTVl-kTz0iZ7x8AO-nx-UuHvcQPdk70FET3SnSeABqC-HONLYCvFQjqRkoM7C3mkBU&usqp=CAU",
-    "https://chytomo.com/wp-content/uploads/2022/12/creative-composition-for-world-book-day.jpg", 
+    "https://chytomo.com/wp-content/uploads/2022/12/creative-composition-for-world-book-day.jpg",
   ];
-
 
   return (
     <div className="App">
-      <Search value={searchValue} onChange={handleSearchChange} size={"small"} />
+      <Search
+        value={searchValue}
+        onChange={handleSearchChange}
+        size={"small"}
+      />
       <Input
         type="text"
         placeholder="Enter something..."
@@ -66,7 +73,7 @@ function App() {
         defaultImg={cross}
         hoveredImg={cross1}
         url={"./feature/Home.js"}
-        title={"cancle"}
+        text={"cancle"}
         className="icon-button"
       />
       <div className="photoslide-container">
@@ -79,25 +86,26 @@ function App() {
 
       <div className="report">
         <button onClick={handleReportButtonClick}>
-          <img src="/pics/edit.png" alt=" " />
+          <img src={editIcon} alt=" " />
         </button>
       </div>
 
-      {isReportOpen && <Report x={true} />}
+      {isReportOpen && <Report isOpen={true} />}
 
       <div className="Register-Reader">
-        <p onClick={handleRegisterButtonClick}>
-          Register test
-        </p>
+        <p onClick={handleRegisterButtonClick}>Register test</p>
       </div>
-      
+
       {isRegisterOpen && <RegisterReader x={true} />}
+
       <NovelMain></NovelMain>
       
+      {/* Test Rigister Arthor */}
+      {isOpen && <RegisterArthor click={true} />}
+      <button onClick={handleRegisterArButtonClick}>
+        <img src="/pics/edit.png" alt=" " />
+      </button>
     </div>
-    
-
-
   );
 }
 

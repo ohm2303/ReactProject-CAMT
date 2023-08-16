@@ -5,22 +5,25 @@ import Input from "./SubComponent/Input";
 import UploadFile from "./SubComponent/UploadFile";
 import Button from "./SubComponent/Button";
 
-const Report = ({ x }) => {
-  const [popupOpen, setPopupOpen] = useState(x);
+const Report = ({ isOpen }) => {
+  const [popupOpen, setPopupOpen] = useState(isOpen);
 
   const togglePopup = () => {
     setPopupOpen(!popupOpen);
   };
 
   const [inputValue, setInputValue] = useState("");
+  const [inputValue1, setInputValue1] = useState("");
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
+  const handleInputChange1 = (event) => {
+    setInputValue1(event.target.value);
+  };
+
   const handleReportSubmit = () => {
-    // ทำอะไรก็ได้เมื่อผู้ใช้กดปุ่มส่งรายงาน
-    // เช่น ส่งข้อมูลไปที่เซิร์ฟเวอร์ หรือปิดหน้า Popup
     togglePopup(); // ปิด Popup เมื่อกดปุ่มส่งรายงาน
   };
 
@@ -56,8 +59,8 @@ const Report = ({ x }) => {
                 <Input
                   type="text"
                   placeholder="กรอกเบอร์โทรตรงนี้เลยจ้า"
-                  value={inputValue}
-                  onChange={handleInputChange}
+                  value={inputValue1}
+                  onChange={handleInputChange1}
                   size={"560px"}
                 />
               </div>
@@ -74,3 +77,9 @@ const Report = ({ x }) => {
   );
 };
 export default Report;
+
+/*
+Kanokwan Mahakham
+วิธีกรใช้
+<Report isOpen={true} />
+*/ 
