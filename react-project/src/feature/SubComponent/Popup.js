@@ -16,8 +16,6 @@ const Popup = (props) => {
           <ButtonIcon
             defaultImg={cross}
             hoveredImg={cross1}
-            url={"/"}
-            title={""}
             onClick={handleClosePopup} // ส่งฟังก์ชันที่จะทำงานเมื่อปุ่มถูกคลิก
           />
         </div>
@@ -29,3 +27,34 @@ const Popup = (props) => {
 
 export default Popup;
 
+/* 
+Kanokwan Mahakham
+วิธีการใช้
+
+ไว้ setเปิด-ปิด popup
+const [popupOpen, setPopupOpen] = useState(isOpen);
+  const togglePopup = () => {
+    setPopupOpen(!popupOpen);
+  };
+
+  //เสริม สำหรับคนที่มีปุ่ม กดส่ง
+  const handleSubmit = () => {
+    togglePopup(); // ปิด Popup เมื่อกดปุ่มส่งรายงาน
+  };
+
+return{
+{popupOpen && (
+        <Popup
+          handleClose={togglePopup}
+          content={ *ในนี้ใส่รายละเอียดต่างๆที่อยากใส่เลยจ๊ะ
+
+            //เสริม สำหรับคนที่มีปุ่ม กดส่ง
+          <div className="button-center">
+                <Button value={'ส่งรายงาน'} functionBtn={handleSubmit} handleClose={togglePopup} />
+          </div>
+          }
+          
+        />
+      )}
+ }
+*/

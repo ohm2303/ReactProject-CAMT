@@ -27,8 +27,8 @@ function App() {
     setInputValue(event.target.value);
   };
 
+  //Report
   const [isReportOpen, setIsReportOpen] = useState(false);
-
   const handleReportButtonClick = () => {
     setIsReportOpen(!isReportOpen);
   };
@@ -74,7 +74,7 @@ function App() {
         defaultImg={cross}
         hoveredImg={cross1}
         url={"./feature/Home.js"}
-        title={"cancle"}
+        text={"cancle"}
         className="icon-button"
       />
       <div className="photoslide-container">
@@ -91,7 +91,7 @@ function App() {
         </button>
       </div>
 
-      {isReportOpen && <Report x={true} />}
+      {isReportOpen && <Report isOpen={true} />}
 
       <div className="Register-Reader">
         <p onClick={handleRegisterButtonClick}>Register test</p>

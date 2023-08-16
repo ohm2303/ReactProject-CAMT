@@ -37,3 +37,9 @@ const UploadFile = () => {
    );
 };
 export default UploadFile;
+
+/* 
+Kanokwan Mahakham
+วิธีการใช้
+<UploadFile />
+*/
