@@ -73,10 +73,10 @@ function App() {
       <ButtonIcon
         defaultImg={cross}
         hoveredImg={cross1}
-        url={"./feature/Home.js"}
         text={"cancle"}
         className="icon-button"
       />
+
       <div className="photoslide-container">
         <PhotoSlide images={imageslide} />
         <PhotoSlide images={imageslide} />
