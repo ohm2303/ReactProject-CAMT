@@ -14,6 +14,7 @@ import PhotoSlide from "./feature/PhotoSlide";
 import RegisterReader from "./feature/RegisterReader";
 import NovelMain from "./feature/NovelMain";
 import RegisterArthor from "./feature/RegisterAuthor";
+
 function App() {
   const [searchValue, setSearchValue] = useState("");
   const [inputValue, setInputValue] = useState("");
