@@ -11,8 +11,8 @@ const style = {
   width: '100%',
 };
 
-const Input = ({ type, placeholder, value, onChange, size }) => {
-  const inputStyle = size ? { ...style, width: size } : style;
+const Input = ({ css ,type, placeholder, value, onChange, size, heightSize} ) => {
+  const inputStyle = size ? { ...style, width: size,height: heightSize } : style;
   
   return (
     <input
@@ -20,8 +20,7 @@ const Input = ({ type, placeholder, value, onChange, size }) => {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      style={inputStyle} 
-      className="input-component"
+      style={inputStyle}      
     />
   );
 };
