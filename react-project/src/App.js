@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import Search from "./feature/SubComponent/Search";
-import Input from "./feature/SubComponent/Input";
-import Text from "./feature/SubComponent/Text";
-
-import cross from "./pics/Icon/cross-circle.png";
-import cross1 from "./pics/Icon/cross-circle (1).png";
 
 import "./App.css";
+
 import ButtonIcon from "./feature/SubComponent/ButtonIcon";
 import OptionMain from "./feature/OptionMain";
 import Report from "./feature/Report";
@@ -14,6 +9,7 @@ import PhotoSlide from "./feature/PhotoSlide";
 import RegisterReader from "./feature/RegisterReader";
 import NovelMain from "./feature/NovelMain";
 import RegisterArthor from "./feature/RegisterAuthor";
+
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -43,7 +39,7 @@ function App() {
     setIsOpen(!isOpen);
   };
 
-  const editIcon = require("./pics/Icon/edit.png")
+  const editIcon = require("./pics/Icon/edit.png");
 
   const imageslide = [
     "pics/imgSlide/photoslide1.jpeg",
@@ -55,27 +51,7 @@ function App() {
   ];
 
   return (
-    <div className="App">
-      <Search
-        value={searchValue}
-        onChange={handleSearchChange}
-        size={"small"}
-      />
-      <Input
-        type="text"
-        placeholder="Enter something..."
-        value={inputValue}
-        onChange={handleInputChange}
-        size={"small"}
-      />
-      <Text size={18}>test</Text>
-
-      <ButtonIcon
-        defaultImg={cross}
-        hoveredImg={cross1}
-        text={"cancle"}
-        className="icon-button"
-      />
+    <>
 
       <div className="photoslide-container">
         <PhotoSlide images={imageslide} />
@@ -100,13 +76,13 @@ function App() {
       {isRegisterOpen && <RegisterReader x={true} />}
 
       <NovelMain></NovelMain>
-      
+
       {/* Test Rigister Arthor */}
       {isOpen && <RegisterArthor click={true} />}
       <button onClick={handleRegisterArButtonClick}>
         <img src="/pics/edit.png" alt=" " />
       </button>
-    </div>
+    </>
   );
 }
 
