@@ -4,6 +4,8 @@ import CheckBoxCircle from "./SubComponent/CheckBoxCircle";
 import Input from "./SubComponent/Input";
 import UploadFile from "./SubComponent/UploadFile";
 import Button from "./SubComponent/Button";
+import Text from "./SubComponent/Text";
+import "./Report.css";
 
 const Report = ({ isOpen }) => {
   const [popupOpen, setPopupOpen] = useState(isOpen);
@@ -34,41 +36,78 @@ const Report = ({ isOpen }) => {
           handleClose={togglePopup}
           content={
             <div className="details">
-              <h1>แจ้งปัญหาที่พบ</h1>
-              <div className="check-box">
-                <h2>หนังสือเล่มนี้มีปัญหาอะไร*</h2>
-                <CheckBoxCircle value={"มีปัญหาไม่สามารถอ่านได้"} />
-                <CheckBoxCircle value={"มีเนื้อหาไม่เหมาะสม"} />
-                <CheckBoxCircle value={"มีปัญหาเรื่องการละเมิดสิทธิ์"} />
-                <CheckBoxCircle value={"อื่นๆ"} />
+              <div className="details-box">
+                <div className="name-report">
+                  <Text size={40} family={"Anuphan"} weight="500">
+                    แจ้งปัญหาที่พบ
+                  </Text>
+                </div>
+
+                <div className="check-box">
+                  <div className="text-name">
+                    <Text size={20} family={"Anuphan"} weight="600">
+                      หนังสือเล่มนี้มีปัญหาอะไร{" "}
+                      <span className="red-asterisk">*</span>
+                    </Text>
+                  </div>
+                  <CheckBoxCircle value={"มีปัญหาไม่สามารถอ่านได้"} />
+                  <CheckBoxCircle value={"มีเนื้อหาไม่เหมาะสม"} />
+                  <CheckBoxCircle value={"มีปัญหาเรื่องการละเมิดสิทธิ์"} />
+                  <CheckBoxCircle value={"อื่นๆ"} />
+                </div>
               </div>
+
               <div className="input-details">
-                <h2>รายละเอียด (บอกด้วยว่า หน้าไหน บทไหน)*</h2>
-                <Input
-                  type="text"
-                  placeholder="กรอกรายละเอียดปัญหาตรงนี้เลยจ้า"
-                  value={inputValue}
-                  onChange={handleInputChange}
-                  size={"560px"}
-                />
+                <div className="details-box">
+                  <div className="text-name">
+                    <Text size={20} family={"Anuphan"} weight="600">
+                      รายละเอียด (บอกด้วยว่า หน้าไหน บทไหน){" "}
+                      <span className="red-asterisk">*</span>
+                    </Text>
+                  </div>
 
-                <h2>แนปรูปภาพ เพื่อให้เราเข้าใจปัญหาได้มากขึ้น</h2>
-                <UploadFile />
+                  <Input
+                    type="text"
+                    placeholder="กรอกรายละเอียดปัญหาตรงนี้เลยจ้า"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    size={"560px"}
+                  />
+                </div>
+                <div className="details-box">
+                  <div className="text-name">
+                    <Text size={20} family={"Anuphan"} weight="600">
+                      แนปรูปภาพ เพื่อให้เราเข้าใจปัญหาได้มากขึ้น{" "}
+                      <span className="red-asterisk">*</span>
+                    </Text>
+                  </div>
 
-                <h2>เบอร์โทรของคุณ สำหรับสอบถามเพิ่มเติม*</h2>
-                <Input
-                  type="text"
-                  placeholder="กรอกเบอร์โทรตรงนี้เลยจ้า"
-                  value={inputValue1}
-                  onChange={handleInputChange1}
-                  size={"560px"}
-                />
+                  <UploadFile />
+                </div>
+                <div className="details-box">
+                  <div className="text-name">
+                    <Text size={20} family={"Anuphan"} weight="600">
+                      เบอร์โทรของคุณ สำหรับสอบถามเพิ่มเติม{" "}
+                      <span className="red-asterisk">*</span>
+                    </Text>
+                  </div>
+                  <Input
+                    type="text"
+                    placeholder="กรอกเบอร์โทรตรงนี้เลยจ้า"
+                    value={inputValue1}
+                    onChange={handleInputChange1}
+                    size={"560px"}
+                  />
+                </div>
               </div>
-            
+
               <div className="button-center">
-                <Button value={'ส่งรายงาน'} functionBtn={handleReportSubmit} handleClose={togglePopup} />
+                <Button
+                  value={"ส่งรายงาน"}
+                  functionBtn={handleReportSubmit}
+                  handleClose={togglePopup}
+                />
               </div>
-              
             </div>
           }
         />
@@ -82,4 +121,4 @@ export default Report;
 Kanokwan Mahakham
 วิธีกรใช้
 <Report isOpen={true} />
-*/ 
+*/
