@@ -1,19 +1,18 @@
+
+
 import React, { useState } from "react";
-import Search from "./feature/SubComponent/Search";
-import Input from "./feature/SubComponent/Input";
-import Text from "./feature/SubComponent/Text";
-
-import cross from "./pics/Icon/cross-circle.png";
-import cross1 from "./pics/Icon/cross-circle (1).png";
-
 import "./App.css";
 import ButtonIcon from "./feature/SubComponent/ButtonIcon";
 import OptionMain from "./feature/OptionMain";
 import Report from "./feature/Report";
 import PhotoSlide from "./feature/PhotoSlide";
-import RegisterReader from "./feature/RegisterReader";
+import RegisterReader from "./feature/RegisterReader"; // Import RegisterReader component
 import NovelMain from "./feature/NovelMain";
-import RegisterArthor from "./feature/RegisterAuthor";
+import RegisterAuthor from "./feature/RegisterAuthor"; // Fix typo in component name
+import SelectForPay from "./feature/SubComponent/SelectForPay";
+import Login from "../src/feature/Login";
+import AddBook from "../src/feature/AddBook";
+import BankAccountPage from "../src/feature/BankAccountPage";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -55,58 +54,10 @@ function App() {
   ];
 
   return (
-    <div className="App">
-      <Search
-        value={searchValue}
-        onChange={handleSearchChange}
-        size={"small"}
-      />
-      <Input
-        type="text"
-        placeholder="Enter something..."
-        value={inputValue}
-        onChange={handleInputChange}
-        size={"small"}
-      />
-      <Text size={18}>test</Text>
+  <>
+  <BankAccountPage></BankAccountPage>
+  </>
 
-      <ButtonIcon
-        defaultImg={cross}
-        hoveredImg={cross1}
-        url={"./feature/Home.js"}
-        text={"cancle"}
-        className="icon-button"
-      />
-      <div className="photoslide-container">
-        <PhotoSlide images={imageslide} />
-        <PhotoSlide images={imageslide} />
-        <PhotoSlide images={imageslide} />
-      </div>
-
-      <OptionMain />
-
-      <div className="report">
-        <button onClick={handleReportButtonClick}>
-          <img src={editIcon} alt=" " />
-        </button>
-      </div>
-
-      {isReportOpen && <Report isOpen={true} />}
-
-      <div className="Register-Reader">
-        <p onClick={handleRegisterButtonClick}>Register test</p>
-      </div>
-
-      {isRegisterOpen && <RegisterReader x={true} />}
-
-      <NovelMain></NovelMain>
-      
-      {/* Test Rigister Arthor */}
-      {isOpen && <RegisterArthor click={true} />}
-      <button onClick={handleRegisterArButtonClick}>
-        <img src="/pics/edit.png" alt=" " />
-      </button>
-    </div>
   );
 }
 

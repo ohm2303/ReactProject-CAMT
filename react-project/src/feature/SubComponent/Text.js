@@ -1,12 +1,13 @@
 import React from "react";
 
 //create function Text
-function Text({size,children,family}){
+function Text({size,children,family,weight}){
 
     //recive size to text
     const style = {
         fontSize: size + 'px',
         fontFamily:  family,
+        fontWeight: weight
     };
     return (
         <p style={style}>{children}</p>

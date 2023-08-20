@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+ import React, { useState } from "react";
 import Text from "./SubComponent/Text";
 import NovelProduct from "./Novel_Product";
 import novelData from "../asset/novelData";

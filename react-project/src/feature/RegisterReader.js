@@ -77,7 +77,7 @@ const RegisterReader = ({ input }) => {
                 <span className="input-description-side"> 
                 * ระบุอย่างน้อย 8 ตัว
                 </span>
-              </p>
+              </p>  
               <Input
                 type="password"
                 placeholder="Password"
