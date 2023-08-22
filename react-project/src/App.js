@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-
 import "./App.css";
-
 import ButtonIcon from "./feature/SubComponent/ButtonIcon";
 import OptionMain from "./feature/OptionMain";
 import Report from "./feature/Report";
 import PhotoSlide from "./feature/PhotoSlide";
-import RegisterReader from "./feature/RegisterReader";
+import RegisterReader from "./feature/RegisterReader"; // Import RegisterReader component
 import NovelMain from "./feature/NovelMain";
 import RegisterArthor from "./feature/RegisterAuthor";
-
+import RegisterAuthor from "./feature/RegisterAuthor"; // Fix typo in component name
+import SelectForPay from "./feature/SubComponent/SelectForPay";
+import Login from "../src/feature/Login";
+import AddBook from "../src/feature/AddBook";
+import BankAccountPage from "../src/feature/BankAccountPage";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -51,6 +53,7 @@ function App() {
   ];
 
   return (
+
     <>
 
       <div className="photoslide-container">
