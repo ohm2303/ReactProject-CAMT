@@ -23,3 +23,8 @@
     border: 1px solid green;
     margin: 2rem;
 }
+.novel_main{
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 1300px;
+}

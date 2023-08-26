@@ -1,9 +1,10 @@
 import React from "react";
+import "../feature/style/Nav.css"
 
 //create function navbar
 function Nav(){
     return (
-        <header>
+        <header className="Navbar">
             
         </header>
     );

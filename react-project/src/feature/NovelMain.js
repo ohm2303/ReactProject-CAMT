@@ -8,8 +8,8 @@ import "./style/NovelMain.css"
 function NovelMain() {
   const [novels, Setnovel] = useState(novelData);
   return (
-    <>
-      <Text size={25} family={'Times New Roman'}>ขายดี sadsa</Text>
+    <div className="novel_main">
+      <Text size={25} family={'Times New Roman'}>ขายดี</Text>
       {novels.length > 0 ? (
         <ul className="Novel__Product">
           {novels.map((novel) => (
@@ -19,7 +19,7 @@ function NovelMain() {
       ) : (
         <div className="load">Loading Novels....</div>
       )}
-    </>
+    </div>
   );
 }
 
