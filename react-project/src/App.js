@@ -53,6 +53,6 @@ import BankAccountPage from "../src/feature/BankAccountPage";
   </>
 
   );
-}
+
 
 export default App;
