@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './PhotoSlide.css'; // Make sure this path is correct based on your project structure
 
-const PhotoSlide = ({ images }) => {
+const PhotoSlide = ({ images,size }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
   const nextSlide = () => {
     setCurrentSlide(prevSlide => (prevSlide + 1) % images.length);
   };

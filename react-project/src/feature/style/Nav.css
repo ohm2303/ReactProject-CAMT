@@ -1,0 +1,16 @@
+.Navbar{
+    height: 84px;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.Text-Nav{
+    margin:0 2rem;
+    color: red;
+}
+.Logo-Nav{
+    margin-left:-5rem ;
+    margin-right:5rem;
+}
