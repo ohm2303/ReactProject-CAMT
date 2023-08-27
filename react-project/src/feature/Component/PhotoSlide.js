@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './PhotoSlide.css'; // Make sure this path is correct based on your project structure
+import '../style/PhotoSlide.css'; // Make sure this path is correct based on your project structure
 
 const PhotoSlide = ({ images,size }) => {
   const [currentSlide, setCurrentSlide] = useState(0);

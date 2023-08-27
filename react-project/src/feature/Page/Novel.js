@@ -3,10 +3,10 @@ import Text from "../SubComponent/Text";
 import Button from "../SubComponent/Button";
 import ButtonIcon from "../SubComponent/ButtonIcon";
 import Heart from "../SubComponent/Heart";
-import Report from "../Report";
-import Promotion from "../Promotion";
+import Report from "../Component/Report";
+import Promotion from "../Component/Promotion";
 import Input from "../SubComponent/Input";
-import "./Novel.css";
+import "../style/Novel.css";
 //Button Icon
 import basketDefault from "../../pics/Icon/basket-default.png";
 import basketHovered from "../../pics/Icon/basket-hovered.png";

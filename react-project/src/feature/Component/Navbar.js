@@ -1,6 +1,6 @@
 import React from "react";
-import "../feature/style/Nav.css"
-import Input from "./SubComponent/Input"
+import "../style/Nav.css"
+import Input from "../SubComponent/Input"
 //create function navbar
 function Nav(){
     return (

@@ -1,30 +1,37 @@
 import React from "react";
 import Text from "../SubComponent/Text";
-import Navbar from "../Navbar"; // Assuming you have a Navbar component
+import Input from "../SubComponent/Input"; // Import the Input component
+import Navbar from "../Component/Navbar";
 
 const BankAccountPage = () => {
   return (
     <div>
+      <Navbar />
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <Text size={30} weight="bold">
           The book-buster
         </Text>
-        <Text size={20} weight="bold" style={{ marginTop: "10px" }}>
-          โอนเงินเข้าบัญชีธนาคารหรือพร้อมเพย์
+        <Text size={25} weight="bold" style={{ marginTop: "10px" }}>
+        ชำระเงิน
         </Text>
-        <Text size={18}>
-          โอนเงินผ่าน Mobile Banking, Internet Banking, ตู้ ATM หรือเคาน์เตอร์ธนาคารลดพิเศษอีก 3%
-          เมื่อยอดโอนเกิน 500 บาท (แสดงยอดเงินที่ลดแล้วในหน้าถัดไป)
-        </Text>
-        <div style={{ margin: "20px auto", width: "70%", backgroundColor: "#E1E7E0", padding: "20px" }}>
+        <div
+          style={{
+            margin: "20px auto",
+            width: "70%",
+            backgroundColor: "#E1E7E0",
+            padding: "20px",
+          }}
+        >
           <div style={{ marginBottom: "10px" }}>
             <Text size={18} weight="bold">
               E-mail ของคุณ *
             </Text>
-            <input
+            <Input
               type="text"
               placeholder="กรอกอีเมลของคุณ"
-              style={{ width: "100%" }}
+              width="50%" // Full-width input
+              fontSize="16px"
+              padding="10px"
             />
             <p style={{ fontSize: "12px", color: "gray", marginTop: "5px" }}>
               ระบบจะส่งข้อมูลการโอนเงินไปให้ที่อีเมลนี้ หากอีเมลไม่ถูกต้อง โปรดแก้ไข
@@ -34,10 +41,12 @@ const BankAccountPage = () => {
             <Text size={18} weight="bold">
               เบอร์โทร *
             </Text>
-            <input
+            <Input
               type="text"
               placeholder="กรอกเบอร์โทรของคุณ"
-              style={{ width: "100%" }}
+              width="50%" // Full-width input
+              fontSize="16px"
+              padding="10px"
             />
             <p style={{ fontSize: "12px", color: "gray", marginTop: "5px" }}>
               หากเกิดความขัดข้อง เราจะติดต่อไปที่เบอร์โทรนี้
@@ -47,10 +56,12 @@ const BankAccountPage = () => {
             <Text size={18} weight="bold">
               ชื่อ-นามสกุล
             </Text>
-            <input
+            <Input
               type="text"
               placeholder="กรอกชื่อ-นามสกุลของคุณ"
-              style={{ width: "100%" }}
+              width="50%" // Input with 50% width
+              fontSize="16px"
+              padding="10px"
             />
             <p style={{ fontSize: "12px", color: "gray", marginTop: "5px" }}>
               สามารถเว้นว่างได้หากไม่ต้องการระบุ

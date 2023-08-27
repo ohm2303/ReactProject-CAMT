@@ -1,7 +1,7 @@
 import React from "react";
-import { menuItems } from "../asset/menuItems";
-import Option from "./Option";
-import './OptionMain.css';
+import { menuItems } from "../../asset/menuItems";
+import Option from "../Component/Option";
+import '../style/OptionMain.css';
 
 const OptionMain = () => {
     

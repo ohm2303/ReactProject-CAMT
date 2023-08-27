@@ -1,5 +1,5 @@
 import React from "react";
-import Option from "../Option";
+import Option from "../Component/Option";
 import '../style/Dropdown.css';
 
 const Dropdown = ({ submenus, dropdown, depthLevel }) => {

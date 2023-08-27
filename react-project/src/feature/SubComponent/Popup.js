@@ -2,7 +2,7 @@ import React from "react";
 import ButtonIcon from "./ButtonIcon";
 import cross from "../../pics/Icon/cross-circle.png";
 import cross1 from "../../pics/Icon/cross-circle (1).png";
-import './Popup.css'
+import '../style/Popup.css'
 
 const Popup = (props) => {
   const handleClosePopup = () => {

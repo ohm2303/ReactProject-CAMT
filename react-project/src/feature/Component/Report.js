@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Popup from "./SubComponent/Popup";
-import CheckBoxCircle from "./SubComponent/CheckBoxCircle";
-import Input from "./SubComponent/Input";
-import UploadFile from "./SubComponent/UploadFile";
-import Button from "./SubComponent/Button";
-import Text from "./SubComponent/Text";
-import "./Report.css";
+import Popup from "../SubComponent/Popup";
+import CheckBoxCircle from "../SubComponent/CheckBoxCircle";
+import Input from "../SubComponent/Input";
+import UploadFile from "../SubComponent/UploadFile";
+import Button from "../SubComponent/Button";
+import Text from "../SubComponent/Text";
+import "../style/Report.css";
 
 const Report = ({ isOpen }) => {
   const [popupOpen, setPopupOpen] = useState(isOpen);
