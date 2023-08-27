@@ -1,6 +1,6 @@
 import React from "react";
-import Text from "./SubComponent/Text";
-import Navbar from "./Navbar"; // Assuming you have a Navbar component
+import Text from "../SubComponent/Text";
+import Navbar from "../Navbar"; // Assuming you have a Navbar component
 
 const BankAccountPage = () => {
   return (
