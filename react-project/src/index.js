@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import PaymentPage from './feature/Page/payment';
 import PayPage from './feature/Page/pay'
 import BankAccountPage from './feature/Page/BankAccountPage';
-import NovelPage from './feature/Page/Novel';
+import MyCollection from './feature/Page/MyCollection';
+
 
 
 
@@ -18,14 +19,11 @@ root.render(
 
     
     
-    {/* <PayPage />
+     {/* <PayPage />
     <BankAccountPage />
-    <PaymentPage /> */}
-    <NovelPage/>
+    <PaymentPage />  */}
+    <MyCollection/>
     
-
-
-
   </React.StrictMode>
 );
 
