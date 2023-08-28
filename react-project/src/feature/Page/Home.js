@@ -7,6 +7,8 @@ function Home(){
     return (
         <>
             <PhotoSlide/>
+            <PhotoSlide/>
+            <PhotoSlide/>
             <Option/>
             <NovelMain/>
         </>

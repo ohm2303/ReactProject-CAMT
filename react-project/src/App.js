@@ -13,6 +13,7 @@ import SelectForPay from "./feature/SubComponent/SelectForPay";
 import Login from "../src/feature/Login";
 import AddBook from "../src/feature/AddBook";
 import BankAccountPage from "../src/feature/BankAccountPage";
+import payment from "./feature/Page/payment";
 
 //   const handleSearchChange = (event) => {
 //     setSearchValue(event.target.value);
@@ -49,7 +50,7 @@ import BankAccountPage from "../src/feature/BankAccountPage";
 
   return (
   <>
-  <BankAccountPage></BankAccountPage>
+  <payment></payment>
   </>
 
   );
