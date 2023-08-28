@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import Text from './SubComponent/Text';
+import Text from '../SubComponent/Text';
 
 const Promotion = ({ discountPercentage, fullPrice }) => {
 
-  const ticket = require("../pics/Icon/ticket.png")
+  const ticket = require("../../pics/Icon/ticket.png")
   const discountedPrice = fullPrice * (1 - discountPercentage / 100);
 
   return (

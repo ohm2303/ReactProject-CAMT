@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Nav from "../Navbar";
-import PhotoSlide from "../PhotoSlide";
-import OptionMain from "../OptionMain";
-import NovelMain from "../NovelMain";
+import Nav from "../Component/Navbar";
+import PhotoSlide from "../Component/PhotoSlide";
+import OptionMain from "../Component/OptionMain";
+import NovelMain from "../Component/NovelMain";
 import data from "../../asset/novelData";
 //home page
 function Home() {

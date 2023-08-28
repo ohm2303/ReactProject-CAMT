@@ -1,80 +1,123 @@
 import React from "react";
+import styled from "styled-components"; // Import styled-components library
 import Text from "../SubComponent/Text";
-import Navbar from "../Navbar"; // Assuming you have a Navbar component
+import Input from "../SubComponent/Input"; // Import the Input component
+import Navbar from "../Component/Navbar";
+
+const Container = styled.div`
+  text-align: center;
+  margin-top: 20px;
+`;
+
+const PageTitle = styled(Text)`
+  margin-top: 10px;
+`;
+
+const LineDivider = styled.div`
+  border-bottom: 2px solid #333;
+  margin: 40px;
+`;
+
+const FormContainer = styled.div`
+  margin: 20px auto;
+  width: 70%;
+  background-color: #e1e7e0;
+  padding: 20px;
+`;
+
+const FormField = styled.div`
+  margin-bottom: 10px;
+`;
+
+const FormInput = styled(Input)`
+  width: 50%;
+  font-size: 16px;
+  padding: 10px;
+`;
+
+const FormNote = styled.p`
+  font-size: 12px;
+  color: gray;
+  margin-top: 5px;
+`;
+
+const DeadlineContainer = styled.div`
+  text-align: right;
+  margin-top: 20px;
+`;
+
+
+const PayButton = styled.button`
+background-color: #000;
+color: #fff;
+border: none;
+border-radius: 10px;
+padding: 10px 40px;
+font-size: 16px;
+cursor: pointer;
+margin-top: 10px;
+`;
+
 
 const BankAccountPage = () => {
   return (
     <div>
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <Navbar />
+      <Container>
         <Text size={30} weight="bold">
           The book-buster
         </Text>
-        <Text size={20} weight="bold" style={{ marginTop: "10px" }}>
-          โอนเงินเข้าบัญชีธนาคารหรือพร้อมเพย์
-        </Text>
-        <Text size={18}>
-          โอนเงินผ่าน Mobile Banking, Internet Banking, ตู้ ATM หรือเคาน์เตอร์ธนาคารลดพิเศษอีก 3%
-          เมื่อยอดโอนเกิน 500 บาท (แสดงยอดเงินที่ลดแล้วในหน้าถัดไป)
-        </Text>
-        <div style={{ margin: "20px auto", width: "70%", backgroundColor: "#E1E7E0", padding: "20px" }}>
-          <div style={{ marginBottom: "10px" }}>
+        <PageTitle size={25} weight="bold">
+          ชำระเงิน
+        </PageTitle>
+
+        <LineDivider />
+
+        <FormContainer>
+          <FormField>
             <Text size={18} weight="bold">
               E-mail ของคุณ *
             </Text>
-            <input
+            <FormInput
               type="text"
               placeholder="กรอกอีเมลของคุณ"
-              style={{ width: "100%" }}
             />
-            <p style={{ fontSize: "12px", color: "gray", marginTop: "5px" }}>
+            <FormNote>
               ระบบจะส่งข้อมูลการโอนเงินไปให้ที่อีเมลนี้ หากอีเมลไม่ถูกต้อง โปรดแก้ไข
-            </p>
-          </div>
-          <div style={{ marginBottom: "10px" }}>
+            </FormNote>
+          </FormField>
+          <FormField>
             <Text size={18} weight="bold">
               เบอร์โทร *
             </Text>
-            <input
+            <FormInput
               type="text"
               placeholder="กรอกเบอร์โทรของคุณ"
-              style={{ width: "100%" }}
             />
-            <p style={{ fontSize: "12px", color: "gray", marginTop: "5px" }}>
+            <FormNote>
               หากเกิดความขัดข้อง เราจะติดต่อไปที่เบอร์โทรนี้
-            </p>
-          </div>
-          <div>
+            </FormNote>
+          </FormField>
+          <FormField>
             <Text size={18} weight="bold">
               ชื่อ-นามสกุล
             </Text>
-            <input
+            <FormInput
               type="text"
               placeholder="กรอกชื่อ-นามสกุลของคุณ"
-              style={{ width: "100%" }}
             />
-            <p style={{ fontSize: "12px", color: "gray", marginTop: "5px" }}>
+            <FormNote>
               สามารถเว้นว่างได้หากไม่ต้องการระบุ
-            </p>
-          </div>
-          <div style={{ textAlign: "right", marginTop: "20px" }}>
-            <Text size={12} color="gray">
+            </FormNote>
+          </FormField>
+          <DeadlineContainer>
+            <Text size={12}  color="red">
               กรุณาชำระเงินภายในวันที่ 08 ส.ค. 2566 เวลา 23:10 น.
             </Text>
-            <button
-              style={{
-                fontSize: "14px",
-                backgroundColor: "gray",
-                color: "white",
-                border: "none",
-                padding: "8px 16px",
-                cursor: "pointer",
-              }}
-            >
-              ชำระเงิน
-            </button>
-          </div>
-        </div>
-      </div>
+            <PayButton>ชำระเงิน</PayButton>
+          </DeadlineContainer>
+        </FormContainer>
+      </Container>
     </div>
   );
 };

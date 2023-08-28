@@ -1,11 +1,13 @@
 import React from "react";
-import PhotoSlide from "../PhotoSlide";
+import PhotoSlide from "../Component/PhotoSlide";
 import NovelMain from "../NovelMain";
 import Option from "../Option";
 //create function Home
 function Home(){
     return (
         <>
+            <PhotoSlide/>
+            <PhotoSlide/>
             <PhotoSlide/>
             <Option/>
             <NovelMain/>

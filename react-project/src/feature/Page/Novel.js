@@ -3,10 +3,11 @@ import Text from "../SubComponent/Text";
 import Button from "../SubComponent/Button";
 import ButtonIcon from "../SubComponent/ButtonIcon";
 import Heart from "../SubComponent/Heart";
-import Report from "../Report";
-import Promotion from "../Promotion";
+import Report from "../Component/Report";
+import Promotion from "../Component/Promotion";
 import Input from "../SubComponent/Input";
-import "./Novel.css";
+import Nav from "../Component/Navbar";
+import styled from "styled-components";
 //Button Icon
 import basketDefault from "../../pics/Icon/basket-default.png";
 import basketHovered from "../../pics/Icon/basket-hovered.png";
@@ -19,21 +20,23 @@ import shareHovered from "../../pics/Icon/shareHovered.png";
 import likeDefault from "../../pics/Icon/likeDefault.png";
 import likeHovered from "../../pics/Icon/likeHovered.png";
 
-const NovelPage = () => {
+const NovelPage = ({ className }) => {
   const [isReportOpen, setIsReportOpen] = useState(false);
   const handleReportButtonClick = () => {
     setIsReportOpen(!isReportOpen);
   };
 
-  const [clickedHearts, setClickedHearts] = useState(0);
-  const [hoveredHearts, setHoveredHearts] = useState(0);
+  const [clickedHearts, setClickedHearts] = useState([]);
 
-  const handleHeartClick = (count) => {
-    setClickedHearts(count);
-  };
-
-  const handleHeartHover = (count) => {
-    setHoveredHearts(count);
+  const handleHeartClick = (heartIndex) => {
+    if (clickedHearts.includes(heartIndex)) {
+      // If the clicked heart is already in the clickedHearts array,
+      // remove it by filtering out the clicked heart's index.
+      setClickedHearts(clickedHearts.filter((index) => index !== heartIndex));
+    } else {
+      // Otherwise, add the clicked heart's index to the clickedHearts array.
+      setClickedHearts([...clickedHearts, heartIndex]);
+    }
   };
 
   const [inputReview, setInputReview] = useState("");
@@ -49,7 +52,8 @@ const NovelPage = () => {
   const user = require("../../pics/Icon/circle-user.png");
 
   return (
-    <>
+    <div className={className}>
+      <Nav />
       <div className="total-content">
         <div className="detail-novel">
           <div className="name">
@@ -82,8 +86,8 @@ const NovelPage = () => {
                 </Text>
               </div>
               <div className="total-button">
-                <Button value="ทดลองอ่าน"  className="button-buy"/>
-                <Button value="ซื้อ 300 บาท" className="button-buy"/>
+                <Button value="ทดลองอ่าน" className="button-buy" />
+                <Button value="ซื้อ 300 บาท" className="button-buy" />
               </div>
 
               <div className="rating">
@@ -118,7 +122,7 @@ const NovelPage = () => {
                 />
                 <div className="report">
                   <button onClick={handleReportButtonClick}>
-                    <img src={editIcon} alt=" " />
+                    <img src={editIcon} />
                   </button>
                   <p>แจ้งปัญหา</p>
                 </div>
@@ -181,16 +185,17 @@ const NovelPage = () => {
               {Array.from({ length: 5 }, (_, index) => (
                 <img
                   key={index}
-                  src={index < clickedHearts ? heartHovered1 : heartDefault1}
+                  src={
+                    clickedHearts.includes(index + 1)
+                      ? heartHovered1
+                      : heartDefault1
+                  }
                   alt={`Heart ${index + 1}`}
                   className="heart-icon"
                   onClick={() => handleHeartClick(index + 1)}
-                  onMouseEnter={() => handleHeartHover(index + 1)}
-                  onMouseLeave={() => handleHeartHover(0)}
                 />
               ))}
-              {/* <p>คุณกดหัวใจ: {clickedHearts}</p>
-            <p>คุณชี้หัวใจ: {hoveredHearts}</p>  */}
+              {/* <p>จำนวนหัวใจที่คลิก: {clickedHearts.length}</p> */}
             </div>
             <div className="writing">
               <Input
@@ -240,7 +245,441 @@ const NovelPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
-export default NovelPage;
+
+/*kanokwan Mahakham */
+export default styled(NovelPage)`
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+  .total-content {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  /*detail-novel*/
+  .detail-novel {
+    display: flex;
+    background-color: #f1f1f1;
+    width: 50%;
+    height: fit-content;
+    border-radius: 10px;
+    justify-content: center; /* จัดกลางแนวนอน */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .name p {
+    margin-top: 40px;
+    margin-bottom: 0px;
+  }
+  .content {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    width: 85%;
+    display: flex;
+  }
+
+  .photo-novel {
+    width: 45%; /* ความกว้างของพื้นที่ภาพ */
+    padding-right: 20px; /* ระยะห่างจากเนื้อหาด้านบน */
+    align-items: center;
+  }
+
+  .photo-novel img {
+    width: 200px;
+    height: 230px;
+    object-fit: cover;
+    margin-left: 20%;
+  }
+  .promotion {
+    width: 200px;
+    height: 130px;
+    margin-left: 20%;
+    background-color: white;
+  }
+  .percent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .percent img {
+    width: 38px;
+    height: 40px;
+    margin: 0px 20px 3px 0px;
+  }
+  .percent p {
+    margin-bottom: 5px;
+    margin-top: 4px;
+  }
+  .promotion-text {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    background-color: red;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  .promotion-text p {
+    margin: 0;
+  }
+  .price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .price li {
+    list-style-type: none;
+  }
+  .price p {
+    margin: 0;
+    padding: 0;
+  }
+  .price ul {
+    margin-top: 0;
+  }
+  .detail-left-box {
+    width: 50%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+  }
+  .detail-book {
+    display: flex;
+    width: 100%;
+  }
+  .detail-book ul {
+    list-style-type: none; /* เอาจุดออก */
+  }
+  .detail-book li {
+    margin: 10px 0px;
+  }
+  .total-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .total-button .ButtonNormal {
+    appearance: none;
+    background-color: rgba(255, 255, 255, 0.919);
+    border-radius: 30px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    font-size: 17px;
+    font-family: "Anuphan";
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-right: 16px;
+    min-height: 40px;
+    min-width: 140px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .total-button .ButtonNormal:disabled {
+    pointer-events: none;
+  }
+
+  .total-button .ButtonNormal:hover {
+    color: #fff;
+    background-color: #3ff213;
+    border-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+
+  .total-button .ButtonNormal:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+  .ButtonNormal {
+    width: 120px;
+    height: 45px;
+    background-color: white;
+    border-radius: 30px;
+    border: none;
+    padding: 1.3%;
+    margin: 20px;
+    text-align: center;
+    font-family: "Anuphan";
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .heart {
+    margin: 0px 30px 30px 0px;
+    display: grid;
+    grid-template-columns: auto 1fr; /* แบ่งคอลัมน์เป็น 2 ส่วน โดยช่องแรกมีขนาดเพียงพอต่อข้อความ */
+    align-items: center;
+    color: red;
+  }
+  .rating img {
+    width: 15px;
+  }
+
+  .heart-images {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* ระยะห่างระหว่างรูปภาพ */
+  }
+  .heart-rating {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+  .num-rating {
+    font-size: 12px;
+    margin: 0px 30px 30px 0px;
+  }
+  .button-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+  }
+  .icon-button {
+    font-family: "Anuphan";
+    font-size: 13px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: grid;
+    place-items: center; /* จัดตรงกลางทั้งแนวดิ่งและแนวนอน */
+  }
+  .icon-button img {
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .report {
+    font-family: "Anuphan";
+    font-size: 13px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+  .report img {
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+  .report p {
+    margin-bottom: 5px;
+    margin-top: 8px;
+  }
+  .detail-file li {
+    margin: 15px 0px;
+  }
+  .detail-file ul {
+    list-style-type: none;
+  }
+  .detail-file {
+    display: flex;
+    margin-bottom: 40px;
+  }
+
+  /*synopsis*/
+  .synopsis {
+    width: 50%;
+    height: fit-content;
+  }
+  .synopsis p {
+    line-height: 3;
+    margin: 50px;
+  }
+  .give-heart {
+    display: flex;
+    align-items: center;
+  }
+
+  /*review*/
+  .review {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+  .give-heart {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2b4560;
+  }
+  .heart-icon {
+    width: 30px;
+    height: 30px;
+    padding-right: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+  }
+
+  .heart-icon:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+  }
+
+  .writing-review p {
+    margin: 10px 0;
+  }
+  .writing {
+    width: 100%;
+    height: fit-content;
+    background-color: #e1e7e0;
+  }
+
+  .writing .input-component {
+    height: 50%;
+    background-color: #e1e7e0;
+  }
+  .button-review {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .button-review .ButtonNormal {
+    appearance: none;
+    background-color: rgba(255, 255, 255, 0.919);
+    border-radius: 30px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    font-size: 17px;
+    font-family: "Anuphan";
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 16px;
+    min-height: 40px;
+    min-width: 140px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-review .ButtonNormal:disabled {
+    pointer-events: none;
+  }
+
+  .button-review .ButtonNormal:hover {
+    color: #fff;
+    background-color: #3ff213;
+    border-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+
+  .button-review .ButtonNormal:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+  .user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .user img {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+  }
+
+  /*total-review*/
+  .total-review {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+  .box-reviews {
+    width: 100%;
+    height: fit-content;
+    background-color: #e1e7e0;
+  }
+  .user-review {
+    display: flex;
+    align-items: center;
+  }
+  .user-review img {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    margin-top: 0px;
+  }
+  .heart-user-review img {
+    width: 15px;
+    height: 15px;
+    margin: 0px;
+  }
+  .heart-user-review .heart-images {
+    display: flex;
+    align-items: center;
+    gap: 2;
+  }
+  .heart-user-review p {
+    margin-bottom: 2px;
+    margin-top: 20px;
+  }
+  .details-review {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 50px;
+    margin-bottom: 10px;
+  }
+  .details-review p {
+    margin-top: 0px;
+  }
+  .like {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px 10px 20px;
+  }
+`;

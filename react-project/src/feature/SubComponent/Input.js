@@ -1,5 +1,3 @@
-// Input.js
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -11,9 +9,15 @@ const style = {
   width: '100%',
 };
 
-const Input = ({ css ,type, placeholder, value, onChange, size, heightSize} ) => {
-  const inputStyle = size ? { ...style, width: size,height: heightSize } : style;
-  
+const Input = ({ type, placeholder, value, onChange, size, heightSize, padding, fontSize, width }) => {
+  const inputStyle = {
+    ...style,
+    width: width || size || style.width, // Use width prop if provided, otherwise use size prop or default width
+    height: heightSize || style.height,
+    padding: padding || style.padding, 
+    fontSize: fontSize || style.fontSize, 
+  };
+
   return (
     <input
       type={type}
@@ -30,7 +34,10 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  width: PropTypes.string, // Add width prop type
   size: PropTypes.string,
+  padding: PropTypes.string, 
+  fontSize: PropTypes.string, 
 };
 
 export default Input;
