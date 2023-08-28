@@ -36,8 +36,8 @@ const Nav = () => {
       <NavText>Home</NavText>
       <NavText>Recommend</NavText>
       <NavText>Coin</NavText>
-      <Input placeholder="Search for anything" size="250px" heightSize="30px" />
-      <Basket>ฺBasket</Basket>
+      <Input placeholder="Search for anything" size="250px" heightSize="20px" />
+      <Basket>Basket</Basket>
       <NavText>Login/Register</NavText>
     </Navbar>
   );
