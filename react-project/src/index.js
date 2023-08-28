@@ -1,22 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-//import App from './App';
+
 import reportWebVitals from './reportWebVitals';
-import Home from './feature/HomePage/Home';
 import PaymentPage from './feature/Page/payment';
 import PayPage from './feature/Page/pay'
-
-import NovelPage from './feature/Page/Novel';
-import Novel from './feature/Page/Novel'
 import BankAccountPage from './feature/Page/BankAccountPage';
-import PhotoSlide from './feature/Component/PhotoSlide';
+
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
+    
+    
     <PayPage />
+    <BankAccountPage />
+    <PaymentPage />
+    
+    
+
+
 
   </React.StrictMode>
 );
