@@ -64,7 +64,7 @@ const PaymentPage = () => {
           The book-buster
         </Text>
         <PaymentTitle size={25} weight="bold">
-          รายละเอียดการชำระเงิน
+          รายละเอียดหลังการชำระเงิน
         </PaymentTitle>
         <LineDivider />
 
@@ -81,7 +81,6 @@ const PaymentPage = () => {
             </ContentNote>
             <ul>
               {/*ใส่หนังสือที่จะซื้อ*/}
-              name of book
             </ul>
           </ContentContainer>
         </ContentBox>

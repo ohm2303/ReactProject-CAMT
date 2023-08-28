@@ -51,12 +51,14 @@ const DeadlineText = styled(Text)`
 `;
 
 const PayButton = styled.button`
-  font-size: 14px;
-  background-color: gray;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
+background-color: #000;
+color: #fff;
+border: none;
+border-radius: 10px;
+padding: 10px 40px;
+font-size: 16px;
+cursor: pointer;
+margin-top: 10px;
 `;
 
 const BankAccountPage = () => {

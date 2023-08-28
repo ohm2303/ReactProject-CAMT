@@ -1,7 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-import Navbar from "../Component/Navbar";
-import Text from "../SubComponent/Text";
+import styled from "styled-components"; // Import styled-components library
+import Navbar from "../Component/Navbar"; // Replace with actual path
+import Text from "../SubComponent/Text"; 
+// Replace with actual path
 
 const Container = styled.div`
   text-align: center;
@@ -32,7 +33,7 @@ const ContentBoxTop = styled.div`
 const SummaryItem = styled(Text)`
   color: #fff;
   font-size: ${props => props.size || 15}px;
-
+  margin-top: 5px;
 `;
 
 const ContentBoxBottom = styled.div`
@@ -41,8 +42,8 @@ const ContentBoxBottom = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 25px;
-  margin-top: 10px;
-  padding: 0px;
+  margin-top: 20px;
+  padding: 20px;
 `;
 
 const PayButton = styled.button`
@@ -50,18 +51,17 @@ const PayButton = styled.button`
   color: #fff;
   border: none;
   border-radius: 10px;
-  padding: 10px 20px;
+  padding: 10px 40px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
 `;
 
 const EditButton = styled.button`
-    margin-top : 30px;
+  margin-top: 30px;
   color: #000;
   padding: 8px 16px;
   font-size: 14px;
-  cursor: pointer;
 `;
 
 const PayPage = () => {
@@ -79,23 +79,24 @@ const PayPage = () => {
         <LongLine />
 
         <ContentBoxTop>
-          <SummaryItem size={18} color="#FFF">
+          <SummaryItem size={18}>
             สรุปรายการที่สั่งซื้อ 4 รายการ
           </SummaryItem>
-          <SummaryItem color="#FFF">
-            ไดโนซอร์รัก                                        ฿303
+          <SummaryItem >
+            <ol>ไดโนซอร์รัก                                        ฿303</ol>
+            <ol>ไดโนซอร์รัก                                        ฿303</ol>
           </SummaryItem>
           {/* Add more summary items here */}
         </ContentBoxTop>
 
-        <EditButton>กลับไปแก้ไขรายการ</EditButton>
+        <EditButton>กลับไปแก้ไขรายการสั่งซื้อ</EditButton>
+        
 
         <ContentBoxBottom>
-          <SummaryItem size={18} weight="bold" color="#FFF">
+          <SummaryItem size={18} weight="bold">
             ยอดชำระ $ 399
           </SummaryItem>
           <PayButton>ชำระเงิน</PayButton>
-          
         </ContentBoxBottom>
 
         <Text size={15} style={{ marginTop: "20px" }}>
