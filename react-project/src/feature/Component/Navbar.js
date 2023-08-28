@@ -1,20 +1,46 @@
 import React from "react";
-import "../style/Nav.css"
-import Input from "../SubComponent/Input"
-//create function navbar
-function Nav(){
-    return (
-        <header className="Navbar">
-            <dev className='Logo-Nav'>Logo</dev>
-            <dev className='Text-Nav'>Home</dev>
-            <dev className='Text-Nav'>Recommend</dev>
-            <dev className='Text-Nav'>Coin</dev>
-            <Input placeholder={"Search for anything"} size={"250px"} heightSize={"30px"}></Input>
-            <dev className='Text-Nav'>ฺBasket</dev>
-            <dev className='Text-Nav'>Login/Register</dev>
-        </header>
-    );
-}
+import styled from "styled-components";
+import Input from "../SubComponent/Input";
 
-//export
-export default Nav
+const Navbar = styled.header`
+  background-color: #2f6d80; 
+  color: white; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+`;
+
+const Logo = styled.div`
+  font-size: 24px;
+`;
+
+const NavText = styled.div`
+  font-size: 18px;
+  margin-right: 20px;
+  cursor: pointer;
+
+  &:last-child {
+    margin-right: 0;
+  }
+`;
+
+const Basket = styled(NavText)`
+  margin-right: 0;
+`;
+
+const Nav = () => {
+  return (
+    <Navbar>
+      <Logo>Logo</Logo>
+      <NavText>Home</NavText>
+      <NavText>Recommend</NavText>
+      <NavText>Coin</NavText>
+      <Input placeholder="Search for anything" size="250px" heightSize="30px" />
+      <Basket>ฺBasket</Basket>
+      <NavText>Login/Register</NavText>
+    </Navbar>
+  );
+};
+
+export default Nav;

@@ -42,7 +42,7 @@ const ContentBoxBottom = styled.div`
   justify-content: center;
   border-radius: 25px;
   margin-top: 10px;
-  padding: 10px;
+  padding: 0px;
 `;
 
 const PayButton = styled.button`
