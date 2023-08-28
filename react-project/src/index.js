@@ -7,6 +7,7 @@ import PaymentPage from './feature/Page/payment';
 import PayPage from './feature/Page/pay'
 import BankAccountPage from './feature/Page/BankAccountPage';
 import MyCollection from './feature/Page/MyCollection';
+import NovelPage from './feature/Page/Novel';
 
 
 
@@ -19,10 +20,9 @@ root.render(
 
     
     
-     {/* <PayPage />
-    <BankAccountPage />
-    <PaymentPage />  */}
-    <MyCollection/>
+    
+     <BankAccountPage />
+     
     
   </React.StrictMode>
 );
