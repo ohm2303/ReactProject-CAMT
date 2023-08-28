@@ -13,14 +13,14 @@ const MyCollection = ({ className }) => {
       <Nav />
       <div className="content">
         <div className="title">
-          <Text size={60} family={"Doknatal"} weight="500">
+        <Text size={50} weight="bold" family={"Anuphan"}>
             The book-buster
           </Text>
         </div>
 
         <div className="MyCollection">
           <div className="MyCollection_title">
-            <Text size={40} family={"Doknatal"} weight="500">
+            <Text size={40} family={"Anuphan"} weight="500">
               My collection
             </Text>
           </div>
@@ -39,7 +39,7 @@ const MyCollection = ({ className }) => {
 
         <div className="Ordered_Books">
         <div className="Ordered_Books_title">
-            <Text size={40} family={"Doknatal"} weight="500">
+            <Text size={40} family={"Anuphan"} weight="blod">
             Ordered Books
             </Text>
           </div>

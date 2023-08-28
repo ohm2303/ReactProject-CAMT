@@ -22,6 +22,9 @@ root.render(
     
     
      <BankAccountPage />
+     <PayPage />
+     <PaymentPage />
+
      
     
   </React.StrictMode>
