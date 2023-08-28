@@ -19,39 +19,26 @@ public class UserDetail {
     private String password;
     private String gender;
     private String display_name;
-    private Long buy_novel;
+    private int lavel;
 
-    public UserDetail() {
-    }
+    public UserDetail(){}
 
-    public UserDetail(Long id, String email, String username, String password, String gender, String display_name) {
+    public UserDetail(Long id, String email, String username, String password, String gender, String display_name,int lavel) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
         this.gender = gender;
         this.display_name = display_name;
+        this.lavel = lavel;
     }
 
-    public UserDetail(Long id, String email, String username, String password, String gender, String display_name,
-            Long buy_novel) {
-        this.id = id;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.gender = gender;
-        this.display_name = display_name;
-        this.buy_novel = buy_novel;
+    public int getLavel() {
+        return lavel;
     }
-
-    public Long getBuy_novel() {
-        return buy_novel;
+    public void setLavel(int lavel) {
+        this.lavel = lavel;
     }
-
-    public void setBuy_novel(Long buy_novel) {
-        this.buy_novel = buy_novel;
-    }
-
     public Long getId() {
         return id;
     }
@@ -100,4 +87,5 @@ public class UserDetail {
         this.display_name = display_name;
     }
 
+    
 }
