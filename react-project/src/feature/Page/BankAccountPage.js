@@ -13,9 +13,9 @@ const PageTitle = styled(Text)`
   margin-top: 10px;
 `;
 
-const LongLine = styled.div`
+const LineDivider = styled.div`
   border-bottom: 2px solid #333;
-  margin: 20px auto;
+  margin: 40px;
 `;
 
 const FormContainer = styled.div`
@@ -46,9 +46,6 @@ const DeadlineContainer = styled.div`
   margin-top: 20px;
 `;
 
-const DeadlineText = styled(Text)`
-  color: gray;
-`;
 
 const PayButton = styled.button`
 background-color: #000;
@@ -60,6 +57,7 @@ font-size: 16px;
 cursor: pointer;
 margin-top: 10px;
 `;
+
 
 const BankAccountPage = () => {
   return (
@@ -73,7 +71,7 @@ const BankAccountPage = () => {
           ชำระเงิน
         </PageTitle>
 
-        <LongLine />
+        <LineDivider />
 
         <FormContainer>
           <FormField>
@@ -113,9 +111,9 @@ const BankAccountPage = () => {
             </FormNote>
           </FormField>
           <DeadlineContainer>
-            <DeadlineText size={12}>
+            <Text size={12}  color="red">
               กรุณาชำระเงินภายในวันที่ 08 ส.ค. 2566 เวลา 23:10 น.
-            </DeadlineText>
+            </Text>
             <PayButton>ชำระเงิน</PayButton>
           </DeadlineContainer>
         </FormContainer>

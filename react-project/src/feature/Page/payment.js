@@ -39,12 +39,9 @@ const ContentContainer = styled.div`
 `;
 
 const ContentTitle = styled(Text)`
-  font-size: 20px;
 `;
 
 const ContentNote = styled(Text)`
-  color: gray;
-  font-size: 12px;
 `;
 
 const ContactSection = styled.div`
@@ -52,7 +49,7 @@ const ContactSection = styled.div`
 `;
 
 const ContactInfo = styled(Text)`
-  font-size: 12px;
+
 `;
 
 const PaymentPage = () => {
@@ -76,17 +73,16 @@ const PaymentPage = () => {
             <ContentTitle size={20}>
               รายการ e-book ที่คุณจะได้รับหลังการชำระเงิน
             </ContentTitle>
-            <ContentNote>
+            <ContentNote color = "gray" size={15}>
               เมื่อชำระเงินสำเร็จ e-book จะถูกส่งไปยังชั้นหนังสือบนแอพพลิเคชัน the book- buster ภายใน 5 นาที
             </ContentNote>
-            <ul>
-              {/*ใส่หนังสือที่จะซื้อ*/}
-            </ul>
+            <ol>{/*ใส่หนังสือที่จะซื้อ*/}uuiiiii</ol>
+            <ol>{/*ใส่หนังสือที่จะซื้อ*/}uuiiiii</ol>
           </ContentContainer>
         </ContentBox>
 
         <ContactSection>
-          <ContactInfo size={20}>หากไม่ได้รับ e-book หรือมีข้อสงสัยใดๆ กรุณาติดต่อสอบถามเราได้ ที่นี่</ContactInfo>
+          <ContactInfo size={18}>หากไม่ได้รับ e-book หรือมีข้อสงสัยใดๆ กรุณาติดต่อสอบถามเราได้ ที่นี่</ContactInfo>
           <ContactInfo size={12}>โทร: 02-962-1698 (จันทร์-ศุกร์ 09.30-19.30 น. ยกเว้นวันหยุดราชการ)</ContactInfo>
           <ContactInfo size={12}>มือถือ: 084-090-3148 (ทุกวัน 09.30-19.30 น.)</ContactInfo>
           <ContactInfo size={12}>E-mail: support@the_book-buster.com (ทุกวัน 24 ชั่วโมง)</ContactInfo>

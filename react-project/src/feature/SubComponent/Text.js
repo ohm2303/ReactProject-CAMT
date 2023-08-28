@@ -8,7 +8,6 @@ function Text({size,children,family,weight,color}){
         fontWeight: weight,
         fontSize: size + 'px',
         fontFamily:  family,
-        fontWeight: weight,
         color: color,    };
     return (
         <p style={style}>{children}</p>

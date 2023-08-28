@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components"; // Import styled-components library
 import Navbar from "../Component/Navbar"; // Replace with actual path
 import Text from "../SubComponent/Text"; 
-// Replace with actual path
 
 const Container = styled.div`
   text-align: center;
@@ -13,10 +12,9 @@ const PageTitle = styled(Text)`
   margin-top: 10px;
 `;
 
-const LongLine = styled.div`
+const LineDivider = styled.div`
   border-bottom: 2px solid #333;
-  margin: 30px auto;
-  max-width: 1300px;
+  margin: 40px;
 `;
 
 const ContentBoxTop = styled.div`
@@ -31,8 +29,6 @@ const ContentBoxTop = styled.div`
 `;
 
 const SummaryItem = styled(Text)`
-  color: #fff;
-  font-size: ${props => props.size || 15}px;
   margin-top: 5px;
 `;
 
@@ -76,21 +72,21 @@ const PayPage = () => {
           ชำระเงิน
         </PageTitle>
 
-        <LongLine />
+        <LineDivider />
 
         <ContentBoxTop>
-          <SummaryItem size={18}>
+          <text size={18}>
             สรุปรายการที่สั่งซื้อ 4 รายการ
-          </SummaryItem>
-          <SummaryItem >
-            <ol>ไดโนซอร์รัก                                        ฿303</ol>
-            <ol>ไดโนซอร์รัก                                        ฿303</ol>
-          </SummaryItem>
-          {/* Add more summary items here */}
+          </text>
+          <text >
+            <ol>{/*ใส่หนังสือที่จะซื้อ*/}ไดโนซอร์รัก                                        ฿303</ol>
+            <ol>{/*ใส่หนังสือที่จะซื้อ*/}ไดโนซอร์รัก                                        ฿303</ol>
+          </text>
+          <EditButton>กลับไปแก้ไขรายการสั่งซื้อ</EditButton>
+        
         </ContentBoxTop>
 
-        <EditButton>กลับไปแก้ไขรายการสั่งซื้อ</EditButton>
-        
+       
 
         <ContentBoxBottom>
           <SummaryItem size={18} weight="bold">
@@ -99,7 +95,7 @@ const PayPage = () => {
           <PayButton>ชำระเงิน</PayButton>
         </ContentBoxBottom>
 
-        <Text size={15} style={{ marginTop: "20px" }}>
+        <Text size={15}  color="gray">
           หลังจากที่ท่านชำระเงินเรียบร้อยแล้ว ระบบของ the book-buster.com
           จะใช้เวลาสื่อสารกับตัวกลางชำระเงินประมาณ 10-30 นาที และจะจัดส่ง e-book
           เข้าไปที่ shelf ของท่านโดยไว
