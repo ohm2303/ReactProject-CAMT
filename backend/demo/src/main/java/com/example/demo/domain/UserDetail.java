@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "user_detail")
 public class UserDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,8 +19,10 @@ public class UserDetail {
     private String password;
     private String gender;
     private String display_name;
+    private Long buy_novel;
 
-    public UserDetail(){}
+    public UserDetail() {
+    }
 
     public UserDetail(Long id, String email, String username, String password, String gender, String display_name) {
         this.id = id;
@@ -27,6 +31,25 @@ public class UserDetail {
         this.password = password;
         this.gender = gender;
         this.display_name = display_name;
+    }
+
+    public UserDetail(Long id, String email, String username, String password, String gender, String display_name,
+            Long buy_novel) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.gender = gender;
+        this.display_name = display_name;
+        this.buy_novel = buy_novel;
+    }
+
+    public Long getBuy_novel() {
+        return buy_novel;
+    }
+
+    public void setBuy_novel(Long buy_novel) {
+        this.buy_novel = buy_novel;
     }
 
     public Long getId() {
@@ -77,5 +100,4 @@ public class UserDetail {
         this.display_name = display_name;
     }
 
-    
 }
