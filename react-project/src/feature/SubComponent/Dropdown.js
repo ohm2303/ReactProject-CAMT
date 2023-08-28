@@ -1,21 +1,51 @@
 import React from "react";
 import Option from "../Component/Option";
-import '../style/Dropdown.css';
+import styled from "styled-components";
 
-const Dropdown = ({ submenus, dropdown, depthLevel }) => {
+const Dropdown = ({ submenus, dropdown, depthLevel,className }) => {
   depthLevel = depthLevel + 1;
  const dropdownClass = depthLevel > 1 ? "dropdown-submenu" : "";
 
     return (
+      <div className={className}>
       <ul className={`dropdown ${dropdownClass} ${dropdown ? "show" : ""}`}>
         {submenus.map((submenu, index) =>(
           <Option items={submenu} key={index} depthLevel={depthLevel} />
         ))}
       </ul>
+      </div>
     );
   };
   
-  export default Dropdown;
+  export default styled(Dropdown)`
+  .dropdown {
+    display: none;
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .menu-items {
+    padding: 0.5rem 1rem;
+  }
+  
+  .menu-items a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .menu-items a:hover {
+    background-color: #f5f5f5;
+  }
+  `;
   /* 
   Kanokwan Mahakham
   วิธีการใช้
