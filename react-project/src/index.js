@@ -2,23 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-//import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-import App from './App';
-import PayPage from './feature/Page/pay';
 import PaymentPage from './feature/Page/payment';
+import PayPage from './feature/Page/pay'
 import BankAccountPage from './feature/Page/BankAccountPage';
+<<<<<<< HEAD
 <<<<<<< HEAD
 import NovelPage from './feature/Page/Novel';
 =======
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
 import MyCollection from './feature/Page/MyCollection';
 import NovelPage from './feature/Page/Novel';
 
 
 
 
+<<<<<<< HEAD
 >>>>>>> 7b423f5a35a5fe947f9343bf4d61092b8327d862
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,10 +29,13 @@ root.render(
   <React.StrictMode>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <NovelPage idNovel={2}/>
 
 =======
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
     
     
     
@@ -39,7 +45,10 @@ root.render(
 
      
     
+<<<<<<< HEAD
 >>>>>>> 7b423f5a35a5fe947f9343bf4d61092b8327d862
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
   </React.StrictMode>
 );
 

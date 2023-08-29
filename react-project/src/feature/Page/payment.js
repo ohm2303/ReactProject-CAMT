@@ -4,8 +4,16 @@ import Text from "../SubComponent/Text";
 import Navbar from "../Component/Navbar";
 import QR from "../../pics/payment/Picture1.png";
 
+// Define styled components
+const PaymentPageContainer = styled.div`
+  text-align: center;
+  margin-top: 20px;
+`;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
 const PaymentTitle = styled(Text)`
   margin-top: 10px;
 `;
@@ -58,6 +66,7 @@ const PaymentPage = () => {
           </Text>
         </PaymentTitle>
         <LineDivider />
+<<<<<<< HEAD
 =======
 const PaymentPage = ({ className }) => {
     return (
@@ -72,12 +81,17 @@ const PaymentPage = ({ className }) => {
         </Text>
         <div className="line-divider" />
 >>>>>>> 7b423f5a35a5fe947f9343bf4d61092b8327d862
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
 
-        <div className="content-box">
-          <div className="qr-image">
-            <img src={QR} alt="QR" />
+        <ContentBox>
+          <div style={{ flex: 1 }}>
+            <QRImage src={QR} alt="QR" />
           </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
           <ContentContainer>
             <ContentTitle>
               <Text size={25} family={"Anuphan"} weight="600">
@@ -114,6 +128,7 @@ const PaymentPage = ({ className }) => {
         </ContactSection>
       </PaymentPageContainer>
     </div>
+<<<<<<< HEAD
 =======
           <div className="content-container">
             <Text className="content-title" size={20} weight="bold" font-family={"Anuphan"}>
@@ -137,51 +152,9 @@ const PaymentPage = ({ className }) => {
       </div>
     
 >>>>>>> 7b423f5a35a5fe947f9343bf4d61092b8327d862
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
   );
 };
 
-
-export default styled(PaymentPage)`
-@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-  text-align: center;
-  margin-top: 20px;
-  font-family: "Anuphan";
-  
-  .content-box {
-    display: flex;
-    margin-top: 30px;
-
-    .qr-image {
-      flex: 1;
-      img {
-        max-width: 60%;
-        height: auto;
-      }
-    }
-
-    .content-container {
-      flex: 2;
-      text-align: center;
-      background-color: #e1e7e0;
-      padding: 20px;
-      margin-right: 50px;
-      border-radius: 25px;
-    }
-  }
-
-  .line-divider {
-    border-bottom: 2px solid #333;
-    margin: 40px;
-  }
-
-  .contact-section {
-    text-align: center;
-    margin-top: 20px;
-
-    .contact-info {
-      font-family: "Anuphan";
-      margin-top: 10px;
-      
-    }
-  }
-`;
+export default PaymentPage;

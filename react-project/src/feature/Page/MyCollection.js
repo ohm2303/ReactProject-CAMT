@@ -14,17 +14,21 @@ const MyCollection = ({ className }) => {
       <div className="content">
         <div className="title">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <Text size={50} family={"Doknatal"} weight="500">
 =======
         <Text size={50} weight="bold" family={"Anuphan"}>
 >>>>>>> 7b423f5a35a5fe947f9343bf4d61092b8327d862
+=======
+          <Text size={50} family={"Doknatal"} weight="500">
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
             The book-buster
           </Text>
         </div>
 
         <div className="MyCollection">
           <div className="MyCollection_title">
-            <Text size={40} family={"Anuphan"} weight="500">
+            <Text size={40} family={"Doknatal"} weight="500">
               My collection
             </Text>
           </div>
@@ -43,7 +47,7 @@ const MyCollection = ({ className }) => {
 
         <div className="Ordered_Books">
         <div className="Ordered_Books_title">
-            <Text size={40} family={"Anuphan"} weight="blod">
+            <Text size={40} family={"Doknatal"} weight="500">
             Ordered Books
             </Text>
           </div>

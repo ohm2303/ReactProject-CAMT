@@ -5,6 +5,9 @@ import Input from "../SubComponent/Input"; // Import the Input component
 import Navbar from "../Component/Navbar";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
 const Container = styled.div`
   text-align: center;
   margin-top: 20px;
@@ -59,13 +62,19 @@ const PayButton = styled.button`
 `;
 
 const BankAccountPage = () => {
+<<<<<<< HEAD
 =======
 const BankAccountPage = ({ className }) => {
 >>>>>>> 7b423f5a35a5fe947f9343bf4d61092b8327d862
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
   return (
-    <div className={className}>
+    <div>
       <Navbar />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
       <Container>
         <Text size={50} family={"Doknatal"} weight="500">
           The book-buster
@@ -75,6 +84,7 @@ const BankAccountPage = ({ className }) => {
             ชำระเงิน
           </Text>
         </PageTitle>
+<<<<<<< HEAD
 =======
         <Text size={40} weight="bold" family={'Anuphan'}>
           The book-buster
@@ -83,10 +93,15 @@ const BankAccountPage = ({ className }) => {
           ชำระเงิน
         </Text>
 >>>>>>> 7b423f5a35a5fe947f9343bf4d61092b8327d862
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
 
-        <div className="line-divider" />
+        <LineDivider />
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
         <FormContainer>
           <FormField>
             <Text size={20} family={"Anuphan"} weight="600">
@@ -124,6 +139,7 @@ const BankAccountPage = ({ className }) => {
           </DeadlineContainer>
         </FormContainer>
       </Container>
+<<<<<<< HEAD
 =======
         <div className="form-container">
           
@@ -180,61 +196,10 @@ const BankAccountPage = ({ className }) => {
       
       
 >>>>>>> 7b423f5a35a5fe947f9343bf4d61092b8327d862
+=======
+>>>>>>> f7f14726b565df761c9b47351c0bd417444a0e24
     </div>
   );
 };
 
-export default styled(BankAccountPage)`
-@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-  
-  text-align: center;
-  margin-top: 20px;
-
-  
-
-  .page-title {
-    margin-top: 2px;
-  }
-
-  .line-divider {
-    border-bottom: 2px solid #333;
-    margin: 40px;
-  }
-
-  .form-container {
-    margin: 20px auto;
-    width: 70%;
-    background-color: #e1e7e0;
-    padding: 20px;
-  }
-
-  .form-field {
-    margin-bottom: 10px;
-  }
-
-  .form-input {
-    padding: 10px;
-  }
-
-
-  .form-note {
-    font-size: 12px;
-    color: gray;
-    margin-top: 5px;
-  }
-
-  .deadline-container {
-    text-align: right;
-    margin-top: 20px;
-  }
-
-  .pay-button {
-    font-size: 14px;
-    background-color: black;
-    border-radius:10px;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    cursor: pointer;
-  }
-`;
+export default BankAccountPage;
