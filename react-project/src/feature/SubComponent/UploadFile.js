@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 
+
 const UploadFile = ({className}) => {
+
    const [selectedFiles, setSelectedFiles] = useState([]);
    const handleFileChange = (e) => {
       setSelectedFiles([...e.target.files]);
