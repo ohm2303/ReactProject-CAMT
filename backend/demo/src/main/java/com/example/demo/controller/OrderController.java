@@ -92,7 +92,7 @@ public class OrderController {
         return ResponseEntity.ok("Order updated to buy");
     }
 
-    // Get all order
+    // Get all orders
     @GetMapping("/orders")
     public List<Order> getAllBaskets() {
         return orderRepository.findAll();
