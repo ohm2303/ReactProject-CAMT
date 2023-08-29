@@ -41,6 +41,9 @@ public class NovelDetail {
     // table = order
     @OneToMany(mappedBy = "id_novel")
     private Set<Order> orders = new HashSet<>();
+    // table = report
+    @OneToMany(mappedBy = "novel_id")
+    private Set<Report> reports = new HashSet<>();
 
     public NovelDetail() {
     }
