@@ -1,4 +1,3 @@
-import  "../SubComponent/GrayBackground.css";
 
 const GrayBackground = (props) => {
     const {children,css}=props
@@ -6,3 +5,5 @@ const GrayBackground = (props) => {
 }
 
 export default GrayBackground;
+
+//GlobalStyle

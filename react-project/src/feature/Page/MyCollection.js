@@ -13,7 +13,7 @@ const MyCollection = ({ className }) => {
       <Nav />
       <div className="content">
         <div className="title">
-          <Text size={60} family={"Doknatal"} weight="500">
+          <Text size={50} family={"Doknatal"} weight="500">
             The book-buster
           </Text>
         </div>
