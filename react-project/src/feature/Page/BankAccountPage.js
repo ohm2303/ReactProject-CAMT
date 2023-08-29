@@ -4,6 +4,7 @@ import Text from "../SubComponent/Text";
 import Input from "../SubComponent/Input"; // Import the Input component
 import Navbar from "../Component/Navbar";
 
+
 const BankAccountPage = ({ className }) => {
   return (
     <div className={className}>
@@ -16,6 +17,9 @@ const BankAccountPage = ({ className }) => {
         </Text>
 
         <div className="line-divider" />
+
+
+
 
         <div className="form-container">
           
@@ -69,8 +73,6 @@ const BankAccountPage = ({ className }) => {
             <button className="pay-button">ชำระเงิน</button>
           </div>
         </div>
-      
-      
     </div>
   );
 };

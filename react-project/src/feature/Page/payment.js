@@ -4,7 +4,6 @@ import Text from "../SubComponent/Text";
 import Navbar from "../Component/Navbar";
 import QR from "../../pics/payment/Picture1.png";
 
-
 const PaymentPage = ({ className }) => {
     return (
       <div className={className}>

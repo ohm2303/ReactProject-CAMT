@@ -12,19 +12,30 @@ import BankAccountPage from './feature/Page/BankAccountPage';
 
 import NovelPage from './feature/Page/Novel';
 
+import MyCollection from './feature/Page/MyCollection';
+
+import NovelPage from './feature/Page/Novel';
+
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
-    
+
+<NovelPage idNovel={2}/>
+
+
      <BankAccountPage />
      <PayPage />
      <PaymentPage />
 
      
+
 <NovelPage idNovel={2}/>
+
 
   </React.StrictMode>
 );
