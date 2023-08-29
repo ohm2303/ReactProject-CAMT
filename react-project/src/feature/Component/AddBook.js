@@ -4,7 +4,7 @@ import Input from "../SubComponent/Input";
 import GrayBackground from "../SubComponent/GrayBackground";
 import UploadFile from "../SubComponent/UploadFile";
 import Button from "../SubComponent/Button";
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const AddBook = (className) => {
     const [name,setName] = useState('') 
@@ -14,6 +14,22 @@ const AddBook = (className) => {
     const [price,setPrice] = useState('') 
     const [exam,setExam] = useState('') 
     const [file,setFile] = useState('') 
+    const [data,setData] = useState('')
+  useEffect( () => {
+fetch(('http://localhost:3001/api/user/III'),{    
+    method:"POST",
+    headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+  pass: "1234",
+  user: "preme"
+})                                                   
+})
+
+.then(response => response.json())
+.then(data=>setData(data))
+},[])
 
     function onSubmit(event) {
         event.preventDefault();
@@ -23,11 +39,11 @@ const AddBook = (className) => {
     return (
         <div className={className}>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
             <link href="https://fonts.googleapis.com/css2?family=Anuphan&family=Noto+Serif+Thai:wght@200;300&display=swap" rel="stylesheet"></link>
             <br/>
         <div style={{lineHeight: "0px"}}>    
-        <Text size={60} family={'Anuphan'} children={"เพิ่มหนังสือ"} weight={"600"} />
+        <Text size={60} family={'Anuphan'} children={data.msg} weight={"600"} />
         <hr className="style1"/>
         </div>
 

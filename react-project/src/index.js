@@ -14,7 +14,7 @@ import NovelPage from './feature/Page/Novel';
 
 import MyCollection from './feature/Page/MyCollection';
 
-import NovelPage from './feature/Page/Novel';
+
 
 
 
