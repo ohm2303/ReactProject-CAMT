@@ -60,8 +60,7 @@ export  default styled(Button)`
   transform: scale(1.05);
 }
 .iconInButtons{
-  display:block;
-  
+  display:block;  
 }
 .textInButtons{
   display:block;
@@ -77,9 +76,6 @@ export  default styled(Button)`
       margin-top: -18%;
       font-size: 17px;
     }
-    .iconInButtons{
-      width: 50%;
-    }
 }
 @media(min-width: 1025px) {
     .textInButtons{
@@ -87,18 +83,19 @@ export  default styled(Button)`
       margin-top: -5%;
       font-size:20px;
     }
-}
+
 @media(min-width: 1201px) {
     .textInButtons{
-      padding-left: 15%;
+      padding-left: 5%;
       margin-top: -1%;
       font-size: 22px;
     }
   
 }
-
+}
 `
 ;
 
 // แก้ไขเกี่ยวกับปุ่ม ใช้ className ได้เลย
-// ย้ายตำเเหน่งปุ่ม ตัวอักษร  แก้ใน @media ก็ได้ เลือกตามขนาดหน้าจอ ตัวอย่างการใช้ selectForpay component 
+// ย้ายตำเเหน่งปุ่ม ตัวอักษร  แก้ใน @media ก็ได้ เลือกตามขนาดหน้าจอ ตัวอย่างการใช้Button > selectForpay component
+ 

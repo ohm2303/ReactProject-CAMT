@@ -1,7 +1,8 @@
 @font-face {
     font-family: Doknatle;
-    src: url("../asset/Doknatle-d9YRE.otf") format("opentype");
+    src: url("/src/asset/Doknatle-d9YRE.otf") format("opentype");
 }
+
 body {
     font-family: 'Doknatle', serif;
     font-size: 48px;
@@ -21,6 +22,12 @@ hr.style1{
     font-family: 'Noto Serif Thai', serif;
     font-size:large;
     font-weight: 500;
+}
+
+.h1{
+    font-family: 'Anuphan';
+    font-size:60px;
+    font-weight: 600;
 }
 
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../style/UploadFile.css';
-const UploadFile = () => {
+const UploadFile = ({className}) => {
    const [selectedFiles, setSelectedFiles] = useState([]);
    const handleFileChange = (e) => {
       setSelectedFiles([...e.target.files]);
@@ -31,7 +31,7 @@ const UploadFile = () => {
       }
    };
    return (
-      <div>
+      <div className={className}>
          <input type="file" multiple onChange={handleFileChange} className='cssInputFile'/>
          <button onClick={handleUpload} className='cssUploadFile'>Upload</button>
       </div>
