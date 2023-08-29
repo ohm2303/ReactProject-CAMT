@@ -1,11 +1,16 @@
 package com.example.demo.domain;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -29,6 +34,10 @@ public class NovelDetail {
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date release_date;
+
+    //reration
+    @OneToMany(mappedBy = "id_novel")
+    private Set<Basket> baskets = new HashSet<>();
 
     public NovelDetail(){ }
 
