@@ -2,23 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-//import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-import App from './App';
-import PayPage from './feature/Page/pay';
 import PaymentPage from './feature/Page/payment';
+import PayPage from './feature/Page/pay'
 import BankAccountPage from './feature/Page/BankAccountPage';
+import MyCollection from './feature/Page/MyCollection';
 import NovelPage from './feature/Page/Novel';
+
+
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
+    
+    
+    
+     <BankAccountPage />
+     <PayPage />
+     <PaymentPage />
 
-<NovelPage idNovel={2}/>
-
+     
+    
   </React.StrictMode>
 );
 
