@@ -5,3 +5,5 @@ const GrayBackground = (props) => {
 }
 
 export default GrayBackground;
+
+//GlobalStyle
