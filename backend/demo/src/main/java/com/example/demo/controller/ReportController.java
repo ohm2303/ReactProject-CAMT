@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.NovelDetail;
+import com.example.demo.domain.Order;
 import com.example.demo.domain.Report;
 import com.example.demo.domain.UserDetail;
 import com.example.demo.repository.NovelDetailRepository;
@@ -70,18 +71,28 @@ public class ReportController {
             return ResponseEntity.notFound().build();
         }
     }
+
     // update
     @PutMapping("/reports/{idUser}/{idNovel}")
-    public ResponseEntity<String> updateReport(@PathVariable Long idUser, @PathVariable Long idNovel,@RequestBody Report report){
-         // Find the UserDetail and NovelDetail based on the provided Ids
-         UserDetail userDetail = userRepository.findById(idUser).orElse(null);
-         NovelDetail novelDetail = novelRepository.findById(idNovel).orElse(null);
- 
-         if (userDetail == null || novelDetail == null) {
-             return ResponseEntity.badRequest().body("User or Novel not found");
-         }
-         return ResponseEntity.ok("Order updated to buy");
+    public ResponseEntity<String> updateReport(@PathVariable Long idUser, @PathVariable Long idNovel,
+            @RequestBody Report report) {
+        // Find the UserDetail and NovelDetail based on the provided Ids
+        UserDetail userDetail = userRepository.findById(idUser).orElse(null);
+        NovelDetail novelDetail = novelRepository.findById(idNovel).orElse(null);
+
+        if (userDetail == null || novelDetail == null) {
+            return ResponseEntity.badRequest().body("User or Novel not found");
+        }
+        List<Report> reports = reportRepository.findByUserId(idUser);
+        for (Report report2 : reports) {
+            if (report2.getNovel_id().getId().equals(idNovel)) {
+                reportRepository.save(report);
+            }
+        }
+
+        return ResponseEntity.ok("Order updated to buy");
     }
+
     // delete
     @DeleteMapping("/reports/{reportId}")
     public ResponseEntity<String> deleteReport(@PathVariable Long reportId) {
