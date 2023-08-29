@@ -1,10 +1,14 @@
 package com.example.demo.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +23,14 @@ public class UserDetail {
     private String password;
     private String gender;
     private String display_name;
-    private int lavel;
+    private int level;
+
+    //reration
+    @OneToMany(mappedBy = "id_user")
+    private Set<Basket> baskets = new HashSet<>();
+
+    @OneToMany(mappedBy = "user_id")
+    private Set<Report> reports = new HashSet<>();
 
     public UserDetail(){}
 
@@ -30,14 +41,14 @@ public class UserDetail {
         this.password = password;
         this.gender = gender;
         this.display_name = display_name;
-        this.lavel = lavel;
+        this.level = lavel;
     }
 
     public int getLavel() {
-        return lavel;
+        return level;
     }
     public void setLavel(int lavel) {
-        this.lavel = lavel;
+        this.level = lavel;
     }
     public Long getId() {
         return id;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components"; // Import styled-components library
 import Navbar from "../Component/Navbar"; // Replace with actual path
-import Text from "../SubComponent/Text"; 
+import Text from "../SubComponent/Text";
 
 
 const PayPage = ({ className }) => {
