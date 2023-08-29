@@ -38,30 +38,28 @@ const ContentContainer = styled.div`
   border-radius: 25px;
 `;
 
-const ContentTitle = styled(Text)`
-`;
+const ContentTitle = styled(Text)``;
 
-const ContentNote = styled(Text)`
-`;
+const ContentNote = styled(Text)``;
 
 const ContactSection = styled.div`
   text-align: center;
 `;
 
-const ContactInfo = styled(Text)`
-
-`;
+const ContactInfo = styled(Text)``;
 
 const PaymentPage = () => {
   return (
     <div>
       <Navbar />
       <PaymentPageContainer>
-        <Text size={30} weight="bold">
+        <Text size={50} family={"Doknatal"} weight="500">
           The book-buster
         </Text>
-        <PaymentTitle size={25} weight="bold">
-          รายละเอียดหลังการชำระเงิน
+        <PaymentTitle>
+          <Text size={30} family={"Anuphan"} weight="500">
+            รายละเอียดหลังการชำระเงิน
+          </Text>
         </PaymentTitle>
         <LineDivider />
 
@@ -70,22 +68,38 @@ const PaymentPage = () => {
             <QRImage src={QR} alt="QR" />
           </div>
           <ContentContainer>
-            <ContentTitle size={20}>
-              รายการ e-book ที่คุณจะได้รับหลังการชำระเงิน
+            <ContentTitle>
+              <Text size={25} family={"Anuphan"} weight="600">
+                รายละเอียดหลังการชำระเงิน
+              </Text>
             </ContentTitle>
-            <ContentNote color = "gray" size={15}>
-              เมื่อชำระเงินสำเร็จ e-book จะถูกส่งไปยังชั้นหนังสือบนแอพพลิเคชัน the book- buster ภายใน 5 นาที
+            <ContentNote color="gray" size={15}>
+              เมื่อชำระเงินสำเร็จ e-book จะถูกส่งไปยังชั้นหนังสือบนแอพพลิเคชัน
+              the book- buster ภายใน 5 นาที
             </ContentNote>
-            <ol>{/*ใส่หนังสือที่จะซื้อ*/}uuiiiii</ol>
-            <ol>{/*ใส่หนังสือที่จะซื้อ*/}uuiiiii</ol>
+            <Text size={18} family={"Anuphan"} weight="500">
+              <ol>{/*ใส่หนังสือที่จะซื้อ*/}uuiiiii</ol>
+              <ol>{/*ใส่หนังสือที่จะซื้อ*/}uuiiiii</ol>
+            </Text>
           </ContentContainer>
         </ContentBox>
 
         <ContactSection>
-          <ContactInfo size={18}>หากไม่ได้รับ e-book หรือมีข้อสงสัยใดๆ กรุณาติดต่อสอบถามเราได้ ที่นี่</ContactInfo>
-          <ContactInfo size={12}>โทร: 02-962-1698 (จันทร์-ศุกร์ 09.30-19.30 น. ยกเว้นวันหยุดราชการ)</ContactInfo>
-          <ContactInfo size={12}>มือถือ: 084-090-3148 (ทุกวัน 09.30-19.30 น.)</ContactInfo>
-          <ContactInfo size={12}>E-mail: support@the_book-buster.com (ทุกวัน 24 ชั่วโมง)</ContactInfo>
+          <Text family={"Anuphan"} weight="400">
+            <ContactInfo size={18} weight="600">
+              หากไม่ได้รับ e-book หรือมีข้อสงสัยใดๆ กรุณาติดต่อสอบถามเราได้
+              ที่นี่
+            </ContactInfo>
+            <ContactInfo size={14}>
+              โทร: 02-962-1698 (จันทร์-ศุกร์ 09.30-19.30 น. ยกเว้นวันหยุดราชการ)
+            </ContactInfo>
+            <ContactInfo size={14}>
+              มือถือ: 084-090-3148 (ทุกวัน 09.30-19.30 น.)
+            </ContactInfo>
+            <ContactInfo size={14}>
+              E-mail: support@the_book-buster.com (ทุกวัน 24 ชั่วโมง)
+            </ContactInfo>
+          </Text>
         </ContactSection>
       </PaymentPageContainer>
     </div>

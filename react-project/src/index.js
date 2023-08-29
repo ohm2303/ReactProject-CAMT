@@ -6,6 +6,9 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 import App from './App';
+import PayPage from './feature/Page/pay';
+import PaymentPage from './feature/Page/payment';
+import BankAccountPage from './feature/Page/BankAccountPage';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,7 +16,7 @@ root.render(
   <React.StrictMode>
 
 
-    <App/>
+<BankAccountPage/>
 
   </React.StrictMode>
 );
