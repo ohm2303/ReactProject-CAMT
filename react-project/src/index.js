@@ -9,6 +9,7 @@ import App from './App';
 import PayPage from './feature/Page/pay';
 import PaymentPage from './feature/Page/payment';
 import BankAccountPage from './feature/Page/BankAccountPage';
+import NovelPage from './feature/Page/Novel';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,7 +17,7 @@ root.render(
   <React.StrictMode>
 
 
-<BankAccountPage/>
+<NovelPage idNovel={2}/>
 
   </React.StrictMode>
 );

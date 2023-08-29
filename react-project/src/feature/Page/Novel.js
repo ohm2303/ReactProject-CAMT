@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import axios from 'axios';
+//Component
 import Text from "../SubComponent/Text";
 import Button from "../SubComponent/Button";
 import ButtonIcon from "../SubComponent/ButtonIcon";
@@ -7,7 +11,10 @@ import Report from "../Component/Report";
 import Promotion from "../Component/Promotion";
 import Input from "../SubComponent/Input";
 import Nav from "../Component/Navbar";
-import styled from "styled-components";
+
+//Hook
+import useFetch from "../Hook/useFetch";
+
 //Button Icon
 import basketDefault from "../../pics/Icon/basket-default.png";
 import basketHovered from "../../pics/Icon/basket-hovered.png";
@@ -20,31 +27,36 @@ import shareHovered from "../../pics/Icon/shareHovered.png";
 import likeDefault from "../../pics/Icon/likeDefault.png";
 import likeHovered from "../../pics/Icon/likeHovered.png";
 
-const NovelPage = ({ className }) => {
+
+const NovelPage = ({ className, idNovel }) => {
+
+  //Api
+  const Api_Novel = `https://jsonplaceholder.typicode.com/users/${idNovel}`;
+  const {data} = useFetch(Api_Novel);
+
+  //Report
   const [isReportOpen, setIsReportOpen] = useState(false);
   const handleReportButtonClick = () => {
     setIsReportOpen(!isReportOpen);
   };
 
+  // HeartClick
   const [clickedHearts, setClickedHearts] = useState([]);
-
   const handleHeartClick = (heartIndex) => {
     if (clickedHearts.includes(heartIndex)) {
-      // If the clicked heart is already in the clickedHearts array,
-      // remove it by filtering out the clicked heart's index.
       setClickedHearts(clickedHearts.filter((index) => index !== heartIndex));
     } else {
-      // Otherwise, add the clicked heart's index to the clickedHearts array.
       setClickedHearts([...clickedHearts, heartIndex]);
     }
   };
 
+  //InputReview
   const [inputReview, setInputReview] = useState("");
   const handleInputChange = (event) => {
     setInputReview(event.target.value);
   };
 
-  //photo
+  //Photo
   const heartDefault1 = require("../../pics/Icon/heart-white.png");
   const heartHovered1 = require("../../pics/Icon/red-heart.png");
   const photoNovel = require("../../pics/Noval/นางมาร.jpeg");
@@ -58,7 +70,7 @@ const NovelPage = ({ className }) => {
         <div className="detail-novel">
           <div className="name">
             <Text size={35} family={"Anuphan"} weight="500">
-              นางมาร
+              {data.name}
             </Text>
           </div>
 
@@ -247,6 +259,10 @@ const NovelPage = ({ className }) => {
       </div>
     </div>
   );
+};
+
+NovelPage.propTypes = {
+  idNovel: PropTypes.number.isRequired
 };
 
 /*kanokwan Mahakham */
