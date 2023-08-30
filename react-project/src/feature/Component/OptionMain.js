@@ -18,8 +18,8 @@ const OptionMain = ({ className }) => {
 
 export default styled(OptionMain)`
 .menus {
-    width: 400px;
-    height: 50px;
+    width: 100%;
+    height: 70px;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -66,6 +66,7 @@ export default styled(OptionMain)`
     margin-left: 2rem;
   }
 `;
+
 /* 
 Kanokwan
 วิธีการใช้

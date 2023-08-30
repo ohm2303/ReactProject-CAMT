@@ -3,6 +3,6 @@ const userController = require('./userController');
 
 const userRoute = express.Router();
 
-userRoute.route('/').get(userController.getAllNovels);
-
+userRoute.route('/allReview').get(userController.getAllReview);
+userRoute.route('/sellSecret/:id').get(userController.getsecret);
 module.exports = userRoute;

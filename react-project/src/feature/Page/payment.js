@@ -7,12 +7,12 @@ import QR from "../../pics/payment/Picture1.png";
 const PaymentPage = ({ className }) => {
     return (
       <div className={className}>
-    <div>
+    <div className="total-content">
       <Navbar />
       <Text size={40} weight="bold" family={"Anuphan"}>
           The book-buster
         </Text>
-        <Text className="page-title" size={25} weight="bold" family={'Anuphan'}>
+        <Text className="page-title" size={25} weight="bold" family={"Anuphan"}>
           รายละเอียดหลังการชำระเงิน
         </Text>
         <div className="line-divider" />
@@ -22,10 +22,10 @@ const PaymentPage = ({ className }) => {
             <img src={QR} alt="QR" />
           </div>
           <div className="content-container">
-            <Text className="content-title" size={20} weight="bold" font-family={"Anuphan"}>
+            <Text className="content-title" size={20} weight="bold" family={"Anuphan"}>
               รายการ e-book ที่คุณจะได้รับหลังการชำระเงิน
             </Text>
-            <Text className="content-note" color="gray" size={15} font-family={'Anuphan'}>
+            <Text className="content-note" color="gray" size={15} family={"Anuphan"}>
               เมื่อชำระเงินสำเร็จ e-book จะถูกส่งไปยังชั้นหนังสือบนแอพพลิเคชัน the book- buster ภายใน 5 นาที
             </Text>
             <ol>{/*ใส่หนังสือที่จะซื้อ*/}uuiiiii</ol>
@@ -48,9 +48,12 @@ const PaymentPage = ({ className }) => {
 
 export default styled(PaymentPage)`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+
+.total-content{
   text-align: center;
   margin-top: 20px;
   font-family: "Anuphan";
+}
   
   .content-box {
     display: flex;

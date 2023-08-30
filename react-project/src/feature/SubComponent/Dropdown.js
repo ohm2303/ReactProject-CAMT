@@ -32,13 +32,25 @@ const Dropdown = ({ submenus, dropdown, depthLevel,className }) => {
   .show {
     display: block;
   }
+
+
   
   .menu-items {
-    padding: 0.5rem 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    background: #ddd;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    max-height: 100px;
+    overflow-y: auto;
+    padding: 20px;
   }
   
   .menu-items a {
-    text-decoration: none;
+    text-decoration: center;
     color: black;
   }
   

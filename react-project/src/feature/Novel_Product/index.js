@@ -31,7 +31,7 @@ function NovelProduct({ item, className }) {
             className="Novel-author"
             family={"Anuphan"}
             weight="600"
-            color="gray"
+            color="#FFFFFF"
           >
             {item.author}
           </Text>
@@ -52,6 +52,7 @@ function NovelProduct({ item, className }) {
 
 //export
 export default styled(NovelProduct)`
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .Novel-img-container {
     display: flex;
     align-items: center;
@@ -69,10 +70,20 @@ export default styled(NovelProduct)`
     display: flex;
     width: 300px;
     border-radius: 8px;
-    border: 1px solid green;
     margin: 30px;
     flex-direction: column;
+    background-color: #6AA4B0;
+
   }
+  .Novel:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+  }
+  
+  .Novel:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+  
   .Novel-text {
     display: flex;
     flex-direction: column;
@@ -96,7 +107,8 @@ export default styled(NovelProduct)`
     gap: 5px; /* ระยะห่างระหว่างรูปภาพ */
   }
   .num-rating {
-    color: gray;
+    color : #e1e7e0;
+    font-family : Anuphan
   }
   .heart-images img {
     width: 20px;
@@ -107,13 +119,14 @@ export default styled(NovelProduct)`
     flex-direction: column;
     justify-content: flex-start;
     padding: 0px 20px 10px 20px;
+    
   }
   .Novel-rating{
     display: flex;
     flex-direction: row;
   }
   .price{
-    background-color: gray;
+    background-color: #D9D9D9;
     border-radius: 15px;
     width: 80px;
     height: fit-content;

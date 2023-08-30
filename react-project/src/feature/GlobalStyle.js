@@ -50,7 +50,7 @@ const  GlobalStyle = createGlobalStyle`
     .textInButtons{
       padding-left: 15%;
       margin-top: -5%;
-      font-size:20px;
+      font-size:0px;
     }
 
 // selectForpay
@@ -152,5 +152,51 @@ margin-Left:6%;
     font-weight:600;
     margin-left: 5%;
 }
+//login-p
+.popupBackground {
+    padding: 30px;
+    background-color: white;
+    z-index: 2;
+    position:fixed; 
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    width: 29%;
+    height: 62%;
+    border-radius:2% ;
+}
+.textButton{
+    font-size: 12px;
+    padding: 8px;
+    width: 30%;
+    height: 90%;
+    font-family:'Anuphan';
+    font-weight:bolder;
+}
+hr.style2{
+    border-top: 2px solid #000000 ;
+    width: 80%
+} 
+
+.test{
+border: 1.5px solid #000000;
+}
+
+.textButtonLogin{
+    font-size: 14px;
+    padding: 12px;
+    font-family:'Anuphan';
+    font-weight:bolder;
+}
+.iconXmark{
+    position: absolute;
+    top: 3%;
+    left: 90%;
+ 
+}
+x
+
+ 
 `;
 export default GlobalStyle;
