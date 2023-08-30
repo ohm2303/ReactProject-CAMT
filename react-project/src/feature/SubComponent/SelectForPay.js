@@ -3,9 +3,28 @@ import Button from "./Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { styled } from 'styled-components';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from "react";
+
+
+
 const SelectForPay = (props) => {
-    const {pics,name,price,className} = props
+    const {className} = props
+    const idel=props.props.id
+    const del = (id)=>{
+        fetch((`http://localhost:3001/api/user/basket/del/${id}`),{    
+              method:"Delete",                                     
+        })
+          .then(response => response.json())
+          .then(data => {
+            fetch(('http://localhost:3001/api/user/basket/1'),{    
+                method:"GET",                                     
+            }).then(res => res.json())
+            .then(data => {
+                props.setContent([])
+                props.setContent(old => [...old, data])
+            })    
+        })
+        }
     return (
    <div className={className} >
         <GrayBackground >
@@ -14,29 +33,46 @@ const SelectForPay = (props) => {
                 <div style={{display:"flex"}}>
                 <input type="checkbox" id="checkbox" />
                 <div className="pic">
-                <img src={pics}/>
+                <img src={props.props.file_pic} alt={props.props.name}/>
                 </div>
                 <div className="titleBook">
-                    <h3>{name}</h3>
-                    <span>{price}</span>
+                    <div className="propName">
+                    <label>{props.props.name}</label>
+                    </div>
+                    <div className="propPrice">
+                    <label>{props.props.price}Bath</label>
+                    </div>
                 </div>
                 </div>
             </div>
             <div className="icon">
-            <Button className="DeleteBTN" icon={<FontAwesomeIcon icon={faTrashCan} size="2xl" style={{color:"#ffffff"}}s/> }  value={"ลบ"}></Button>
+            <Button className="DeleteBTN" icon={<FontAwesomeIcon icon={faTrashCan} size="2xl" style={{color:"#ffffff"}}s/> }  value={"ลบ"} onClick={() => del(idel)}></Button>
             </div>
             </div>
         </GrayBackground> 
         </div>
  );
 }
-SelectForPay.propTypes = {
-    name: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    pics: PropTypes.string.isRequired,
-  };
+
 
 export default styled(SelectForPay)`
+.pic{
+    width: 60px;
+    height: 80px;
+}
+.titleBook{
+    display: flex;
+    flex-direction: column;
+    font-family:'Anuphan';
+}
+.propName{
+margin-left:30px ;
+font-size: 20px;
+}
+.propPrice{
+    margin-top:30px ;
+    font-size: 16px;
+}
 .DeleteBTN{
     background-Image: linear-gradient( 
     to right,

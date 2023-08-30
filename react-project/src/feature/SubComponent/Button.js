@@ -4,13 +4,13 @@ import { styled } from 'styled-components';
 
 
 function Button(props){
-    const {value,icon,className} = props
+    const {value,icon,className,id,onClick} = props
   return (
     <>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan&family=Noto+Serif+Thai:wght@200;300&display=swap" rel="stylesheet"></link>
-  <button className={`ButtonNormal `+className} type='submit' >
+  <button onClick={onClick} className={`ButtonNormal `+className} type='submit' >
     <div style={{display:"flex",justifyContent: "center"}}>
       <span className='iconInButtons'>{icon}</span>
       <span className='textInButtons'>{value}</span>
