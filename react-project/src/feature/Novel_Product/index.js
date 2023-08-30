@@ -5,7 +5,7 @@ import Heart from "../SubComponent/Heart";
 //create novel product
 function NovelProduct({ item, className }) {
   // require img
-  const novImg = require(`../../pics/Noval/${item.imgUrl}`);
+  const novImg = require(`../../pics/Noval/${item.file_pic}`);
   // return novel
   // img
   // book name
@@ -39,7 +39,7 @@ function NovelProduct({ item, className }) {
         <div className="Novel-rating">
           <div className="rating">
             <Heart heartCount={3} />
-            <div className="num-rating">560 Rating</div>
+            <div className="num-rating">{item.rating} Rating</div>
           </div>
           <div className="price">
             <Text size={15} family={"Anuphan"} weight="600">560 บาท</Text>
