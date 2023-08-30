@@ -5,7 +5,7 @@ import Heart from "../SubComponent/Heart";
 //create novel product
 function NovelProduct({ item, className }) {
   // require img
-  const novImg = require(`../../pics/Noval/${item.file_pic}`);
+  // const novImg = require(`../../pics/Noval/${item.file_pic}`);
   // return novel
   // img
   // book name
@@ -15,7 +15,7 @@ function NovelProduct({ item, className }) {
     <div className={className}>
       <div className="Novel">
         <div className="Novel-img-container">
-          <img className="Novel-img" src={novImg} alt={item.name} />
+          {/* <img className="Novel-img" src={novImg} alt={item.name} /> */}
         </div>
         <div className="Novel-text">
           <Text

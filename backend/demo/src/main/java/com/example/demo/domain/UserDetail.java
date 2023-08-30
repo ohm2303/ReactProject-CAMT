@@ -34,20 +34,20 @@ public class UserDetail {
 
     public UserDetail(){}
 
-    public UserDetail(Long id, String email, String username, String password, String gender, String display_name,int lavel) {
+    public UserDetail(Long id, String email, String username, String password, String gender, String display_name,int level) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
         this.gender = gender;
         this.display_name = display_name;
-        this.level = lavel;
+        this.level = level;
     }
 
-    public int getLavel() {
+    public int getLevel() {
         return level;
     }
-    public void setLavel(int lavel) {
+    public void setLevel(int lavel) {
         this.level = lavel;
     }
     public Long getId() {

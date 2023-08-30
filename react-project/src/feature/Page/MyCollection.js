@@ -72,7 +72,7 @@ export default styled(MyCollection)`
   .title {
     display: flex;
     flex-direction: column;
-    justify-Content
+    /* justify-Content */
     align-items: center;
   }
   .MyCollection {
