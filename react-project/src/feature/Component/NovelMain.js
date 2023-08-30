@@ -1,18 +1,21 @@
- import React, { useState } from "react";
+import React, { useState } from "react";
 import Text from "../SubComponent/Text";
 import NovelProduct from "../../feature/Novel_Product";
 import novelData from "../../asset/novelData";
-import "../style/NovelMain.css"
+import "../style/NovelMain.css";
+import axios from "axios";
+import useFetch from "../Hook/useFetch";
 
 //create function Novel Main
 function NovelMain() {
-  const [novels, Setnovel] = useState(novelData);
+ const Api_Novel = "/novels";
+ const {data} = useFetch(Api_Novel);
   return (
     <div className="novel_main">
       <Text size={25} family={'Times New Roman'}>ขายดี</Text>
-      {novels.length > 0 ? (
+      {data.length > 0 ? (
         <ul className="Novel__Product">
-          {novels.map((novel) => (
+          {data.map((novel) => (
             <NovelProduct key={novel.id} item={novel}></NovelProduct>
           ))}
         </ul>

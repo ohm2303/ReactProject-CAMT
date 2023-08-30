@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Dropdown from "../SubComponent/Dropdown";
+import styled from "styled-components";
+
 
 //create function option
-function Option({ items, depthLevel }) {
+function Option({ items, depthLevel ,className}) {
   const [dropdown, setDropdown] = useState(false);
   let ref = useRef();
 
@@ -34,6 +36,7 @@ function Option({ items, depthLevel }) {
   };
 
   return (
+    <div className={className}>
     <li
       className="menu-items"
       ref={ref}
@@ -88,11 +91,88 @@ function Option({ items, depthLevel }) {
         <a href={items.url}>{items.title}</a>
       )}
     </li>
+    </div>
   );
 }
 
-//export
-export default Option;
+export default styled(Option)`
+.menu-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    text-decoration: underline;
+    color: black;
+    
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .dropdown-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+
+    color: blue;
+    display: flex;
+    align-items: center;
+  }
+  
+  .dropdown-button:focus {
+    outline: none;
+  }
+  
+  .dropdown-arrow {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .submenu-items {
+    padding: 0.5rem 1rem;
+  }
+  
+  .submenu-items a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .submenu-items a:hover {
+    background-color: #f5f5f5;
+  }
+`;
 
 /* 
 Kanokwan Mahakham
