@@ -110,7 +110,8 @@ export default styled(Option)`
     padding: 0;
     margin: 0;
     text-decoration: underline;
-    color: blue;
+    color: black;
+    
   }
   
   button:focus {
@@ -129,7 +130,7 @@ export default styled(Option)`
     font-size: inherit;
     padding: 0;
     margin: 0;
-    text-decoration: underline;
+
     color: blue;
     display: flex;
     align-items: center;
