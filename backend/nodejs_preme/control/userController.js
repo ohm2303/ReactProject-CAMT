@@ -8,11 +8,25 @@ const connection = mysql.createConnection({
     database: process.env.DB_NAME
 })
 
-exports.getAllNovels = async (req,res)=>{
+exports.getAllReview = async (req,res)=>{
     connection.execute(
-        'SELECT * FROM novel_detail;',
+        'SELECT * FROM user_review;',
         (err, results, fields) => {
           res.json(results);
         })
 }
+// exports.getRating = async (req,res)=>{
+//   connection.execute(
+//       'SELECT * FROM user_review;',
+//       (err, results, fields) => {
+//         res.json(results);
+//       })
+// }
 
+exports.getsecret = async (req,res)=>{
+  connection.execute(
+      `SELECT * FROM user_review WHERE id_user=${req.params.id};`,
+      (err, results, fields) => {
+        res.json(results);
+      }) 
+}

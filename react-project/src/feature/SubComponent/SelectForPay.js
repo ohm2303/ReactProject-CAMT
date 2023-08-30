@@ -8,7 +8,7 @@ const SelectForPay = (props) => {
     const {pics,name,price,className} = props
     return (
    <div className={className} >
-        <GrayBackground css="cssB">
+        <GrayBackground >
             <div style={{display:"flex",justifyContent:"space-between"}}>
             <div style={{display:"block"}}>
                 <div style={{display:"flex"}}>
