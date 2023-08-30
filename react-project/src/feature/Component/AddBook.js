@@ -43,7 +43,7 @@ fetch(('http://localhost:3001/api/user/III'),{
             <link href="https://fonts.googleapis.com/css2?family=Anuphan&family=Noto+Serif+Thai:wght@200;300&display=swap" rel="stylesheet"></link>
             <br/>
         <div style={{lineHeight: "0px"}}>    
-        <Text size={60} family={'Anuphan'} children={data.msg} weight={"600"} />
+        <Text size={60} family={'Anuphan'} children={"เพิ่มหนังสือ"} weight={"600"} />
         <hr className="style1"/>
         </div>
 

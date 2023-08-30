@@ -1,12 +1,10 @@
 import React from "react";
-
-import GrayBackground from "./SubComponent/GrayBackground";
-import Text from "./SubComponent/Text";
-import Input from "./SubComponent/Input";
-import Button from "./SubComponent/Button";
-import './Login.css';
+import Text from "../SubComponent/Text";
+import Input from "../SubComponent/Input";
+import Button from "../SubComponent/Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
+
 
 //create Login
 
