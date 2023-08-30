@@ -454,6 +454,7 @@ export default styled(NovelPage)`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    
   }
 
   .heart {
@@ -479,6 +480,7 @@ export default styled(NovelPage)`
   .num-rating {
     font-size: 12px;
     margin: 0px 30px 30px 0px;
+    
   }
   .button-icon {
     display: flex;

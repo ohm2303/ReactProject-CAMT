@@ -23,10 +23,12 @@ import Login from './feature/Component/Login';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <NovelPage />
+     <Busket />
      <BankAccountPage />
-
+     <MyCollection />
      <PayPage />
+     <PaymentPage />
+    
   </React.StrictMode>
 );
 

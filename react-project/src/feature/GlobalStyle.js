@@ -195,23 +195,8 @@ border: 1.5px solid #000000;
     left: 90%;
  
 }
-//busket-p
-.busketPage{
-display: flex;
-flex-direction: column;
-}
+
+
  
-.textS{
-    font-family:"Anuphan";
-    color: gray;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 40px;
-}
-.textB{
-    line-height: 2px;
-    font-family:"Anuphan";
-    font-weight: revert;
-}
 `;
 export default GlobalStyle;

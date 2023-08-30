@@ -52,6 +52,7 @@ function NovelProduct({ item, className }) {
 
 //export
 export default styled(NovelProduct)`
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .Novel-img-container {
     display: flex;
     align-items: center;
@@ -106,7 +107,8 @@ export default styled(NovelProduct)`
     gap: 5px; /* ระยะห่างระหว่างรูปภาพ */
   }
   .num-rating {
-    color: gray;
+    color : #e1e7e0;
+    font-family : Anuphan
   }
   .heart-images img {
     width: 20px;
@@ -117,6 +119,7 @@ export default styled(NovelProduct)`
     flex-direction: column;
     justify-content: flex-start;
     padding: 0px 20px 10px 20px;
+    
   }
   .Novel-rating{
     display: flex;
