@@ -86,6 +86,8 @@ public class ReportController {
         List<Report> reports = reportRepository.findByUserId(idUser);
         for (Report report2 : reports) {
             if (report2.getNovel_id().getId().equals(idNovel)) {
+                report.setNovel_id(novelDetail);
+                report.setUser_id(userDetail);
                 reportRepository.save(report);
             }
         }

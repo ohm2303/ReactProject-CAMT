@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import axios from 'axios';
+
 //Component
 import Text from "../SubComponent/Text";
 import Button from "../SubComponent/Button";
@@ -215,7 +215,7 @@ const NovelPage = ({ className, idNovel }) => {
                 placeholder="เริ่มการรีวิวได้เลยจ้า"
                 value={inputReview}
                 onChange={handleInputChange}
-                size={783}
+                width="700px"
               />
               <div className="button-review">
                 <Button value="ส่งรีวิว" />
@@ -298,12 +298,14 @@ export default styled(NovelPage)`
     margin-top: 20px;
     width: 85%;
     display: flex;
+    
   }
 
   .photo-novel {
     width: 45%; /* ความกว้างของพื้นที่ภาพ */
     padding-right: 20px; /* ระยะห่างจากเนื้อหาด้านบน */
     align-items: center;
+    
   }
 
   .photo-novel img {
@@ -381,13 +383,15 @@ export default styled(NovelPage)`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    font-size: 15px;
   }
+  
   .total-button .ButtonNormal {
     appearance: none;
-    background-color: rgba(255, 255, 255, 0.919);
+    background-color: #E1E7E0; /* Change background color */
     border-radius: 30px;
     box-sizing: border-box;
-    color: #ffffff;
+    color: black; /* Change text color to black */
     cursor: pointer;
     display: flex;
     font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -413,23 +417,24 @@ export default styled(NovelPage)`
     align-items: center;
     justify-content: center;
   }
-
+  
   .total-button .ButtonNormal:disabled {
     pointer-events: none;
   }
-
+  
   .total-button .ButtonNormal:hover {
-    color: #fff;
-    background-color: #3ff213;
+    color: white; /* Change text color to white */
+    background-color: black; /* Change background color to black */
     border-color: white;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
   }
-
+  
   .total-button .ButtonNormal:active {
     box-shadow: none;
     transform: translateY(0);
   }
+  
   .ButtonNormal {
     width: 120px;
     height: 45px;
@@ -449,6 +454,7 @@ export default styled(NovelPage)`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    
   }
 
   .heart {
@@ -474,6 +480,7 @@ export default styled(NovelPage)`
   .num-rating {
     font-size: 12px;
     margin: 0px 30px 30px 0px;
+    
   }
   .button-icon {
     display: flex;
@@ -587,12 +594,13 @@ export default styled(NovelPage)`
     display: flex;
     justify-content: flex-end;
   }
+  
   .button-review .ButtonNormal {
     appearance: none;
-    background-color: rgba(255, 255, 255, 0.919);
+    background-color: black; /* Change background color to black */
     border-radius: 30px;
     box-sizing: border-box;
-    color: #ffffff;
+    color: white; /* Change text color to white */
     cursor: pointer;
     display: flex;
     font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -619,23 +627,24 @@ export default styled(NovelPage)`
     align-items: center;
     justify-content: center;
   }
-
+  
   .button-review .ButtonNormal:disabled {
     pointer-events: none;
   }
-
+  
   .button-review .ButtonNormal:hover {
-    color: #fff;
-    background-color: #3ff213;
+    color: white; /* Change text color to white */
+    background-color: gray; /* Change background color to gray */
     border-color: white;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
   }
-
+  
   .button-review .ButtonNormal:active {
     box-shadow: none;
     transform: translateY(0);
   }
+  
   .user {
     display: flex;
     align-items: center;

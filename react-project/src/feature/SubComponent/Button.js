@@ -65,7 +65,6 @@ export  default styled(Button)`
 .textInButtons{
   display:block;
   padding-left: 15%;
-  font-family:'Noto Serif Thai', serif;
   font-size: 20px;
   font-weight:900;
 }
@@ -88,7 +87,7 @@ export  default styled(Button)`
     .textInButtons{
       padding-left: 5%;
       margin-top: -1%;
-      font-size: 22px;
+      font-size: 15px;
     }
   
 }

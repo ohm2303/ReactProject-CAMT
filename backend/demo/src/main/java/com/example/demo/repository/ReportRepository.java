@@ -12,6 +12,6 @@ import com.example.demo.domain.Report;
 public interface ReportRepository extends CrudRepository<Report,Long>{
     public Optional<Report> findById(Long id);
     public List<Report> findAll();
-    @Query("SELECT o FROM Order o WHERE o.id_user.id = :userId")
+    @Query("SELECT o FROM Report o WHERE o.user_id.id = :userId")
     List<Report> findByUserId(@Param("userId") Long userId);
 }
