@@ -29,7 +29,11 @@ root.render(
   <React.StrictMode>
      
      
+
      <Home />
+
+     <Login />
+
    
 
 
