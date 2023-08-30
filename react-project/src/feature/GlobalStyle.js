@@ -195,7 +195,7 @@ border: 1.5px solid #000000;
     left: 90%;
  
 }
-
+x
 
  
 `;
