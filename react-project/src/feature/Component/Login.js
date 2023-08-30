@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
-import GrayBackground from "./SubComponent/GrayBackground";
-import Text from "./SubComponent/Text";
-import Input from "./SubComponent/Input";
-import Button from "./SubComponent/Button";
-import './Login.css';
+import GrayBackground from "../SubComponent/GrayBackground";
+import Text from "../SubComponent/Text";
+import Input from "../SubComponent/Input";
+import Button from "../SubComponent/Button";
+import '../style/Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
+
+
 
 //create Login
 
    function Login(){
+
     return (
         <>
          <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,7 +51,7 @@ import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
         <Text size={16 } family={'Noto Serif Thai'} children={"หากยังสมัครบัญชีโปรด"} weight={"600"} />
         <div style={{display:"flex",justifyContent: "center"}}>
             <div style={{display:"block",flexGrow: "1"}}>
-            <Button value={"สมัครสมาชิกสำหรับผู้ซื้อ"} functionBtn={console.log("test")} css={"textButton"} />
+            <Button value={"สมัครสมาชิกสำหรับผู้ขาย"} functionBtn={console.log("test")}  css={"textButton"}/>
             </div>
             <div style={{display:"block",flexGrow: "1"}}>
             <Button value={"สมัครสมาชิกสำหรับผู้ขาย"} functionBtn={console.log("test")} css={"textButton"}/>

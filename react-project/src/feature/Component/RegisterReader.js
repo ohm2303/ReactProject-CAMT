@@ -1,9 +1,53 @@
 import React, { useState } from "react";
-import Popup from "./SubComponent/Popup";
-import Input from "./SubComponent/Input";
-import Button from "./SubComponent/Button";
-import CheckBoxCircle from "./SubComponent/CheckBoxCircle";
-import './RegisterReaderStyles.css'; 
+import styled from "styled-components";
+import Popup from "../SubComponent/Popup";
+import Input from "../SubComponent/Input";
+import Button from "../SubComponent/Button";
+import CheckBoxCircle from "../SubComponent/CheckBoxCircle";
+
+
+const RegisterForm = styled.div`
+  input {
+    background-color: white;
+    border: 1px solid black;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+
+  .input-description {
+    margin-bottom: 8px;
+  }
+
+  .input-description-side {
+    color: #888;
+    font-size: 12px;
+  }
+
+  .submit-button-container {
+    text-align: right;
+    margin-top: 20px;
+  }
+
+  .submit-button-container button {
+    font-size: 18px;
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+  }
+
+  .submit-button-container button:hover {
+    background-color: black;
+    color: white;
+  }
+
+  .form-desp {
+    text-align: center;
+    margin-top: 10px;
+    color: gray;
+  }
+`;
 
 const RegisterReader = ({ input }) => {
   const [popupOpen, setPopupOpen] = useState(input);
@@ -15,9 +59,9 @@ const RegisterReader = ({ input }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [retypePassword, setRetypePassword] = useState(""); 
-  const [displayName, setDisplayName] = useState(""); 
-  const [selectedGender, setSelectedGender] = useState(""); 
+  const [retypePassword, setRetypePassword] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [selectedGender, setSelectedGender] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -54,14 +98,14 @@ const RegisterReader = ({ input }) => {
         <Popup
           handleClose={togglePopup}
           content={
-            <div className="register-form">
+            <RegisterForm className="register-form">
               <h1>สมัครสมาชิก The book-buster Account</h1>
               <hr />
-              <p className = "form-desp">กรุณาใส่ข้อมูลที่มีเครื่งหมาย * ให้ครบถ้วน</p>
+              <p className="form-desp">กรุณาใส่ข้อมูลที่มีเครื่องหมาย * ให้ครบถ้วน</p>
               <p className="input-description">
-                Username 
-                <span className="input-description-side"> 
-                * 4 - 32 chars [A-Z, 0-9,_-@.]
+                Username
+                <span className="input-description-side">
+                  * 4 - 32 chars [A-Z, 0-9,_-@.]
                 </span>
               </p>
               <Input
@@ -71,7 +115,7 @@ const RegisterReader = ({ input }) => {
                 onChange={handleUsernameChange}
                 size={"560px"}
               />
-              
+
               <p className="input-description">
                 Password 
                 <span className="input-description-side"> 
@@ -141,7 +185,7 @@ const RegisterReader = ({ input }) => {
               <div className="submit-button-container">
                 <Button value="ส่งข้อมูล" functionBtn={handleRegisterSubmit} handleClose={togglePopup} />
               </div>
-            </div>
+            </RegisterForm>
           }
         />
       )}

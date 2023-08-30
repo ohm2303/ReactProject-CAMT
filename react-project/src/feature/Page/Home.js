@@ -1,7 +1,7 @@
 import React from "react";
 import PhotoSlide from "../Component/PhotoSlide";
-import NovelMain from "../NovelMain";
-import Option from "../Option";
+import NovelMain from "../Component/NovelMain";
+import Option from "../Component/Option";
 //create function Home
 function Home(){
     return (

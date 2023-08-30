@@ -13,7 +13,7 @@ const MyCollection = ({ className }) => {
       <Nav />
       <div className="content">
         <div className="title">
-          <Text size={50} family={"Doknatal"} weight="500">
+          <Text size={50} family={"Anuphan"} weight="bold">
             The book-buster
           </Text>
         </div>
@@ -61,7 +61,7 @@ const MyCollection = ({ className }) => {
 };
 
 export default styled(MyCollection)`
-
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .content {
     display: flex;
     width: 100%;

@@ -31,7 +31,7 @@ function NovelProduct({ item, className }) {
             className="Novel-author"
             family={"Anuphan"}
             weight="600"
-            color="gray"
+            color="#FFFFFF"
           >
             {item.author}
           </Text>
@@ -69,10 +69,20 @@ export default styled(NovelProduct)`
     display: flex;
     width: 300px;
     border-radius: 8px;
-    border: 1px solid green;
     margin: 30px;
     flex-direction: column;
+    background-color: #6AA4B0;
+
   }
+  .Novel:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+  }
+  
+  .Novel:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+  
   .Novel-text {
     display: flex;
     flex-direction: column;
@@ -113,7 +123,7 @@ export default styled(NovelProduct)`
     flex-direction: row;
   }
   .price{
-    background-color: gray;
+    background-color: #D9D9D9;
     border-radius: 15px;
     width: 80px;
     height: fit-content;

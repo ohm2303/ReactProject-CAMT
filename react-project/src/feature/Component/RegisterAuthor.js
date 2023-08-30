@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Popup from "./SubComponent/Popup";
-import Input from "./SubComponent/Input";
-import Button from "./SubComponent/Button";
-import CheckBoxCircle from "./SubComponent/CheckBoxCircle";
-import Text from "./SubComponent/Text";
+import Popup from "../SubComponent/Popup";
+import Input from "../SubComponent/Input";
+import Button from "../SubComponent/Button";
+import CheckBoxCircle from "../SubComponent/CheckBoxCircle";
+import Text from "../SubComponent/Text";
 // create register for author
 
 function RegisterArthor({ click, addData }) {

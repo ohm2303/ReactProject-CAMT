@@ -50,7 +50,7 @@ const  GlobalStyle = createGlobalStyle`
     .textInButtons{
       padding-left: 15%;
       margin-top: -5%;
-      font-size:20px;
+      font-size:0px;
     }
 
 // selectForpay
