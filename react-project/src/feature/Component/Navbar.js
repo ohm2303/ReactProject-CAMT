@@ -16,7 +16,7 @@ const StyledNavbar = styled.header`
   left: 0;
   width: 100%;
   z-index: 100;
-  font-family : "Anuphan"
+  font-family : "Anuphan";
 
   .nav-text {
     font-size: 24px;
