@@ -102,14 +102,14 @@ const Report = ({ isOpen,className }) => {
                 </div>
               </div>
 
-              <div className="button-center">
+              
                 <Button
+                  className ="button-center"
                   value={"ส่งรายงาน"}
                   functionBtn={handleReportSubmit}
                   handleClose={togglePopup}
                 />
               </div>
-            </div>
           }
         />
       )}
@@ -137,7 +137,7 @@ export default styled(Report)`
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     width: 600px;
-    max-height: 90%; /* กำหนดสูงสุดของ Popup */
+    max-height: 70%; /* กำหนดสูงสุดของ Popup */
     overflow: auto;
     position: relative;
   }
@@ -153,56 +153,37 @@ export default styled(Report)`
     margin-top: 20px;
   }
   
-  .button-center {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .button-center .ButtonNormal {
-    appearance: none;
-    background-color: transparent;
-    border-radius: 30px;
-    box-sizing: border-box;
-    color: #ffffff;
-    cursor: pointer;
-    display: flex;
-    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    font-size: 15px;
-    font-family: 'Anuphan';
-    font-weight: 600;
-    line-height: normal;
-    margin: 0;
-    min-height: 40px;
-    min-width: 120px;
-    outline: none;
-    padding: 1em 2.3em;
-    text-align: center;
-    text-decoration: none;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    will-change: transform;
-    align-items: center;
-   }
-   
-   .button-center .ButtonNormal:disabled {
-    pointer-events: none;
-   }
-   
-   .button-center .ButtonNormal:hover {
-    color: #fff;
-    background-color: #3ff213;
-    border-color: white;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
-   }
-   
-   .button-center .ButtonNormal:active {
-    box-shadow: none;
-    transform: translateY(0);
-   }
+    .button-center {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  font-size: 15px;
+  background-color: black; /* Change background color */
+  border-radius: 30px;
+  box-sizing: border-box;
+  color: white; /* Change text color to black */
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  align-items: center;
+  font-family: Anuphan
+}
+
+.button-center:hover {
+  color: white; /* Change text color to white */
+  background-color: black; /* Change background color to black */
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.pay-button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
   .name-report{
     width: 100%;
     display: flex;

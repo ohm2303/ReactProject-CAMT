@@ -15,7 +15,10 @@ import MyCollection from './feature/Page/MyCollection';
 import RegisterReader from './feature/Component/RegisterReader';
 import RegisterArthor from './feature/Component/RegisterAuthor';
 import Login from './feature/Component/Login';
-
+import PhotoSlide from './feature/Component/PhotoSlide';
+import AddBook from './feature/Component/AddBook';
+import Report from './feature/Component/Report';
+import OptionMain from './feature/Component/OptionMain';
 
 
 
@@ -27,8 +30,14 @@ root.render(
      <BankAccountPage />
      <MyCollection />
      <PayPage />
-     <PaymentPage />
-    
+     <PaymentPage /> 
+     <PhotoSlide />
+     
+     <AddBook />
+     <RegisterArthor click={true} />
+    <OptionMain />
+
+
   </React.StrictMode>
 );
 
