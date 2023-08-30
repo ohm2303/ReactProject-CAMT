@@ -14,9 +14,10 @@ const AddBook = (className) => {
     const [price,setPrice] = useState('') 
     const [exam,setExam] = useState('') 
     const [file,setFile] = useState('') 
+
     const [data,setData] = useState('')
   useEffect( () => {
-fetch(('http://localhost:3001/api/user/III'),{    
+  fetch(('http://localhost:3001/api/user/III'),{    
     method:"POST",
     headers: {
     "Content-Type": "application/json"
@@ -92,14 +93,14 @@ fetch(('http://localhost:3001/api/user/III'),{
 
           <div className=" input-group3">
             <label htmlFor="exam" className="text1">อัพตัวอย่างหนังสือ</label>
-            <UploadFile value={imageURL} onChange={(event)=>setImageURL(event.target.value)} />
+            <UploadFile value={imageURL} onChange={(event)=>setExam(event.target.value)} />
           </div>
           </div>
           <br/>
           <div className=" input-group5">    
           <div className=" input-group4">
             <label htmlFor="file" className="text2">อัพหนังสือฉบับเต็ม</label>
-            <UploadFile className="UploadFileCSS1"value={imageURL} onChange={(event)=>setImageURL(event.target.value)}/>
+            <UploadFile className="UploadFileCSS1"value={imageURL} onChange={(event)=>setFile(event.target.value)}/>
           </div>
           </div>
           <br/>
