@@ -1,5 +1,7 @@
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
+const bcrypt = require('bcrypt');
+
 dotenv.config();
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -49,3 +51,50 @@ exports.deletebasketById = async (req,res)=>{
       })
 }
 
+exports.checkUser = async (req,res)=>{
+  if(!req.body.username || !req.body.password){
+    return res.json("fail");
+  }
+  try{
+    connection.execute(
+    'SELECT username,`password`,id FROM user_detail where username= ? And password= ?;',[req.body.username,req.body.password],
+      (err, results, fields) => {
+        if(results.length > 0){
+          res.cookie('id',results[0].id);
+          res.json("success");
+        }
+        else{
+          res.json("wrong");
+        }
+
+      })
+  }
+  catch(err){
+    res.json('err');
+  }
+}
+
+exports.checkCokkie = async (req,res)=>{
+  if(!req.cookies.id){
+    return res.status(400).json({
+      status: 'Failed',
+      message: 'No data',
+    });
+  }
+  try{
+    connection.execute(
+      'SELECT username,id,email FROM user_detail where id = ?;',[req.cookies.id],
+        (err, results, fields) => {
+          if(results.length > 0){
+            res.json(results);
+          }
+          else{
+            res.json("Failed");
+          }
+  
+        })
+  }
+  catch(err){
+    res.json("error")
+  }
+}
