@@ -4,21 +4,20 @@ import NovelMain from "../Component/NovelMain";
 import OptionMain from "../Component/OptionMain";
 import Navbar from "../Component/Navbar";
 import useFetch from "../Hook/useFetch";
-//create function Home
+
 function Home() {
-  const [searchResults, setSearchResults] = useState([]); // State to store search results
+  const [searchResults, setSearchResults] = useState([]);
 
   const handlePrefixChange = (dataArray) => {
-        setSearchResults(dataArray);
+    setSearchResults(dataArray);
   };
 
   const Api_Novel = "/novels";
   const { data } = useFetch(Api_Novel);
 
-  console.log(data);
   return (
     <>
-      <Navbar onPrefixChange={handlePrefixChange} />
+      <Navbar onPrefixChange={handlePrefixChange} onSearchResults={handlePrefixChange} /> {/* Make sure to pass both props */}
       <PhotoSlide />
       <OptionMain />
       {data && data.length > 0 ? (
@@ -30,5 +29,4 @@ function Home() {
   );
 }
 
-//export
 export default Home;

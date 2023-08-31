@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import useFetch from "../Hook/useFetch";
 
@@ -13,26 +13,40 @@ const style = {
 const Search = ({ size, onSearchResults }) => {
   const inputStyle = { ...style, width: size };
   const [prefix, setPrefix] = useState("");
-  const Api_Novel = `/novels/search/${prefix}`;
+  const [debouncedPrefix, setDebouncedPrefix] = useState(""); // Debounced prefix for API requests
+  const Api_Novel = `/novels/search/${debouncedPrefix}`;
   const { data } = useFetch(Api_Novel);
+
+  useEffect(() => {
+    const debounceTimeout = setTimeout(() => {
+      setDebouncedPrefix(prefix);
+    }, 0); // Adjust the debounce time as needed
+
+    return () => {
+      clearTimeout(debounceTimeout);
+    };
+  }, [prefix]);
 
   const dataPrefix = JSON.stringify(data);
   const dataArray = JSON.parse(dataPrefix);
 
-  const handlePrefixChange = (event) => {
-    setPrefix(event.target.value);
-  
+  useEffect(() => {
     if (Array.isArray(dataArray)) {
       const searchResults = dataArray.filter((item) =>
-        item.name.toLowerCase().includes(prefix.toLowerCase())
+        item.name.toLowerCase().includes(debouncedPrefix.toLowerCase())
       );
-      
+
       onSearchResults(searchResults);
     } else {
       // Handle the case when dataArray is not an array (e.g., null or non-array object)
-      onSearchResults([]); // Clear the search results
+      onSearchResults([]);
     }
+  }, [dataArray, debouncedPrefix, onSearchResults]);
+
+  const handlePrefixChange = (event) => {
+    setPrefix(event.target.value);
   };
+
   return (
     <div>
       <input
@@ -56,9 +70,6 @@ const Search = ({ size, onSearchResults }) => {
     </div>
   );
 };
-export function prefix(){
-  
-}
 
 Search.propTypes = {
   value: PropTypes.string,

@@ -42,7 +42,7 @@ const Navbar = ({ onSearchResults }) => {
         <div className="nav-text">Home</div>
         <div className="nav-text">Recommend</div>
         <div className="nav-text">Coin</div>
-        <Search onPrefixChange={onPrefixChange} onSearchResults={onSearchResults} size="250px" heightSize="20px" />
+        <Search  onSearchResults={onSearchResults} size="250px" heightSize="20px" />
         <div className="nav-text">Basket</div>
         <div className="nav-text">Login/Register</div>
       </StyledNavbar>
