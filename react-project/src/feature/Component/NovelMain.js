@@ -5,14 +5,13 @@ import novelData from "../../asset/novelData";
 import "../style/NovelMain.css";
 import { styled } from "styled-components";
 import {Link} from "react-router-dom";
-
 //create function Novel Main
 function NovelMain({ data, className }) {
   return (
     <div className={className}>
       <div className="novel_main">
         <Text size={25} family={"Times New Roman"}>
-          ขายดี
+          ขายด
         </Text>
 
         <ul className="Novel__Product">

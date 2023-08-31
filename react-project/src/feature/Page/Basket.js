@@ -4,17 +4,17 @@ import Navbar from "../Component/Navbar";
 import SelectForPay from "../SubComponent/SelectForPay";
 import { useState,useEffect } from "react";
 import Load from "../SubComponent/Load";
- const Basket =() =>{
+ const Busket =() =>{
 const [load,setLoad] = useState(true)
+
   const [content, setContent] = useState([]);
   useEffect( () => {
-    fetch(('http://localhost:3001/api/user/basket/1'),{    
+    fetch((`${process.env.REACT_APP_API_PREME}/api/user/basket/1`),{    
       method:"GET",                                     
   })
   .then(response => response.json())
   .then(data=>{ 
     setContent([])
-
     data.forEach(element => {
       setContent(old => [...old, <div style={{marginTop: "10px"}}><SelectForPay keys={element.name} props={element} setContent={setContent} /></div>])
     });
@@ -24,10 +24,12 @@ const [load,setLoad] = useState(true)
 
   return   (
     <>
+
     {load ? <Load/> : 
-    
+   
     <div className="busketPage">
       <div className="busketTitle">
+      <Navbar />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
       <link href="https://fonts.googleapis.com/css2?family=Anuphan&family=Noto+Serif+Thai:wght@200;300&display=swap" rel="stylesheet"></link>
@@ -50,7 +52,7 @@ const [load,setLoad] = useState(true)
   );
 }
 
-export default Basket;
+export default Busket;
 
 
 //GlobalStyle
