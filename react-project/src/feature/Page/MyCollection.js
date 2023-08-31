@@ -10,7 +10,7 @@ const MyCollection = ({ className }) => {
 
   return (
     <div className={className}>
-      <Nav />
+      {/* <Nav /> */}
       <div className="content">
         <div className="title">
           <Text size={50} family={"Anuphan"} weight="bold">

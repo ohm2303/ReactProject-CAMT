@@ -20,7 +20,7 @@ const Search = ({ size, onSearchResults }) => {
   useEffect(() => {
     const debounceTimeout = setTimeout(() => {
       setDebouncedPrefix(prefix);
-    }, 0); // Adjust the debounce time as needed
+    }, ); // Adjust the debounce time as needed
 
     return () => {
       clearTimeout(debounceTimeout);
@@ -41,7 +41,7 @@ const Search = ({ size, onSearchResults }) => {
       // Handle the case when dataArray is not an array (e.g., null or non-array object)
       onSearchResults([]);
     }
-  }, [dataArray, debouncedPrefix, onSearchResults]);
+  }, [dataArray, debouncedPrefix, onSearchResults]); // Adjust dependencies here
 
   const handlePrefixChange = (event) => {
     setPrefix(event.target.value);

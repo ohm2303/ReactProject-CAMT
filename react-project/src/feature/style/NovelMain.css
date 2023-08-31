@@ -9,6 +9,10 @@
     text-align: center;
     padding-left: 2rem;
 }
+li{
+    display: flex;
+    flex-wrap: wrap;
+}
 /*
 .Novel-img{
     width: 200px;

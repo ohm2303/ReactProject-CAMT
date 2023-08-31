@@ -5,19 +5,11 @@ import OptionMain from "../Component/OptionMain";
 import Navbar from "../Component/Navbar";
 import useFetch from "../Hook/useFetch";
 
-function Home() {
-  const [searchResults, setSearchResults] = useState([]);
-
-  const handlePrefixChange = (dataArray) => {
-    setSearchResults(dataArray);
-  };
-
-  const Api_Novel = "/novels";
-  const { data } = useFetch(Api_Novel);
+function Home({handlePrefixChange,data,searchResults}) {
 
   return (
     <>
-      <Navbar onPrefixChange={handlePrefixChange} onSearchResults={handlePrefixChange} /> {/* Make sure to pass both props */}
+      <Navbar onSearchResults={handlePrefixChange} /> {/* Make sure to pass both props */}
       <PhotoSlide />
       <OptionMain />
       {data && data.length > 0 ? (

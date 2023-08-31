@@ -4,20 +4,21 @@ import NovelProduct from "../../feature/Novel_Product";
 import novelData from "../../asset/novelData";
 import "../style/NovelMain.css";
 
-
 //create function Novel Main
-function NovelMain({data}) {
- 
+function NovelMain({ data }) {
   return (
     <div className="novel_main">
-      <Text size={25} family={'Times New Roman'}>ขายดี</Text>
-      
-        <ul className="Novel__Product">
+      <Text size={25} family={"Times New Roman"}>
+        ขายดี
+      </Text>
+
+      <ul className="Novel__Product">
+        <li>
           {data.map((novel) => (
             <NovelProduct key={novel.id} item={novel}></NovelProduct>
           ))}
-        </ul>
-    
+        </li>
+      </ul>
     </div>
   );
 }

@@ -65,7 +65,7 @@ const NovelPage = ({ className, idNovel }) => {
 
   return (
     <div className={className}>
-      <Nav />
+      {/* <Nav /> */}
       <div className="total-content">
         <div className="detail-novel">
           <div className="name">
@@ -207,7 +207,7 @@ const NovelPage = ({ className, idNovel }) => {
                   onClick={() => handleHeartClick(index + 1)}
                 />
               ))}
-              {/* <p>จำนวนหัวใจที่คลิก: {clickedHearts.length}</p> */}
+              <p>จำนวนหัวใจที่คลิก: {clickedHearts.length}</p>
             </div>
             <div className="writing">
               <Input
@@ -215,7 +215,7 @@ const NovelPage = ({ className, idNovel }) => {
                 placeholder="เริ่มการรีวิวได้เลยจ้า"
                 value={inputReview}
                 onChange={handleInputChange}
-                width="700px"
+                width="742px"
               />
               <div className="button-review">
                 <Button value="ส่งรีวิว" />
