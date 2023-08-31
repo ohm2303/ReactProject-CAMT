@@ -1,5 +1,6 @@
 import React from "react";
 
+
 //create function Text
 function Text({size,children,family,weight,color}){
 
