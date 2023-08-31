@@ -9,7 +9,7 @@ function Home({handlePrefixChange,data,searchResults}) {
 
   return (
     <>
-      <Navbar onSearchResults={handlePrefixChange} /> {/* Make sure to pass both props */}
+      {/* <Navbar onSearchResults={handlePrefixChange} /> Make sure to pass both props */}
       <PhotoSlide />
       <OptionMain />
       {data && data.length > 0 ? (

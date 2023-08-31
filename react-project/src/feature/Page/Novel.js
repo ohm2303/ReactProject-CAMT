@@ -26,13 +26,18 @@ import shareDefault from "../../pics/Icon/shareDefault.png";
 import shareHovered from "../../pics/Icon/shareHovered.png";
 import likeDefault from "../../pics/Icon/likeDefault.png";
 import likeHovered from "../../pics/Icon/likeHovered.png";
+import { useParams } from "react-router-dom";
 
 
-const NovelPage = ({ className, idNovel }) => {
-
+const NovelPage = ({ className, idNovel,handlePrefixChange }) => {
+  // pull id from novel
+  const { id } = useParams();
+  console.log(id)
   //Api
-  const Api_Novel = `https://jsonplaceholder.typicode.com/users/${idNovel}`;
+  const Api_Novel = `/novels/${id}`;
   const {data} = useFetch(Api_Novel);
+
+  console.log(data)
 
   //Report
   const [isReportOpen, setIsReportOpen] = useState(false);
@@ -65,7 +70,6 @@ const NovelPage = ({ className, idNovel }) => {
 
   return (
     <div className={className}>
-      {/* <Nav /> */}
       <div className="total-content">
         <div className="detail-novel">
           <div className="name">

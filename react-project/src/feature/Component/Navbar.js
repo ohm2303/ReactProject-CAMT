@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Input from "../SubComponent/Input";
 import RegisterReader from "./RegisterReader";
 import Search from "../SubComponent/Search";
+import {Link} from "react-router-dom"
 
 const StyledNavbar = styled.header`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
@@ -39,7 +40,7 @@ const Navbar = ({ onSearchResults }) => {
     <div>
       <StyledNavbar>
         <div className="nav-text">Logo</div>
-        <div className="nav-text">Home</div>
+        <Link to={`/home`}><div className="nav-text">Home</div></Link>
         <div className="nav-text">Recommend</div>
         <div className="nav-text">Coin</div>
         <Search  onSearchResults={onSearchResults} size="250px" heightSize="20px" />

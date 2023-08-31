@@ -109,6 +109,7 @@ export default styled(MyCollection)`
     width: 100%;
     border: none;
     justify-content: center;
+    border: 1px solid red;
 }
 .Ordered_Books {
     display: flex;
