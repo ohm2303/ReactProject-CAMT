@@ -219,7 +219,7 @@ const NovelPage = ({ className, idNovel,handlePrefixChange }) => {
                 placeholder="เริ่มการรีวิวได้เลยจ้า"
                 value={inputReview}
                 onChange={handleInputChange}
-                width="742px"
+                width="703px"
               />
               <div className="button-review">
                 <Button value="ส่งรีวิว" />

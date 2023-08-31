@@ -47,6 +47,7 @@ function Option({ items, depthLevel ,className}) {
       {items.submenu && items.url ? (
         <>
           <button
+          className="button-main"
             type="button"
             aria-haspopup="menu"
             aria-expanded={dropdown ? "true" : "false"}
@@ -59,9 +60,9 @@ function Option({ items, depthLevel ,className}) {
             )}
             {depthLevel > 0 && window.innerWidth < 960 ? null : depthLevel >
                 0 && window.innerWidth > 960 ? (
-              <span>&raquo;</span>
+              <span></span>
             ) : (
-              <span className="arrow" />
+              <span/>
             )}
           </button>
           <Dropdown
@@ -71,8 +72,9 @@ function Option({ items, depthLevel ,className}) {
           />
         </>
       ) : !items.submenu && items.url ? (
-        <>
+        <div className="menu-item-sub">
           <button
+            className="button-option"
             type="button"
             aria-haspopup="menu"
             aria-expanded={dropdown ? "true" : "false"}
@@ -81,12 +83,12 @@ function Option({ items, depthLevel ,className}) {
             {items.title}{" "}
             {depthLevel > 0 && window.innerWidth < 960 ? null : depthLevel >
                 0 && window.innerWidth > 960 ? (
-              <span>&raquo;</span>
+              <span></span>
             ) : (
-              <span className="arrow" />
+              <span></span>
             )}
           </button>
-        </>
+        </div>
       ) : (
         <a href={items.url}>{items.title}</a>
       )}
@@ -100,6 +102,10 @@ export default styled(Option)`
     list-style: none;
     margin: 0;
     padding: 0;
+    border: none;
+  }
+  .menu-item li{
+    background: gray;
   }
   
   button {
@@ -109,7 +115,7 @@ export default styled(Option)`
     font-size: inherit;
     padding: 0;
     margin: 0;
-    text-decoration: underline;
+    text-decoration: none;
     color: black;
     
   }
@@ -130,23 +136,18 @@ export default styled(Option)`
     font-size: inherit;
     padding: 0;
     margin: 0;
-
     color: blue;
     display: flex;
     align-items: center;
+    
   }
   
   .dropdown-button:focus {
     outline: none;
   }
   
-  .dropdown-arrow {
-    margin-left: auto;
-    margin-right: 0;
-  }
-  
   .dropdown {
-    display: none;
+    display:none;
     position: absolute;
     list-style: none;
     padding: 0;
@@ -172,10 +173,76 @@ export default styled(Option)`
   .submenu-items a:hover {
     background-color: #f5f5f5;
   }
+
+  .button-option {
+    background: white;
+    height: 50px;
+    width: 200px;
+    border: none; /* ลบเส้นกรอบทั้งหมด */
+  
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+}
+
+.menu-item-sub:after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  bottom: 5px;
+  left: calc(50% - 2px);
+  background: #FECEAB;
+  will-change: transform;
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+.menu-item-sub:hover:after {
+  transform: scale(1);
+}
+.menu-item-sub {
+  position: relative;
+  line-height: 2.5rem;
+  text-align: center;
+}
+.button-option .menu-item-sub{
+  padding: 0.75rem 0;
+  background: #F67280;
+  opacity: 0;
+  transform-origin: bottom;
+  animation: enter 0.2s ease forwards;
+}
+
+.button-option .menu-item-sub:nth-child(1) {
+  animation-duration: 0.2s;
+  animation-delay: 0s;
+}
+.button-option .menu-item-sub:nth-child(2) {
+  animation-duration: 0.3s;
+  animation-delay: 0.1s;
+}
+.button-option .menu-item-sub:nth-child(3) {
+  animation-duration: 0.4s;
+  animation-delay: 0.2s;
+}
+.button-option .menu-item-sub:hover {
+  background: #F8B195;
+}
+.button-main a{
+  font-size: 20px;
+  font-weight: 600;
+}
+.button-option a{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+ .button .menu-item-sub{
+  border: none;
+ }
 `;
 
 /* 
-Kanokwan Mahakham
+Kanokwan Mahakham//
 วิธีการใช้
   1.ต้องสร้างไฟล์ data ที่ต้องการใช้ใน floder asset ก่อน(ตัวอย่างอยู่ใน menuItems.js)
 

@@ -19,15 +19,16 @@ const Dropdown = ({ submenus, dropdown, depthLevel,className }) => {
   
   export default styled(Dropdown)`
   .dropdown {
-    display: none;
-    position: absolute;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  display: none;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  
+}
+
   
   .show {
     display: block;
@@ -57,7 +58,7 @@ const Dropdown = ({ submenus, dropdown, depthLevel,className }) => {
   .menu-items a:hover {
     background-color: #f5f5f5;
   }
-  `;
+`;
   /* 
   Kanokwan Mahakham
   วิธีการใช้
