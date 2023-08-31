@@ -41,54 +41,67 @@ const UploadFile = ({className}) => {
    );
 };
 export default styled(UploadFile)`
+
+
+
+.cssInputFile {
+   border-radius: 4px;
+   padding: 2px;
+   height: 40px;
+   cursor: pointer;
+   background-color: white;
+
+
+   margin-right: 10px;
+   transition: background-color 200ms;
+}
+
 .cssUploadFile{
-display: block;
-width: 100%;
-font-size: 0.875rem;
-color: #1a202c;
-border-color: #e2e8f0;
-border-radius: 0.5rem;
-cursor: pointer;
-background-color: #f7f7f7;
-font-family:'Noto Serif Thai', serif;
-font-weight: 600;
-transform: scale(0.9);
-}
-.cssUploadFile:hover {
-    background-color: #fcfcfc;
-    transform: scale(1.0);
-  }
-
-.cssInputFile{
-    display: grid;
-}
-
-input::file-selector-button {
-    background-image: linear-gradient(
-      to right,
-      #68737a,
-      #8dc0da,
-      #061922 100%,
-      #20385B 200%
-    );
-    background-position-x: 0%;
-    background-size: 300%;
-    border: 0;
-    border-radius: 8px;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    text-shadow: 0 1px 1px #333;
-    transition: all 0.25s;
-    transform: scale(0.8);
-    font-family:'Noto Serif Thai', serif;
-  }
-  input::file-selector-button:hover {
-    background-position-x: 100%;
-    transform: scale(1.0);
-    border-radius: 8px;
-    cursor: pointer;
-    font-family:'Noto Serif Thai', serif;
-  }
+   align-items: center;
+   background-color: #FFFFFF;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   border-radius: .25rem;
+   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 2px 0;
+   box-sizing: border-box;
+   color: rgba(0, 0, 0, 0.85);
+   cursor: pointer;
+   display: inline-flex;
+   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+   font-size: 16px;
+   font-weight: 600;
+   justify-content: center;
+   line-height: 0.55;
+   margin: 0;
+   min-height: 2rem;
+   padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+   position: relative;
+   text-decoration: none;
+   transition: all 250ms;
+   user-select: none;
+   -webkit-user-select: none;
+   touch-action: manipulation;
+   vertical-align: baseline;
+   width: auto;
+ }
+ 
+ .cssUploadFile:hover,
+ .cssUploadFile:focus {
+   border-color: rgba(0, 0, 0, 0.15);
+   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+   color: rgba(0, 0, 0, 0.65);
+ }
+ 
+ .cssUploadFile:hover {
+   transform: translateY(-1px);
+ }
+ 
+ .cssUploadFile:active {
+   background-color: #F0F0F1;
+   border-color: rgba(0, 0, 0, 0.15);
+   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+   color: rgba(0, 0, 0, 0.65);
+   transform: translateY(0);
+ }
 `;
 
 /* 
@@ -96,3 +109,6 @@ Kanokwan Mahakham
 วิธีการใช้
 <UploadFile />
 */
+
+
+

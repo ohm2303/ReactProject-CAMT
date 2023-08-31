@@ -17,19 +17,24 @@ const OptionMain = ({ className }) => {
 };
 
 export default styled(OptionMain)`
+*{
+  font-family: "Anuphan";
+}
 .menus {
-    width: 100%;
-    height: 70px;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    border: 1px solid #ccc; /* กรอบคลุมทั้งหมด */
-    background-color: #f9f9f9; /* สีพื้นหลัง */
-  }
+  width: 100%;
+  height: 90px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  border: none; 
+  background-color: #f9f9f9; 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4); 
+}
+
   
   .menu-item {
     cursor: pointer;
@@ -65,6 +70,7 @@ export default styled(OptionMain)`
   .submenu-depth-2 {
     margin-left: 2rem;
   }
+ 
 `;
 
 /* 
