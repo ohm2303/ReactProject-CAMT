@@ -20,6 +20,7 @@ import AddBook from './feature/Component/AddBook';
 import Report from './feature/Component/Report';
 import OptionMain from './feature/Component/OptionMain';
 import Promotion from './feature/Component/Promotion';
+import Novel from './feature/Page/Novel';
 
 
 
@@ -29,11 +30,7 @@ root.render(
   <React.StrictMode>
      
      
-
-     <Home />
-
-     <Login />
-
+     <App/>
    
 
 
