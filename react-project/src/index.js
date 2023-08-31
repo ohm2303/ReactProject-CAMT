@@ -19,6 +19,8 @@ import PhotoSlide from './feature/Component/PhotoSlide';
 import AddBook from './feature/Component/AddBook';
 import Report from './feature/Component/Report';
 import OptionMain from './feature/Component/OptionMain';
+import Promotion from './feature/Component/Promotion';
+import Novel from './feature/Page/Novel';
 
 
 
@@ -26,16 +28,10 @@ import OptionMain from './feature/Component/OptionMain';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <Busket />
-     <BankAccountPage />
-     <MyCollection />
-     <PayPage />
-     <PaymentPage /> 
-     <PhotoSlide />
      
-     <AddBook />
-     <RegisterArthor click={true} />
-    <OptionMain />
+     
+     <App/>
+   
 
 
   </React.StrictMode>

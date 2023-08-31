@@ -1,24 +1,24 @@
- import React, { useState } from "react";
+import React, { useState } from "react";
 import Text from "../SubComponent/Text";
 import NovelProduct from "../../feature/Novel_Product";
 import novelData from "../../asset/novelData";
-import "../style/NovelMain.css"
+import "../style/NovelMain.css";
 
 //create function Novel Main
-function NovelMain() {
-  const [novels, Setnovel] = useState(novelData);
+function NovelMain({ data }) {
   return (
     <div className="novel_main">
-      <Text size={25} family={'Times New Roman'}>ขายดี</Text>
-      {novels.length > 0 ? (
-        <ul className="Novel__Product">
-          {novels.map((novel) => (
+      <Text size={25} family={"Times New Roman"}>
+        ขายดี
+      </Text>
+
+      <ul className="Novel__Product">
+        <li>
+          {data.map((novel) => (
             <NovelProduct key={novel.id} item={novel}></NovelProduct>
           ))}
-        </ul>
-      ) : (
-        <div className="load">Loading Novels....</div>
-      )}
+        </li>
+      </ul>
     </div>
   );
 }

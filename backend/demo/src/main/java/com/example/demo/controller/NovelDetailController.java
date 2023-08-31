@@ -51,6 +51,7 @@ public class NovelDetailController {
     public List<NovelDetail> getNovelByNamePrefix(@PathVariable String prefix) {
         return novelDetailRepository.findBynameStartingWith(prefix);
     }
+    // get novel by 
 
     // update
     @PutMapping("/novels")
