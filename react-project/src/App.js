@@ -10,6 +10,9 @@ import {Routes,Route,BrowserRouter} from "react-router-dom";
 import Novel from "./feature/Page/Novel";
 import Navbar from "./feature/Component/Navbar";
 import MyCollection from "./feature/Page/MyCollection"
+import AddBook from "./feature/Component/AddBook"
+import Basket from "./feature/Page/Basket"
+
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -29,6 +32,10 @@ const App = () => {
         <Route path="/home" element={<Home handlePrefixChange = {handlePrefixChange} data={data} searchResults={searchResults} />}/>
         <Route path="/novel/:id" element={<Novel handlePrefixChange={handlePrefixChange}/>}/>
         <Route path="/myCollection" element={<MyCollection />}/>
+        <Route path="/addBook" element={<AddBook></AddBook>}></Route>
+        <Route path="/bankAccount" element={<BankAccountPage></BankAccountPage>}></Route>
+        <Route path="/basket" element={<Basket></Basket>}></Route>
+        <Route path="/" element={<></>}></Route>
       </Routes>
       </BrowserRouter>
     </>

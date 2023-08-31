@@ -10,7 +10,6 @@ import PaymentPage from './feature/Page/payment';
 import BankAccountPage from './feature/Page/BankAccountPage';
 import Home from "./feature/Page/Home"
 import NovelPage from './feature/Page/Novel';
-import Busket from "./feature/Page/Busket"
 import MyCollection from './feature/Page/MyCollection';
 import RegisterReader from './feature/Component/RegisterReader';
 import RegisterArthor from './feature/Component/RegisterAuthor';
