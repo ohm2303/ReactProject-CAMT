@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import PhotoSlide from "../Component/PhotoSlide";
 import NovelMain from "../Component/NovelMain";
-import OptionMain from "../Component/OptionMain";
+import data from "../../asset/novelData";
+import styled from "styled-components"; 
 import Navbar from "../Component/Navbar";
-import useFetch from "../Hook/useFetch";
+//home page
 
-function Home({handlePrefixChange,data,searchResults}) {
+
+function Home({ className }) {
+  const [noImg,setNoImg] = useState(data);
+  const imageslide = noImg.map(dataNov => require(`../../pics/Noval/${dataNov.imgUrl}`));
 
   return (
-    <>
-      <Navbar onSearchResults={handlePrefixChange} /> {/* Make sure to pass both props */}
-      <PhotoSlide />
-      <OptionMain />
-      {data && data.length > 0 ? (
-        <NovelMain data={searchResults.length > 0 ? searchResults : data} />
-      ) : (
-        <div className="load">Loading Novels....</div>
-      )}
+    <div className={className}>
+    <>  
+      <Navbar></Navbar>
+
+      <PhotoSlide images={imageslide}></PhotoSlide>
+
+
+      <NovelMain></NovelMain>
     </>
+    </div>
   );
 }
 

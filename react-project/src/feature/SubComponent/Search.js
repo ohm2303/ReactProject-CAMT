@@ -1,73 +1,77 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import useFetch from "../Hook/useFetch";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const style = {
-  padding: "8px",
-  border: "1px solid #ccc",
-  borderRadius: "4px",
-  fontSize: "14px",
-  width: "100%",
-};
+const SearchForm = styled.form`
+  position: relative;
+  width: 30rem;
+  background: var(--color-brand);
+  border-radius: var(--rad);
+`;
 
-const Search = ({ size, onSearchResults }) => {
-  const inputStyle = { ...style, width: size };
-  const [prefix, setPrefix] = useState("");
-  const [debouncedPrefix, setDebouncedPrefix] = useState(""); // Debounced prefix for API requests
-  const Api_Novel = `/novels/search/${debouncedPrefix}`;
-  const { data } = useFetch(Api_Novel);
+const SearchInput = styled.input`
+  height: var(--height);
+  font-family: var(--font-fam);
+  border: 0;
+  color: var(--color-dark);
+  font-size: 1.8rem;
+  outline: 0;
+  width: 100%;
+  background: var(--color-light);
+  padding: 0 1.6rem;
+  border-radius: var(--rad);
+  appearance: none;
+  transition: all var(--dur) var(--bez);
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+  
+  &:not(:placeholder-shown) {
+    border-radius: var(--rad) 0 0 var(--rad);
+    width: calc(100% - var(--btn-width));
+  }
+`;
 
-  useEffect(() => {
-    const debounceTimeout = setTimeout(() => {
-      setDebouncedPrefix(prefix);
-    }, ); // Adjust the debounce time as needed
+const SearchButton = styled.button`
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--btn-width);
+  font-weight: bold;
+  background: var(--color-brand);
+  border-radius: 0 var(--rad) var(--rad) 0;
+  
+  + ${SearchInput}:not(:placeholder-shown) + & {
+    display: block;
+  }
+`;
 
-    return () => {
-      clearTimeout(debounceTimeout);
-    };
-  }, [prefix]);
+const SearchLabel = styled.label`
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+`;
 
-  const dataPrefix = JSON.stringify(data);
-  const dataArray = JSON.parse(dataPrefix);
-
-  useEffect(() => {
-    if (Array.isArray(dataArray)) {
-      const searchResults = dataArray.filter((item) =>
-        item.name.toLowerCase().includes(debouncedPrefix.toLowerCase())
-      );
-
-      onSearchResults(searchResults);
-    } else {
-      // Handle the case when dataArray is not an array (e.g., null or non-array object)
-      onSearchResults([]);
-    }
-  }, [dataArray, debouncedPrefix, onSearchResults]); // Adjust dependencies here
-
-  const handlePrefixChange = (event) => {
-    setPrefix(event.target.value);
-  };
-
+const Search = ({ size, value, onChange }) => {
   return (
-    <div>
-      <input
-        style={inputStyle}
-        type="text"
+    <SearchForm onSubmit={e => e.preventDefault()} style={{ width: size }} role="search">
+      <SearchLabel htmlFor="search">Search for stuff</SearchLabel>
+      <SearchInput
+        id="search"
+        type="search"
+        onChange={onChange}
+        value={value}
         placeholder="Search......🔍︎"
-        value={prefix}
-        onChange={handlePrefixChange}
-        className="search-component"
+        autoFocus
+        required
       />
-
-      {dataArray[0] && dataArray[0].name && (
-        <div className="suggestions">
-          {dataArray.map((item, index) => (
-            <div key={index} className="suggestion">
-              {item.name}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+      <SearchButton type="submit">Go</SearchButton>
+    </SearchForm>
   );
 };
 
