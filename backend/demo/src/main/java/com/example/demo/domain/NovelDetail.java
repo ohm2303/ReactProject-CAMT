@@ -31,7 +31,7 @@ public class NovelDetail {
     private String file_pic;
     private String file_test;
     private String file_real;
-
+    private String author;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date release_date;
 
@@ -49,7 +49,7 @@ public class NovelDetail {
     }
 
     public NovelDetail(Long id, String name, int price, String category, int numpage, double rating, String promotion,
-            String file_pic, String file_test, String file_real, Date release_date) {
+            String file_pic, String file_test, String file_real, Date release_date, String author) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -61,6 +61,15 @@ public class NovelDetail {
         this.file_test = file_test;
         this.file_real = file_real;
         this.release_date = release_date;
+        this.author = author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     public Long getId() {

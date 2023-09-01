@@ -68,6 +68,7 @@ const NovelPage = ({ className, idNovel,handlePrefixChange }) => {
   const editIcon = require("../../pics/Icon/edit.png");
   const user = require("../../pics/Icon/circle-user.png");
 
+  console.log(data.author)
   return (
     <div className={className}>
       <div className="total-content">
@@ -95,7 +96,7 @@ const NovelPage = ({ className, idNovel,handlePrefixChange }) => {
                 </Text>
                 <Text size={15} family={"Anuphan"} weight="500">
                   <ul>
-                    <li>ชลาลัย </li>
+                    <li>{data.author}</li>
                     <li>นิยายรัก </li>
                     <li>300 บาท </li>
                   </ul>
