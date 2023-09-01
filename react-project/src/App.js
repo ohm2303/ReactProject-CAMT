@@ -15,7 +15,6 @@ import Basket from "./feature/Page/Basket"
 import Pay from "./feature/Page/pay";
 import Login from "./feature/Component/Login"
 
-
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
 
@@ -31,7 +30,7 @@ const App = () => {
       <BrowserRouter>
       <Navbar onSearchResults={handlePrefixChange}></Navbar>
       <Routes>
-        <Route path="/home" element={<Home handlePrefixChange = {handlePrefixChange} data={data} searchResults={searchResults} />}/>
+        <Route path="/" element={<Home handlePrefixChange = {handlePrefixChange} data={data} searchResults={searchResults} />}/>
         <Route path="/novel/:id" element={<Novel handlePrefixChange={handlePrefixChange}/>}/>
         <Route path="/myCollection" element={<MyCollection />}/>
         <Route path="/addBook" element={<AddBook></AddBook>}></Route>
@@ -44,6 +43,7 @@ const App = () => {
 
         <Route path="/RegisterReader" element={<RegisterReader isOpen={true}></RegisterReader>}></Route>
         <Route path="/Login" element={<Login isOpen={true}></Login>}></Route>
+        <Route path="/Rigister" element={<RegisterReader isOpen={true}></RegisterReader>}></Route>
       </Routes>
       </BrowserRouter>
     </>
