@@ -167,7 +167,10 @@ body {
   opacity: 0 !important;
   transform: translate(50px, 0);
 }
-
+.link{
+  text-decoration: none;
+  color: white;
+}
 
  
 `;
@@ -186,7 +189,7 @@ const Navbar = ({ onSearchResults }) => {
           </div>
           <ul class="navigation">
             <li class="parent">
-              <Link to={`/home`}>Home</Link>
+              <Link to={`/home`} className="link">Home</Link>
             </li>
             <Search
               onSearchResults={onSearchResults}
@@ -194,7 +197,7 @@ const Navbar = ({ onSearchResults }) => {
               heightSize="20px"
             />
             <li class="parent">
-              <Link to={`/basket`}>Basket</Link>
+              <Link to={`/basket`} className="link">Basket</Link>
             </li>
             <li class="parent">
               <a class="link" href="#">
