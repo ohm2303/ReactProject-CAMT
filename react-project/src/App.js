@@ -13,6 +13,7 @@ import MyCollection from "./feature/Page/MyCollection"
 import AddBook from "./feature/Component/AddBook"
 import Basket from "./feature/Page/Basket"
 import Pay from "./feature/Page/pay";
+import RegisterAuthor from "./feature/Component/RegisterAuthor"
 import Login from "./feature/Component/Login"
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/RegisterReader" element={<RegisterReader isOpen={true}></RegisterReader>}></Route>
         <Route path="/Login" element={<Login isOpen={true}></Login>}></Route>
         <Route path="/Rigister" element={<RegisterReader isOpen={true}></RegisterReader>}></Route>
+        <Route path="/RegisterAuthor" element={<RegisterAuthor isOpen={true}></RegisterAuthor>}></Route>
       </Routes>
       </BrowserRouter>
     </>

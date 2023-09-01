@@ -23,7 +23,6 @@ const RegisterReader = ({ isOpen, className }) => {
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
-    console.log(username)
   };
 
   const handleEmailChange = (event) => {
@@ -61,6 +60,8 @@ const RegisterReader = ({ isOpen, className }) => {
 
     if(password != retypePassword){
       alert("password doesn't match")
+      setPassword("")
+      setRetypePassword("")
     }
     const postDataToServer = async () => {
       try{
