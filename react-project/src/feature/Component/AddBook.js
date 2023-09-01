@@ -1,17 +1,18 @@
 import Text from "../SubComponent/Text";
-  import {styled} from "styled-components";
-  import Input from "../SubComponent/Input";
-  import GrayBackground from "../SubComponent/GrayBackground";
-  import UploadFile from "../SubComponent/UploadFile";
-  import Button from "../SubComponent/Button";
-  import React, { useState, useEffect } from 'react'
-import Navbar from "./Navbar";
-  const StyledAddBook = styled.div`
-  .total-content{
-  font-family: 'Anuphan', sans-serif;
-  text-align: center;
-  margin-top: 20px;
-}
+import { styled } from "styled-components";
+import Input from "../SubComponent/Input";
+import GrayBackground from "../SubComponent/GrayBackground";
+import UploadFile from "../SubComponent/UploadFile";
+import Button from "../SubComponent/Button";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+const StyledAddBook = styled.div`
+  .total-content {
+    font-family: "Anuphan", sans-serif;
+    text-align: center;
+    margin-top: 20px;
+  }
   .title {
     font-size: 60px;
     font-weight: 600;
@@ -45,18 +46,17 @@ import Navbar from "./Navbar";
     font-weight: 600;
     margin-bottom: 5px;
   }
-  .text1{
+  .text1 {
     align-items: center;
     font-size: 18px;
     font-weight: 400;
     padding-bottom: 10px;
   }
-  .text2{
+  .text2 {
     align-items: center;
     font-size: 18px;
     font-weight: 400;
     magin-bottom: 30px;
-    
   }
   .ButtonADD {
     display: flex;
@@ -75,9 +75,9 @@ import Navbar from "./Navbar";
     -webkit-user-select: none;
     touch-action: manipulation;
     align-items: center;
-    font-family: Anuphan
+    font-family: Anuphan;
   }
-  
+
   .ButtonADD:hover {
     color: white; /* Change text color to white */
     background-color: black; /* Change background color to black */
@@ -88,98 +88,238 @@ import Navbar from "./Navbar";
     box-shadow: none;
     transform: translateY(0);
   }
-  
 `;
-  const AddBook = (className) => {
-      const [name,setName] = useState('') 
-      const [imageURL,setImageURL] = useState('') 
-      const [type,setType] = useState('') 
-      const [cate,setCate] = useState('') 
-      const [price,setPrice] = useState('') 
-      const [exam,setExam] = useState('') 
-      const [file,setFile] = useState('') 
-      const [data,setData] = useState('')
-    useEffect( () => {
-  fetch(('/api/user/III'),{    
-      method:"POST",
-      headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-    pass: "1234",
-    user: "preme"
-  })                                                   
-  })
-  .then(response => response.json())
-  .then(data=>setData(data))
-  },[])
-      function onSubmit(event) {
-          event.preventDefault();
-          AddBook({ name, type, imageURL, price, exam, file});
+const AddBook = (className) => {
+  const [name, setName] = useState("");
+  const [imageURL, setImageURL] = useState("");
+  const [type, setType] = useState("");
+  const [cate, setCate] = useState("");
+  const [price, setPrice] = useState("");
+  const [exam, setExam] = useState("");
+  const [file, setFile] = useState("");
+  const [data, setData] = useState("");
+
+
+  // function onSubmit(event) {
+  //   event.preventDefault();
+  //   AddBook({ name, type, imageURL, price, exam, file });
+  // }
+
+  const onChangeFile = (event) => {
+    const selectedFile = event.target.files[0]; // เลือกไฟล์แรกที่ผู้ใช้เลือก
+
+    if (selectedFile) {
+      // ตรวจสอบว่ามีไฟล์ที่เลือกหรือไม่
+      console.log("ชื่อไฟล์:", selectedFile.name);
+      console.log("ประเภทไฟล์:", selectedFile.type);
+      console.log("ขนาดไฟล์ (bytes):", selectedFile.size);
+
+      // สร้าง URL ของไฟล์ภาพ
+      const file = URL.createObjectURL(selectedFile);
+
+      // คุณสามารถดำเนินการอื่น ๆ กับไฟล์ที่เลือกได้ที่นี่
+      setFile(file);
+    }
+  };
+  const onChangeImg = (e) => {
+    const selectedFile = e.target.files[0]; // เลือกไฟล์แรกที่ผู้ใช้เลือก
+
+    if (selectedFile) {
+      // ตรวจสอบว่ามีไฟล์ที่เลือกหรือไม่
+      console.log("ชื่อไฟล์:", selectedFile.name);
+      console.log("ประเภทไฟล์:", selectedFile.type);
+      console.log("ขนาดไฟล์ (bytes):", selectedFile.size);
+
+       // สร้าง URL ของไฟล์ภาพ
+       const imageURL = URL.createObjectURL(selectedFile);
+
+      // กำหนดค่า imageURL เพื่อแสดงรูปภาพในอินเตอร์เฟซ
+      setImageURL(imageURL);
+    }
+  };
+  const onChangeExam = (e) => {
+    const selectedFile = e.target.files[0]; // เลือกไฟล์แรกที่ผู้ใช้เลือก
+
+    if (selectedFile) {
+      // ตรวจสอบว่ามีไฟล์ที่เลือกหรือไม่
+      console.log("ชื่อไฟล์:", selectedFile.name);
+      console.log("ประเภทไฟล์:", selectedFile.type);
+      console.log("ขนาดไฟล์ (bytes):", selectedFile.size);
+
+      // สร้าง URL ของไฟล์ภาพ
+      const exam = URL.createObjectURL(selectedFile);
+
+      // คุณสามารถดำเนินการอื่น ๆ กับไฟล์ที่เลือกได้ที่นี่
+      setExam(exam);
+      console.log(exam)
+    }
+  };
+  const onClick = () => {
+    console.log(file);
+    console.log(exam);
+    console.log(imageURL);
+      // สร้างฟังก์ชันสำหรับการส่งคำขอ POST
+      const postDataToServer = async () => {
+        try {
+          const url = "/novels"; // แทนที่ด้วย URL ของเซิร์ฟเวอร์ที่คุณต้องการ
+          const dataToSend = { name: name, price: price,file_pic:imageURL,file_real: file,file_test:exam,category:type}; // แทนที่ด้วยข้อมูลที่คุณต้องการส่ง
+  
+          const response = await axios.post(url, dataToSend); 
+  
+          // อัปเดตสถานะเพื่อแสดงข้อมูลที่ได้จากเซิร์ฟเวอร์
+          setData(response.data);
+          console.log("คำขอ POST สำเร็จ:", response.data);
+        } catch (error) {
+          console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST:", error);
         }
-      return (
-      <StyledAddBook>
-        <div className={className}>
-        <div className="total-content">         <link rel="preconnect" href="https://fonts.googleapis.com" />
-              <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-              <link href="https://fonts.googleapis.com/css2?family=Anuphan&family=Noto+Serif+Thai:wght@200;300&display=swap" rel="stylesheet"></link>
-              <br/>
+      };
+  
+      // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST เมื่อคอมโพเนนต์ถูกโหลด
+      postDataToServer();
+  };
+  useEffect(() => {
+    console.log("ค่า file ถูกอัปเดต:", file,exam,imageURL);
+  }, [file]);
+
+  return (
+    <StyledAddBook>
+      <div className={className}>
+        <div className="total-content">
+          {" "}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="true"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Anuphan&family=Noto+Serif+Thai:wght@200;300&display=swap"
+            rel="stylesheet"
+          ></link>
+          <br />
           <div className="title-contrainer">
-            <div style={{lineHeight: "0px"}}>  
-            <Text className="title" size={60} family={'Anuphan'} children={"เพิ่มหนังสือ"} weight={"700"} />
-           
+            <div style={{ lineHeight: "0px" }}>
+              <Text
+                className="title"
+                size={60}
+                family={"Anuphan"}
+                children={"เพิ่มหนังสือ"}
+                weight={"700"}
+              />
             </div>
-            <form id="add-form" onSubmit={onSubmit}></form>
-            <div style={{lineHeight: "15px"}}>
-              <Text className="title" size={25} family={'Anuphan'} children={"กรุณากรอกข้อมูล"} weight={"570"} />
+            {/* <form id="add-form" onSubmit={onSubmit}></form> */}
+            <div style={{ lineHeight: "15px" }}>
+              <Text
+                className="title"
+                size={25}
+                family={"Anuphan"}
+                children={"กรุณากรอกข้อมูล"}
+                weight={"570"}
+              />
             </div>
           </div>
-          <hr className="style1"/>
+          <hr className="style1" />
           <div className="input-group">
             <div className=" input-group">
-                <label htmlFor="type"className="text1">ประเภท E-Book</label><br/>
-                <br/><Input type="text" placeholder="Enter something..."size={"90%"} name="type" id="type" 
-                value={type} onChange={(event)=>setType(event.target.value)} />
+              <label htmlFor="type" className="text1">
+                ประเภท E-Book
+              </label>
+              <br />
+              <br />
+              <Input
+                type="text"
+                placeholder="Enter something..."
+                size={"90%"}
+                name="type"
+                id="type"
+                value={type}
+                onChange={(event) => setType(event.target.value)}
+              />
             </div>
             <div className=" input-group">
-                <label htmlFor="cate"className="text1">หมวดหมู่</label><br/>
-                <br/><Input type="cate" placeholder="Enter something..."size={"90%"} name="type" id="type" 
-                value={cate} onChange={(event)=>setCate(event.target.value)} />
+              <label htmlFor="cate" className="text1">
+                หมวดหมู่
+              </label>
+              <br />
+              <br />
+              <Input
+                type="cate"
+                placeholder="Enter something..."
+                size={"90%"}
+                name="type"
+                id="cate"
+                value={cate}
+                onChange={(event) => setCate(event.target.value)}
+              />
             </div>
-              <div className="input-group">
-                <label htmlFor="name"className="text1">ชื่อหนังสือ</label><br/>
-                <br/><Input name="name" type="text" id="name" placeholder="Enter something..."size={"90%"} 
-                value={name} onChange={(event)=>setName(event.target.value)} />
-              </div>
-              <div className=" input-group">
-                <label htmlFor="price" className="text1">ราคา</label><br/>
-                <br/>
-                <Input name="price" type="text" id="price" placeholder="Enter something..."size={"90%"} 
-                value={price} 
-                onChange={(event)=>setPrice(event.target.value)} />
-              </div>
+            <div className="input-group">
+              <label htmlFor="name" className="text1">
+                ชื่อหนังสือ
+              </label>
+              <br />
+              <br />
+              <Input
+                name="name"
+                type="text"
+                id="name"
+                placeholder="Enter something..."
+                size={"90%"}
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
             </div>
             <div className=" input-group">
-              <label htmlFor="imageURL" className="text2">รูปหน้าปก</label><br/>
-              <br/><UploadFile value={imageURL} onChange={(event)=>setImageURL(event.target.value)}/>
+              <label htmlFor="price" className="text1">
+                ราคา
+              </label>
+              <br />
+              <br />
+              <Input
+                name="price"
+                type="text"
+                id="price"
+                placeholder="Enter something..."
+                size={"90%"}
+                value={price}
+                onChange={(event) => setPrice(event.target.value)}
+              />
             </div>
-            <div className=" input-group">
-              <label htmlFor="exam" className="text2">อัพตัวอย่างหนังสือ</label><br/>
-              <br/><UploadFile value={imageURL} onChange={(event)=>setImageURL(event.target.value)} />
-            </div>
-            
-   
-            <div className=" input-group">
-              <label htmlFor="file" className="text2">อัพหนังสือฉบับเต็ม</label><br/>
-              <br/><UploadFile value={imageURL} onChange={(event)=>setImageURL(event.target.value)}/>
-            </div>
-            </div>
-            <Button type="submit" value="Add&nbsp;book" className="ButtonADD"></Button>
-            </div>
-            
-          </StyledAddBook>
-          
-            
-        ); 
-      }
-  export default AddBook;
+          </div>
+          <div className=" input-group">
+            <label htmlFor="imageURL" className="text2">
+              รูปหน้าปก
+            </label>
+            <br />
+            <br />
+            <UploadFile value={imageURL} onChange={onChangeImg} accept="image/jpeg, image/png, image/gif" />
+          </div>
+          <div className=" input-group">
+            <label htmlFor="exam" className="text2">
+              อัพตัวอย่างหนังสือ
+            </label>
+            <br />
+            <br />
+            <UploadFile value={exam} onChange={onChangeExam} accept="application/pdf"/>
+          </div>
+          <div className=" input-group">
+            <label htmlFor="file" className="text2">
+              อัพหนังสือฉบับเต็ม
+            </label>
+            <br />
+            <br />
+            <UploadFile id={file} onChange={onChangeFile} accept="application/pdf"/>
+          </div>
+        </div>
+        <Button
+          type="submit"
+          value="Add&nbsp;book"
+          className="ButtonADD"
+          onClick={onClick}
+        ></Button>
+         {<img src="blob:http://localhost:3000/dd95a5b1-b46a-4f53-acf4-c99dc6fb41e7" alt="รูปภาพ" />}
+      </div>
+    </StyledAddBook>
+  );
+};
+
+export default AddBook;

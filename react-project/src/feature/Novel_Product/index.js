@@ -10,11 +10,14 @@ function NovelProduct({ item, className }) {
   // book name
   // name of author
   // category
+
+
+
   return (
     <div className={className}>
       <div className="Novel">
         <div className="Novel-img-container">
-          <img className="Novel-img" src={item.file_pic} alt={item.name} />
+          {item.file_pic && <img className="Novel-img" src={item.file_pic} alt={item.name} />}
         </div>
         <div className="Novel-text">
           <Text

@@ -33,11 +33,11 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
   const { id } = useParams();
   console.log(id);
 
-  //post
-  const [formData, setFormData] = useState({
-    title: "",
-    body: "",
-  });
+  // //post
+  // const [formData, setFormData] = useState({
+  //   title: "",
+  //   body: "",
+  // });
   //Api
   const Api_Novel = `/novels/${id}`;
   const { data } = useFetch(Api_Novel);
@@ -49,6 +49,7 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
   const handleReportButtonClick = () => {
     setIsReportOpen(!isReportOpen);
   };
+
 
   // HeartClick
   const [clickedHearts, setClickedHearts] = useState([]);
@@ -158,7 +159,7 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
                   <ul>
                     <li>pdf, epub(สารบัญ) </li>
                     <li>{data.release_date}</li>
-                    <li>{data.numpage}</li>
+                    <li>{data.numpage} หน้า</li>
                     <li>{data.coverPrice} บาท</li>
                   </ul>
                 </Text>
@@ -169,20 +170,7 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
 
         <div className="synopsis">
           <Text size={16} family={"Anuphan"} weight="500">
-            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; ถึงเวลาสิ้นสุดทางเปย์ (เรื่องนี้)
-            เรียบร้อยแล้ว ใครกำลังรอบทสรุปการเงิน ความรักแสนน่ารักนี้
-            ตอนนี้เดินทางมาถึงเรียบร้อยแล้วค่ะ ถ้าเป็นเมื่อก่อน
-            เธอไม่มีทางยอมรับคำขอโทษนี้หรอก
-            ทว่าตอนนี้เธอรู้ว่าเธอไม่ได้เป็นเพียงสวี่รุ่ย
-            แต่เธอยังเป็นจู้จื่อรุ่ยด้วย จู้ไม่ใช่แค่นามสกุล
-            มันมีความหมายมากกว่านั้น มีทั้งอำนาจและความรับผิดชอบ
-            สิ่งนี้ทำให้เธอเติบโตขึ้นอย่างรวดเร็ว เหมือนกับประโยคที่ว่า
-            เป็นเด็กไม่มีเรื่องให้ต้องคิดมาก
-            แต่ผู้ใหญ่กลับมีเรื่องให้ต้องรับผิดชอบเต็มไปหมด
-            มาถึงบทสรุปและภารกิจยากระดับสูงสุดภารกิจสุดท้ายของสวี่รุ่ย
-            ที่ต้องใช้เงินหนึ่งหมื่นล้านให้หมดโดยไม่เหลือทรัพย์สินใดๆ ไว้
-            ภารกิจนี้จะผ่านไปได้ด้วยดีไหม ลั่วหานจะอยู่เคียงข้างให้กำลังใจยังไง
-            และสุดท้ายเจ้าระบบที่อยู่ด้วยกันมาตลอดจะอยู่หรือไป มาลุ้นกัน
+            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {data.description}
           </Text>
         </div>
 
