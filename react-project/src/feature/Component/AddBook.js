@@ -99,7 +99,6 @@ const AddBook = (className) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState("");
 
-
   // function onSubmit(event) {
   //   event.preventDefault();
   //   AddBook({ name, type, imageURL, price, exam, file });
@@ -114,11 +113,7 @@ const AddBook = (className) => {
       console.log("ประเภทไฟล์:", selectedFile.type);
       console.log("ขนาดไฟล์ (bytes):", selectedFile.size);
 
-      // สร้าง URL ของไฟล์ภาพ
-      const file = URL.createObjectURL(selectedFile);
-
-      // คุณสามารถดำเนินการอื่น ๆ กับไฟล์ที่เลือกได้ที่นี่
-      setFile(file);
+      setFile(selectedFile.name);
     }
   };
   const onChangeImg = (e) => {
@@ -130,11 +125,7 @@ const AddBook = (className) => {
       console.log("ประเภทไฟล์:", selectedFile.type);
       console.log("ขนาดไฟล์ (bytes):", selectedFile.size);
 
-       // สร้าง URL ของไฟล์ภาพ
-       const imageURL = URL.createObjectURL(selectedFile);
-
-      // กำหนดค่า imageURL เพื่อแสดงรูปภาพในอินเตอร์เฟซ
-      setImageURL(imageURL);
+      setImageURL(selectedFile.name);
     }
   };
   const onChangeExam = (e) => {
@@ -146,39 +137,38 @@ const AddBook = (className) => {
       console.log("ประเภทไฟล์:", selectedFile.type);
       console.log("ขนาดไฟล์ (bytes):", selectedFile.size);
 
-      // สร้าง URL ของไฟล์ภาพ
-      const exam = URL.createObjectURL(selectedFile);
-
-      // คุณสามารถดำเนินการอื่น ๆ กับไฟล์ที่เลือกได้ที่นี่
-      setExam(exam);
-      console.log(exam)
+      setExam(selectedFile.name);
     }
   };
-  const onClick = () => {
-    console.log(file);
-    console.log(exam);
-    console.log(imageURL);
-      // สร้างฟังก์ชันสำหรับการส่งคำขอ POST
-      const postDataToServer = async () => {
-        try {
-          const url = "/novels"; // แทนที่ด้วย URL ของเซิร์ฟเวอร์ที่คุณต้องการ
-          const dataToSend = { name: name, price: price,file_pic:imageURL,file_real: file,file_test:exam,category:type}; // แทนที่ด้วยข้อมูลที่คุณต้องการส่ง
-  
-          const response = await axios.post(url, dataToSend); 
-  
-          // อัปเดตสถานะเพื่อแสดงข้อมูลที่ได้จากเซิร์ฟเวอร์
-          setData(response.data);
-          console.log("คำขอ POST สำเร็จ:", response.data);
-        } catch (error) {
-          console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST:", error);
-        }
-      };
-  
-      // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST เมื่อคอมโพเนนต์ถูกโหลด
-      postDataToServer();
+  const onClick = async () => {
+    // สร้างฟังก์ชันสำหรับการส่งคำขอ POST
+    const postDataToServer = async () => {
+      try {
+        const url = "/novels"; // แทนที่ด้วย URL ของเซิร์ฟเวอร์ที่คุณต้องการ
+        const dataToSend = {
+          name: name,
+          price: price,
+          file_pic: imageURL,
+          file_real: file,
+          file_test: exam,
+          category: type,
+        }; // แทนที่ด้วยข้อมูลที่คุณต้องการส่ง
+
+        const response = await axios.post(url, dataToSend);
+
+        // อัปเดตสถานะเพื่อแสดงข้อมูลที่ได้จากเซิร์ฟเวอร์
+        setData(response.data);
+        console.log("คำขอ POST สำเร็จ:", response.data);
+      } catch (error) {
+        console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST:", error);
+      }
+    };
+
+    // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST เมื่อคอมโพเนนต์ถูกโหลด
+    postDataToServer();
   };
   useEffect(() => {
-    console.log("ค่า file ถูกอัปเดต:", file,exam,imageURL);
+    console.log("ค่า file ถูกอัปเดต:", file, exam, imageURL);
   }, [file]);
 
   return (
@@ -291,7 +281,11 @@ const AddBook = (className) => {
             </label>
             <br />
             <br />
-            <UploadFile value={imageURL} onChange={onChangeImg} accept="image/jpeg, image/png, image/gif" />
+            <UploadFile
+              value={imageURL}
+              onChange={onChangeImg}
+              accept="image/jpeg, image/png, image/gif"
+            />
           </div>
           <div className=" input-group">
             <label htmlFor="exam" className="text2">
@@ -299,7 +293,11 @@ const AddBook = (className) => {
             </label>
             <br />
             <br />
-            <UploadFile value={exam} onChange={onChangeExam} accept="application/pdf"/>
+            <UploadFile
+              value={exam}
+              onChange={onChangeExam}
+              accept="application/pdf"
+            />
           </div>
           <div className=" input-group">
             <label htmlFor="file" className="text2">
@@ -307,7 +305,11 @@ const AddBook = (className) => {
             </label>
             <br />
             <br />
-            <UploadFile id={file} onChange={onChangeFile} accept="application/pdf"/>
+            <UploadFile
+              id={file}
+              onChange={onChangeFile}
+              accept="application/pdf"
+            />
           </div>
         </div>
         <Button
@@ -316,7 +318,12 @@ const AddBook = (className) => {
           className="ButtonADD"
           onClick={onClick}
         ></Button>
-         {<img src="blob:http://localhost:3000/dd95a5b1-b46a-4f53-acf4-c99dc6fb41e7" alt="รูปภาพ" />}
+        {
+          <img
+            src="blob:http://localhost:3000/dd95a5b1-b46a-4f53-acf4-c99dc6fb41e7"
+            alt="รูปภาพ"
+          />
+        }
       </div>
     </StyledAddBook>
   );
