@@ -186,9 +186,7 @@ const Navbar = ({ onSearchResults }) => {
           </div>
           <ul class="navigation">
             <li class="parent">
-              <a class="link" href="#">
-                Home
-              </a>
+              <Link to={`/home`}>Home</Link>
             </li>
             <Search
               onSearchResults={onSearchResults}
@@ -196,9 +194,7 @@ const Navbar = ({ onSearchResults }) => {
               heightSize="20px"
             />
             <li class="parent">
-              <a class="link" href="#">
-                Basket
-              </a>
+              <Link to={`/basket`}>Basket</Link>
             </li>
             <li class="parent">
               <a class="link" href="#">
