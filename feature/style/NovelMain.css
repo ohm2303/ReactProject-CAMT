@@ -1,0 +1,34 @@
+ /* .Novel__Product{
+    display: flex;
+    flex-wrap: wrap;
+  
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    
+    text-align: center;
+    padding-left: 2rem;
+}
+li{
+    display: flex;
+    flex-wrap: wrap;
+} */
+/*
+.Novel-img{
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+.Novel{
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid green;
+    margin: 2rem;
+}
+.novel_main{
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 1300px;
+} */
