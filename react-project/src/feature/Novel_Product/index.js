@@ -41,7 +41,7 @@ function NovelProduct({ item, className }) {
             <div className="num-rating">{item.rating} Rating</div>
           </div>
           <div className="price">
-            <Text size={15} family={"Anuphan"} weight="600">560 บาท</Text>
+            <Text size={15} family={"Anuphan"} weight="600" color="#666666">560 บาท</Text>
           </div>
         </div>
       </div>

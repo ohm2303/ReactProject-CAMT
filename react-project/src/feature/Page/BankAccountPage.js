@@ -10,7 +10,6 @@ const BankAccountPage = ({ className }) => {
   return (
     <div className={className}>
       <div className="total-content">
-      <Navbar />
         <Text size={40} weight="bold"  family={"Anuphan"} >
           The book-buster
         </Text>
