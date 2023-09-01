@@ -4,11 +4,12 @@ import Navbar from "../Component/Navbar";
 import SelectForPay from "../SubComponent/SelectForPay";
 import { useState,useEffect } from "react";
 import Load from "../SubComponent/Load";
+
  const Busket =() =>{
 const [load,setLoad] = useState(true)
 
   const [content, setContent] = useState([]);
-  useEffect( () => {
+  const reloadContent = async () =>{
     fetch((`${process.env.REACT_APP_API_PREME}/api/user/basket/1`),{    
       method:"GET",                                     
   })
@@ -16,10 +17,13 @@ const [load,setLoad] = useState(true)
   .then(data=>{ 
     setContent([])
     data.forEach(element => {
-      setContent(old => [...old, <div style={{marginTop: "10px"}}><SelectForPay keys={element.name} props={element} setContent={setContent} /></div>])
+      setContent(old => [...old, <div style={{marginTop: "10px"}}><SelectForPay keys={element.name} props={element} setContent={reloadContent} /></div>])
     });
     setLoad(false)
   })
+  }
+  useEffect( () => {
+    reloadContent()
   },[])
 
   return   (
