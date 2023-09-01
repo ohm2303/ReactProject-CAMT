@@ -213,4 +213,7 @@ const Navbar = ({ onSearchResults }) => {
   );
 };
 
-export default Navbar;
+
+
+
+export default Navbar;  

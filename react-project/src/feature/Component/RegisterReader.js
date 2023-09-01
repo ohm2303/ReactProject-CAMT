@@ -6,7 +6,6 @@ import Text from "../SubComponent/Text";
 import Button from "../SubComponent/Button";
 import CheckBoxCircle from "../SubComponent/CheckBoxCircle";
 
- 
 const RegisterReader = ({ isOpen, className }) => {
   const [popupOpen, setPopupOpen] = useState(isOpen);
 
@@ -282,8 +281,4 @@ transform: translateY(0);
 }
 `;
 
-/*
-Kanokwan Mahakham
-วิธีกรใช้
-<Report isOpen={true} />
-*/
+
