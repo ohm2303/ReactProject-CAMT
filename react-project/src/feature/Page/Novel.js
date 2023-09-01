@@ -81,8 +81,8 @@ const NovelPage = ({ className, idNovel,handlePrefixChange }) => {
 
           <div className="content">
             <div className="photo-novel">
-              <img src={photoNovel} alt=" " />
-              <Promotion discountPercentage={38} fullPrice={300} />
+              <img src={data.file_pic} alt=" " />
+              <Promotion discountPercentage={data.promotion} fullPrice={data.price} />
             </div>
 
             <div className="detail-left-box">
@@ -97,19 +97,19 @@ const NovelPage = ({ className, idNovel,handlePrefixChange }) => {
                 <Text size={15} family={"Anuphan"} weight="500">
                   <ul>
                     <li>{data.author}</li>
-                    <li>นิยายรัก </li>
-                    <li>300 บาท </li>
+                    <li>{data.category}</li>
+                    <li>{data.price} บาท </li>
                   </ul>
                 </Text>
               </div>
               <div className="total-button">
                 <Button value="ทดลองอ่าน" className="button-buy" />
-                <Button value="ซื้อ 300 บาท" className="button-buy" />
+                <Button value={`ซื้อ ${data.price} บาท`} className="button-buy" />
               </div>
 
               <div className="rating">
                 <Heart heartCount={4.96} />
-                <div className="num-rating">560 Rating</div>
+                <div className="num-rating">{data.rating} Rating</div>
               </div>
 
               <div className="button-icon">
@@ -120,21 +120,9 @@ const NovelPage = ({ className, idNovel,handlePrefixChange }) => {
                   className="icon-button"
                 />
                 <ButtonIcon
-                  defaultImg={heartDefault}
-                  hoveredImg={heartHovered}
-                  text={"ติดตาม"}
-                  className="icon-button"
-                />
-                <ButtonIcon
                   defaultImg={saveDefault}
                   hoveredImg={saveHovered}
                   text={"บันทึก"}
-                  className="icon-button"
-                />
-                <ButtonIcon
-                  defaultImg={shareDefault}
-                  hoveredImg={shareHovered}
-                  text={"แชร์"}
                   className="icon-button"
                 />
                 <div className="report">
@@ -158,9 +146,9 @@ const NovelPage = ({ className, idNovel,handlePrefixChange }) => {
                 <Text size={15} family={"Anuphan"} weight="500">
                   <ul>
                     <li>pdf, epub(สารบัญ) </li>
-                    <li>23 กรกฎาคม 2566</li>
-                    <li>765 หน้า(116,485คำ)</li>
-                    <li>370 บาท(ประหยัด 38%)</li>
+                    <li>{data.release_date}</li>
+                    <li>{data.numpage}</li>
+                    <li>{data.price} บาท(ประหยัด {data.promotion}%)</li>
                   </ul>
                 </Text>
               </div>
