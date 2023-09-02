@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import Popup from "../SubComponent/Popup";
 import { userContext } from "../../App";
+import PropTypes from 'prop-types';
 
 const LoginPopup = styled.div`
   font-family: "Anuphan", sans-serif;
@@ -14,7 +15,7 @@ const LoginPopup = styled.div`
   border-radius: 20px;
   padding: 30px;
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
@@ -258,5 +259,9 @@ if(data=="success"){
     </>
   );
 }
+
+Login.propType = {
+  isOpen: PropTypes.bool.isRequired,
+};
 
 export default Login;

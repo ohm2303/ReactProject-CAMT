@@ -6,6 +6,7 @@ import UploadFile from "../SubComponent/UploadFile";
 import Button from "../SubComponent/Button";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import PropTypes from 'prop-types';
 
 const StyledAddBook = styled.div`
   .total-content {
@@ -327,6 +328,10 @@ const AddBook = (className) => {
       </div>
     </StyledAddBook>
   );
+};
+
+AddBook.propType = {
+  className: PropTypes.string,
 };
 
 export default AddBook;

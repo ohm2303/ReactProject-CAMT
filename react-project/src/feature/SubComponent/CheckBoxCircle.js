@@ -1,5 +1,6 @@
 import React from 'react'
 import '../style/CheckBoxCircle.css'
+import PropTypes from "prop-types";
 
 export default function CheckBoxCircle(props){
     const {value,textBox,valueOfText,onClick} = props
@@ -13,3 +14,10 @@ export default function CheckBoxCircle(props){
     </div>
   )
 }
+
+CheckBoxCircle.propTypes = {
+  value: PropTypes.string.isRequired,
+  textBox: PropTypes.string.isRequired,
+  valueOfText: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+};

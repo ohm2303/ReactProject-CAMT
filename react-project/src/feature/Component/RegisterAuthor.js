@@ -7,6 +7,7 @@ import Text from "../SubComponent/Text";
 import styled from "styled-components";
 import axios from "axios";
 import useFetch from "../Hook/useFetch";
+import PropTypes from "prop-types";
 // create register for author
 
 function RegisterArthor({ isOpen, className }) {
@@ -333,6 +334,11 @@ function RegisterArthor({ isOpen, className }) {
   );
 }
 
+RegisterArthor.propType = {
+  className: PropTypes.string,
+  isOpen:PropTypes.bool.isRequired,
+};
+
 export default styled(RegisterArthor)`
   .popup-box {
     position: fixed;
@@ -344,6 +350,7 @@ export default styled(RegisterArthor)`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top:50px;
   }
 
   .box {

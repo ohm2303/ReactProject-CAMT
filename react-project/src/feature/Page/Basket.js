@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Text from "../SubComponent/Text";
 import Navbar from "../Component/Navbar";
 import SelectForPay from "../SubComponent/SelectForPay";
-import { useState,useEffect,useContext } from "react";
+import { useState,useEffect } from "react";
 import Load from "../SubComponent/Load";
 import {userContext} from "../../App";
- const Busket =() =>{
+import axios from "axios";
+const Busket =() =>{
   const [load,setLoad] = useState(true)
   const [content, setContent] = useState([]);
   const {dataCon, setDataCon}= useContext(userContext)
-  
+  const [buy,setBuy]=useState()
   
     const reloadContent = async () =>{
       fetch((`${process.env.REACT_APP_API_PREME}/api/user/basket/${dataCon.id}`),{    
@@ -19,7 +20,7 @@ import {userContext} from "../../App";
     .then(data=>{ 
       setContent([])
       data.forEach(element => {
-        setContent(old => [...old, <div style={{marginTop: "10px"}}><SelectForPay keys={element.name} props={element} setContent={reloadContent} /></div>])
+        setContent(old => [...old, <div style={{marginTop: "10px"}}><SelectForPay keys={element.name} props={element} setContent={reloadContent} checked={setBuy(element.id)}/></div>])
       });
       setLoad(false)
     })
@@ -27,9 +28,7 @@ import {userContext} from "../../App";
     useEffect( () => {
       reloadContent()
     },[])
-    console.log("from busket")
-    console.log(dataCon.displayname, dataCon.id, dataCon.email)
-
+    
   return   (
     <>
 
@@ -55,7 +54,6 @@ import {userContext} from "../../App";
     }
     
     </>
-
   );
 }
 

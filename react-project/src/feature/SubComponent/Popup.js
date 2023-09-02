@@ -3,6 +3,7 @@ import ButtonIcon from "./ButtonIcon";
 import cross from "../../pics/Icon/cross-circle.png";
 import cross1 from "../../pics/Icon/cross-circle (1).png";
 import styled from "styled-components";
+import PropTypes from 'prop-types';
 
 const Popup = (props,{className}) => {
   const handleClosePopup = () => {
@@ -25,6 +26,11 @@ const Popup = (props,{className}) => {
     </div>
     </div>
   );
+};
+
+Popup.propTypes = {
+  className: PropTypes.string,
+  props:PropTypes.any,
 };
 
 //ส่วนนี้ไปแก้ css ของแต่ละหน้าได้เลยไม่ต้องมาแก้ที่นี้นะ

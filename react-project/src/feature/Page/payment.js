@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components"; // Import styled-components
 import Text from "../SubComponent/Text";
 import QR from "../../pics/payment/Picture1.png";
+import PropTypes from "prop-types";
 
 const PaymentPage = ({ className }) => {
     return (
@@ -43,6 +44,9 @@ const PaymentPage = ({ className }) => {
   );
 };
 
+PaymentPage.propType = {
+  className: PropTypes.string,
+};
 
 export default styled(PaymentPage)`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");

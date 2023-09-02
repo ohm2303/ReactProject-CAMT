@@ -11,47 +11,50 @@ const GlobalStyle = createGlobalStyle`
   
 }
 //Button
-.ButtonNormal{
-  border-radius: 30px;
-  border: none;
-  padding: 1.3%;
 
-  background-image: linear-gradient(
-    to right,
-    #57646d,
-    #edf0f1,
-    #0d3142 100%,
-    #20385B 200%
-  );
-  text-shadow: 0 1px 1px #333;
-  transition: all 0.25s;
-  transform: scale(0.8);
-  background-position-x: 0%;
-  background-size: 300%;
-  height: 5.5vh;
 
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-bottom-width:3px;
-  border-bottom-color: #000000;
-  border-bottom-style:solid;
-  transform: scale(0.9);
-}
-.ButtonNormal:hover{
-  cursor: pointer;
-  background-position-x: 100%;
-  transform: scale(1.05);
-}
-.iconInButtons{
-  display:block;  
-}
-    .textInButtons{
-      padding-left: 15%;
-      margin-top: -5%;
-      font-size:20px;
+    .ButtonNormal {
+      display: flex;
+      justify-content: center;
+      margin-left: auto;
+      font-size: 15px;
+      background-color: black; /* Change background color */
+      border-radius: 30px;
+      box-sizing: border-box;
+      color: white; /* Change text color to black */
+      border: none;
+      padding: 5px 20px;
+      cursor: pointer;
+      transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      align-items: center;
+      font-family: Anuphan
     }
+    
+    .ButtonNormal:hover {
+      color: white; /* Change text color to white */
+      background-color: black; /* Change background color to black */
+      box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+      transform: translateY(-2px);
+    }
+    
+    .ButtonNormal:active {
+      box-shadow: none;
+      transform: translateY(0);
+    }
+
+    .iconInButtons{
+      display:block;  
+    }
+        .textInButtons{
+          padding-left: 15px;
+          padding:10px;
+          margin-top: -5%;
+          font-size:20px;
+        }
+    
 
 // selectForpay
 .cssB{
@@ -200,9 +203,11 @@ border: 1.5px solid #000000;
 .busketPage{
 display: flex;
 flex-direction: column;
+margin-top:0px;
 }
  
 .textS{
+    
     font-family:"Anuphan";
     color: gray;
     font-weight: 400;

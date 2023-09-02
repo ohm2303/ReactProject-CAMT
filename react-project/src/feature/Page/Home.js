@@ -4,6 +4,7 @@ import NovelMain from "../Component/NovelMain";
 import OptionMain from "../Component/OptionMain";
 import Navbar from "../Component/Navbar";
 import useFetch from "../Hook/useFetch";
+import PropTypes from "prop-types";
 
 function Home({data,searchResults}) {
 
@@ -11,7 +12,6 @@ function Home({data,searchResults}) {
     <>
       
       <PhotoSlide />
-      <OptionMain />
       {data && data.length > 0 ? (
         <NovelMain data={searchResults.length > 0 ? searchResults : data} />
       ) : (
@@ -20,5 +20,10 @@ function Home({data,searchResults}) {
     </>
   );
 }
+
+Home.propType = {
+  searchResults: PropTypes.func,
+  data: PropTypes.array,
+};
 
 export default Home;

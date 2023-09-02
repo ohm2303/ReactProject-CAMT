@@ -3,9 +3,9 @@ import GrayBackground from './GrayBackground';
 import './Bill.css'
 import Button from './Button';
 
-export default function Bill(props){
+export default function Bill(css){
   
-    const {value , functionBtn,css, style,icon} = props
+    
   return (
     <>
     <GrayBackground css="bk">
@@ -15,3 +15,7 @@ export default function Bill(props){
     </>
   );
 }
+
+Bill.propType = {
+  css: PropTypes.string,
+};

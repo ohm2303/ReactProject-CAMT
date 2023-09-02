@@ -4,6 +4,7 @@ import Text from "../SubComponent/Text";
 import Input from "../SubComponent/Input"; // Import the Input component
 import Navbar from "../Component/Navbar";
 import Button from "../SubComponent/Button";
+import PropTypes from "prop-types";
 
 
 const BankAccountPage = ({ className }) => {
@@ -79,6 +80,10 @@ const BankAccountPage = ({ className }) => {
         </div>
     </div>
   );
+};
+
+BankAccountPage.propType = {
+  className: PropTypes.string,
 };
 
 export default styled(BankAccountPage)`

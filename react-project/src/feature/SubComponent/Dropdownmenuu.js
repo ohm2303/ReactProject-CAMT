@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { userContext } from "../../App";
+import PropTypes from "prop-types";
 import {
   faCoins,
   faLayerGroup,
@@ -32,7 +33,7 @@ function DropdownMenu(props) {
               <div className="DropdownMenu_titlepic">
                 <img
                   className="DropdownMenu_pic"
-                  src="https://static.wixstatic.com/media/b8bf36_52171394df9843e9ba121e738a377ba5~mv2.jpeg/v1/fill/w_442,h_638,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/STITCH%20HEAD%20THE%20GRAPHIC%20NOVEL%20COVER.jpeg"
+                  src={dataCon.pic}
                 />
                 <div className="DropdownMenu_icon">
                   <FontAwesomeIcon
@@ -80,5 +81,10 @@ function DropdownMenu(props) {
     </div>
   );
 }
+
+DropdownMenu.propTypes = {
+  title: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+};
 
 export default DropdownMenu;

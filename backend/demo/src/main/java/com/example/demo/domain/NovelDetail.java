@@ -48,6 +48,9 @@ public class NovelDetail {
     // table = report
     @OneToMany(mappedBy = "novel_id")
     private Set<Report> reports = new HashSet<>();
+    // table = review
+    @OneToMany(mappedBy = "id_novel")
+    private Set<Review> reviews = new HashSet<>();
 
     public NovelDetail() {
     }

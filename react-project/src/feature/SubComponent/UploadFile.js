@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 
@@ -15,6 +15,14 @@ const UploadFile = ({className,id,onChange,accept}) => {
       </div>
    );
 };
+
+UploadFile.propTypes = {
+   id: PropTypes.number,
+   onChange: PropTypes.func.isRequired,
+   className: PropTypes.string,
+   accept: PropTypes.any,
+
+ };
 export default styled(UploadFile)`
 
 

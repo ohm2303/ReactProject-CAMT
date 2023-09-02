@@ -101,4 +101,5 @@ const PhotoSlide = () => {
   );
 };
 
+
 export default PhotoSlide;

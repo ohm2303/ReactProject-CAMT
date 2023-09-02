@@ -83,7 +83,7 @@ exports.checkCokkie = async (req,res)=>{
   }
   try{
     connection.execute(
-      'SELECT display_name,id,email FROM user_detail where id = ?;',[req.cookies.id],
+      'SELECT pic,display_name,id,email FROM user_detail where id = ?;',[req.cookies.id],
         (err, results, fields) => {
           if(results.length > 0){
             res.json(results);

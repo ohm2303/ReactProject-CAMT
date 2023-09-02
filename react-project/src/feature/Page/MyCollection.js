@@ -18,25 +18,6 @@ const MyCollection = ({ className }) => {
           </Text>
         </div>
 
-        <div className="MyCollection">
-          <div className="MyCollection_title">
-            <Text size={40} family={"Anuphan"} weight="500">
-              My collection
-            </Text>
-          </div>
-          <div className="Novel_Like">
-            {novels.length > 0 ? (
-              <ul className="Novel__Product">
-                {novels.map((novel) => (
-                  <NovelProduct key={novel.id} item={novel}></NovelProduct>
-                ))}
-              </ul>
-            ) : (
-              <div className="load">Loading Novels....</div>
-            )}
-          </div>
-        </div>
-
         <div className="Ordered_Books">
         <div className="Ordered_Books_title">
             <Text size={40} family={"Anuphan"} weight="blod">

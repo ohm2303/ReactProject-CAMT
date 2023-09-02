@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Dropdown from "../SubComponent/Dropdown";
 import styled from "styled-components";
-
+import PropTypes from "prop-types";
 
 //create function option
 function Option({ items, depthLevel ,className}) {
@@ -33,6 +33,12 @@ function Option({ items, depthLevel ,className}) {
 
   const closeDropdown = () => {
     dropdown && setDropdown(false);
+  };
+
+  Option.propType = {
+    items: PropTypes.array.isRequired,
+    depthLevel: PropTypes.number.isRequired,
+    className: PropTypes.string,
   };
 
   return (

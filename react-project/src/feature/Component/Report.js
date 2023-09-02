@@ -7,6 +7,7 @@ import Button from "../SubComponent/Button";
 import Text from "../SubComponent/Text";
 import styled from "styled-components";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 const Report = ({ isOpen,className }) => {
   const [popupOpen, setPopupOpen] = useState(isOpen);
@@ -143,6 +144,10 @@ const Report = ({ isOpen,className }) => {
     </div>
   );
 };
+Report.propType = {
+  className: PropTypes.string,
+  isOpen:PropTypes.bool.isRequired,
+};
 
 export default styled(Report)`
 .popup-box {
@@ -248,6 +253,8 @@ export default styled(Report)`
     padding: 8px;
   }
 `;
+
+
 
 /*
 Kanokwan Mahakham

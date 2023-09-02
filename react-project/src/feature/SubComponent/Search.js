@@ -43,6 +43,8 @@ const Search = ({ size, onSearchResults }) => {
     setPrefix(event.target.value);
   };
 
+  
+
   return (
     <div>
       <input

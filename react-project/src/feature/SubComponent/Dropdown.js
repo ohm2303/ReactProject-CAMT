@@ -1,6 +1,7 @@
 import React from "react";
 import Option from "../Component/Option";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Dropdown = ({ submenus, dropdown, depthLevel,className }) => {
   depthLevel = depthLevel + 1;
@@ -17,6 +18,13 @@ const Dropdown = ({ submenus, dropdown, depthLevel,className }) => {
     );
   };
   
+  Dropdown.propTypes = {
+    submenus: PropTypes.object.isRequired,
+    dropdown: PropTypes.object.isRequired,
+    depthLevel: PropTypes.number.isRequired,
+    className: PropTypes.string,
+  };
+
   export default styled(Dropdown)`
   .dropdown {
   display: none;

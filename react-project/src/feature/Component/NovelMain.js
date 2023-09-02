@@ -5,6 +5,7 @@ import novelData from "../../asset/novelData";
 import "../style/NovelMain.css";
 import { styled } from "styled-components";
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
 //create function Novel Main
 function NovelMain({ data, className }) {
   return (
@@ -27,6 +28,12 @@ function NovelMain({ data, className }) {
     </div>
   );
 }
+
+NovelMain.propType = {
+  data: PropTypes.object.isRequired,
+  className: PropTypes.string.isRequired,
+};
+
 export default styled(NovelMain)`
   .novel_main{
     border: 1px solid green;
@@ -34,7 +41,6 @@ export default styled(NovelMain)`
   .Novel__Product {
     display: flex;
     flex-wrap: wrap;
-
     list-style-type: none;
     padding: 0;
     margin: 0 auto;

@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 
 //create function Text
 function Text({size,children,family,weight,color}){
@@ -14,6 +14,15 @@ function Text({size,children,family,weight,color}){
         <p style={style}>{children}</p>
     );
 }
+
+Text.propTypes = {
+    size: PropTypes.number,
+    children: PropTypes.string.isRequired,
+    family: PropTypes.string,
+    weight: PropTypes.number,
+    color: PropTypes.string,
+
+  };
 
 //export
 export default Text;

@@ -37,6 +37,9 @@ public class UserDetail {
     @OneToMany(mappedBy = "seller_id")
     private Set<Bank> banks = new HashSet<>();
 
+    @OneToMany(mappedBy = "id_user")
+    private Set<Review> reviews = new HashSet<>();
+
     public UserDetail(){}
 
     public UserDetail(Long id, String email, String username, String password, String gender, String display_name,int level ,String ID_card_number) {

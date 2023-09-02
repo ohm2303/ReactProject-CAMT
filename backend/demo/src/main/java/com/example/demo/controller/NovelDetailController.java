@@ -29,8 +29,12 @@ public class NovelDetailController {
     @PostMapping("/novels")
     public ResponseEntity<String> createNovel(@RequestBody NovelDetail novel) {
         novel.setRelease_date(LocalDateTime.now());
+        if(novel.getPromotion() == null){
+            novel.setPromotion("0");
+        }
+        novel.setCoverPrice(novel.getPrice()-(novel.getPrice()*Integer.parseInt(novel.getPromotion())/100));
         novelDetailRepository.save(novel);
-        return ResponseEntity.ok("novel created");
+        return ResponseEntity.ok("novel created"+novel.getCoverPrice());
     }
 
     // get novel all

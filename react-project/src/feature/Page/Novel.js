@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-
+import { userContext } from "../../App";
 //Component
 import Text from "../SubComponent/Text";
 import Button from "../SubComponent/Button";
@@ -27,10 +27,15 @@ import shareHovered from "../../pics/Icon/shareHovered.png";
 import likeDefault from "../../pics/Icon/likeDefault.png";
 import likeHovered from "../../pics/Icon/likeHovered.png";
 import { useParams } from "react-router-dom";
-
+import axios from "axios";
 const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
+
+  const {dataCon, setDataCon} = useContext(userContext)
+  const [review,setReview]=useState([])
+  const [loading,setLoading]=useState(true)
   // pull id from novel
   const { id } = useParams();
+ 
   console.log(id);
 
   // //post
@@ -73,6 +78,62 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
   const photoNovel = require("../../pics/Noval/นางมาร.jpeg");
   const editIcon = require("../../pics/Icon/edit.png");
   const user = require("../../pics/Icon/circle-user.png");
+
+  //post
+
+  const reviewSubmit = () => {
+    console.log(inputReview)
+    const heart = clickedHearts.length
+    console.log(heart)
+    console.log(dataCon.id)
+    console.log(heart)
+    const postDataToServerView = async () => {
+      try {
+        const url = `/reviews/${dataCon.id}/${id}`;
+        const dataToSan = {
+          details:inputReview,
+          num_like:heart
+        };
+        const response = await axios.post(url, dataToSan);
+
+        console.log("คำขอ POST สำเร็จ:", response.data);
+      } catch (error) {
+        console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST ข้อมูลธนาคาร:", error);
+      }
+    };
+
+    // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST ข้อมูลธนาคาร
+    postDataToServerView();
+  }
+
+  const basketSubmit = () => {
+    const postDataToServerOrder = async () => {
+      try {
+        const url = `/orders/basket/${dataCon.id}/${id}`;
+        const response = await axios.post(url);
+
+        console.log("คำขอ POST สำเร็จ:", response.data);
+      } catch (error) {
+        console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST ข้อมูลธนาคาร:", error);
+      }
+    };
+
+    // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST ข้อมูลธนาคาร
+    postDataToServerOrder();
+  }
+
+  useEffect(()=> {
+    fetch((`${process.env.REACT_APP_API_PREME}/api/user/Review/${id}`),{    
+      method:"GET",                                     
+  })
+  .then(response => response.json())
+  .then(data=>{ 
+  setReview(data)
+  setLoading(false)
+  console.log("review")
+  console.log(dataCon)
+  })
+},[loading])
 
   console.log(data.author);
   return (
@@ -130,6 +191,7 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
                   hoveredImg={basketHovered}
                   text={"ตระกร้า"}
                   className="icon-button"
+                  onClick={basketSubmit}
                 />
                 <ButtonIcon
                   defaultImg={saveDefault}
@@ -181,7 +243,7 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
           <div className="user">
             <img src={user}></img>
             <Text size={18} family={"Anuphan"} weight="500">
-              Kanokwan Mahakham
+             {dataCon.displayname}
             </Text>
           </div>
           <div className="writing-review">
@@ -207,10 +269,10 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
                 placeholder="เริ่มการรีวิวได้เลยจ้า"
                 value={inputReview}
                 onChange={handleInputChange}
-                width="703px"
+                width="622.8px"
               />
               <div className="button-review">
-                <Button value="ส่งรีวิว" />
+                <Button value="ส่งรีวิว" onClick={reviewSubmit} />
               </div>
             </div>
           </div>
@@ -220,20 +282,21 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
           <Text size={30} family={"Anuphan"} weight="600">
             รีวิวทั้งหมด
           </Text>
+          {review.map((e)=>
           <div className="box-reviews">
             <div className="user-review">
               <img src={user}></img>
               <div className="heart-user-review">
                 <Text size={15} family={"Anuphan"} weight="500">
-                  Kanokwan Mahakham
+                {e.display_name}
                 </Text>
-                <Heart heartCount={3} />
+                <Heart heartCount={e.num_like} />
               </div>
             </div>
 
             <div className="details-review">
               <Text size={15} family={"Anuphan"} weight="500">
-                หน้าอ่านมากค่ะ
+              { e.details}
               </Text>
             </div>
             <div className="like">
@@ -243,10 +306,11 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
                 className="icon-button"
               />
               <Text size={12} family={"Anuphan"} weight="500">
-                รีวิวเมื่อ 1 วันที่ผ่านมา
+              {e.display_name}
               </Text>
             </div>
           </div>
+           )}
         </div>
       </div>
     </div>
@@ -534,10 +598,7 @@ export default styled(NovelPage)`
     line-height: 3;
     margin: 50px;
   }
-  .give-heart {
-    display: flex;
-    align-items: center;
-  }
+  
 
   /*review*/
   .review {
@@ -550,7 +611,7 @@ export default styled(NovelPage)`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #2b4560;
+    background-color: black;
   }
   .heart-icon {
     width: 30px;
@@ -581,6 +642,7 @@ export default styled(NovelPage)`
   .button-review {
     display: flex;
     justify-content: flex-end;
+    
   }
 
   .button-review .ButtonNormal {
@@ -631,6 +693,7 @@ export default styled(NovelPage)`
   .button-review .ButtonNormal:active {
     box-shadow: none;
     transform: translateY(0);
+    color:black;
   }
 
   .user {
@@ -648,11 +711,16 @@ export default styled(NovelPage)`
   .total-review {
     width: 50%;
     margin-bottom: 30px;
+    
   }
   .box-reviews {
     width: 100%;
     height: fit-content;
     background-color: #e1e7e0;
+    margin-bottom: 10px; /* เพิ่มระยะห่างด้านล่างของแต่ละรีวิว */
+    border: 1px solid #ccc; /* เพิ่มขอบรอบ */
+    padding: 10px; /* เพิ่มระยะห่างด้านในขอบรอบ */
+    
   }
   .user-review {
     display: flex;

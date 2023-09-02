@@ -7,6 +7,7 @@ import Search from "../SubComponent/Search";
 import { Link } from "react-router-dom";
 import {userContext} from "../../App";
 import DropdownMenuu from "../SubComponent/Dropdownmenuu";
+import PropTypes from 'prop-types';
 
 const StyledNavbar = styled.header`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
@@ -231,5 +232,8 @@ const Navbar = ({ onSearchResults }) => {
 
 
 
+Navbar.propType = {
+  onSearchResults: PropTypes.func.isRequired,
+};
 
 export default Navbar;  

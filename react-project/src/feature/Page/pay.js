@@ -3,7 +3,7 @@ import styled from "styled-components"; // Import styled-components library
 import Navbar from "../Component/Navbar"; // Replace with actual path
 import Text from "../SubComponent/Text";
 import Button from '../SubComponent/Button';
-
+import PropTypes from "prop-types";
 
 const PayPage = ({ className }) => {
   return (
@@ -49,6 +49,9 @@ const PayPage = ({ className }) => {
     </div>
   );
 };
+PayPage.propType = {
+  className: PropTypes.string,
+};
 
 export default styled(PayPage)`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
@@ -73,7 +76,7 @@ export default styled(PayPage)`
 
   .summary-item {
     margin-top: 5px;
-    font-fami
+  
   }
 
   .pay-button {

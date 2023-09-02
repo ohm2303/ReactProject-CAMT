@@ -3,6 +3,7 @@ import { menuItems } from "../../asset/menuItems";
 import Option from "../Component/Option";
 import styled from "styled-components";
 import useFetch from "../Hook/useFetch";
+import PropTypes from 'prop-types';
 
 const OptionMain = ({ className }) => {
   const Api_Novel = `/novels`;
@@ -17,6 +18,10 @@ const OptionMain = ({ className }) => {
       </ul>
     </div>
   );
+};
+
+OptionMain.propType = {
+  className: PropTypes.string,
 };
 
 export default styled(OptionMain)`

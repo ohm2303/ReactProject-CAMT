@@ -6,6 +6,7 @@ import Text from "../SubComponent/Text";
 import Button from "../SubComponent/Button";
 import CheckBoxCircle from "../SubComponent/CheckBoxCircle";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 const RegisterReader = ({ isOpen, className }) => {
   const [popupOpen, setPopupOpen] = useState(isOpen);
@@ -212,6 +213,11 @@ return (
 );
 };
 
+RegisterReader.propType = {
+  className: PropTypes.string,
+  isOpen:PropTypes.bool.isRequired,
+};
+
 export default styled(RegisterReader)`
 .popup-box {
   position: fixed;
@@ -223,6 +229,7 @@ export default styled(RegisterReader)`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top:50px;
 }
 
 .box {
@@ -234,6 +241,7 @@ export default styled(RegisterReader)`
   max-height: 70%; /* กำหนดสูงสุดของ Popup */
   overflow: auto;
   position: relative;
+
 }
 
 .icon-buttonPopup {

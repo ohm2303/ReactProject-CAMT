@@ -23,7 +23,7 @@ const userContext = React.createContext();
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
-  const [dataCon, setDataCon] = useState({displayname :"", id:"", email:""})
+  const [dataCon, setDataCon] = useState({displayname :"", id:"", email:"",pic:""})
   const [isLoading, setLoading] = useState(true)
 
   const handlePrefixChange = (dataArray) => {
@@ -44,7 +44,7 @@ const App = () => {
       .then(response => response.json())
       .then(data => {
         if(data.status == "Failed") {
-          setDataCon({displayname :"", id:"", email:""})
+          setDataCon({displayname :"", id:"", email:"",pic:""})
           setLoading(false)
           return
         }
