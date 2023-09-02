@@ -16,7 +16,7 @@ import Pay from "./feature/Page/pay";
 import RegisterAuthor from "./feature/Component/RegisterAuthor"
 import Login from "./feature/Component/Login"
 import Load from "./feature/SubComponent/Load";
-
+import GlobalStyle from "./feature/GlobalStyle";
 
 const userContext = React.createContext();
 
@@ -55,6 +55,7 @@ const App = () => {
   return (
     <>
     <userContext.Provider value={{dataCon,setDataCon}}>
+      <GlobalStyle/>
     {isLoading ? <Load/> : 
     <>
       <BrowserRouter>

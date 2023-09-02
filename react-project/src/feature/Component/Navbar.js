@@ -41,7 +41,6 @@ body {
 
 .navigationWrapper {
   position: relative;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 7px;
@@ -195,10 +194,12 @@ const Navbar = ({ onSearchResults }) => {
     <div>
       <StyledNavbar>
         <nav class="navigationWrapper">
-          <div class="logoWrapper">
-            <span class="logo">Logo</span>
-          </div>
           <ul class="navigation">
+          <div class="logoWrapper">
+          <li class="parent">
+          Home
+          </li>
+          </div>
             <li class="parent">
               <Link to={`/`} className="link">Home</Link>
             </li>
@@ -208,10 +209,10 @@ const Navbar = ({ onSearchResults }) => {
               heightSize="20px"
             />
             <li class="parent">
-              <Link to={`/basket`} className="link">Basket</Link>
+              <Link to={`/Basket`} className="link">Basket</Link>
             </li>
             <li class="parent">
-            {dataCon.displayname !=='' ?
+            {!dataCon.displayname=='' ?
                 <div className="link" ><DropdownMenuu title={dataCon.displayname} email={dataCon.email}/></div>
                 : 
                 <div className="link" onClick={handleLoginButtonClick}>login/register</div>

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext  } from "react";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { userContext } from "../../App";
 import {
   faCoins,
   faLayerGroup,
@@ -9,6 +10,11 @@ import {
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 function DropdownMenu(props) {
+  const {dataCon,setDataCon} = useContext(userContext)
+  const logOut = () => {
+    document.cookie = 'id' + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    setDataCon({displayname :"", id:"", email:""})
+  }
   // const [data, setData] = useState({});
   // useEffect( () => {
   //   fetch((http://localhost:8080/users/1),{
@@ -21,7 +27,7 @@ function DropdownMenu(props) {
     <div className="DropdownMenu">
       <ul className="DropdownMenu_List">
         <li>
-          <a href="#click" className="DropdownMenu_menu">
+          <a  className="DropdownMenu_menu">
             <div className="DropdownMenu_menu-title">
               <div className="DropdownMenu_titlepic">
                 <img
@@ -36,8 +42,8 @@ function DropdownMenu(props) {
                 </div>
               </div>
               <div className="DropdownMenu_titleDetail">
-                <label>{props.title}</label>
-                <label>{props.email}</label>
+              <label>{props.title}</label>
+              <label>{props.email}</label>
               </div>
             </div>
             <ul className="DropdownMenu_menu-dropdown">
@@ -55,12 +61,14 @@ function DropdownMenu(props) {
               ) : (
                 <>
                   <li>
+                  <Link to={"/myCollection"}>
                     <FontAwesomeIcon icon={faLayerGroup} /> My Collection
+                  </Link>
                   </li>
                   <li>
                     <FontAwesomeIcon icon={faCoins} /> For Selling
                   </li>
-                  <li>
+                  <li onClick={()=>logOut()}>
                     <FontAwesomeIcon icon={faArrowRightFromBracket} /> Log Out
                   </li>
                 </>
