@@ -3,28 +3,51 @@ import Text from "../SubComponent/Text";
 import NovelProduct from "../../feature/Novel_Product";
 import novelData from "../../asset/novelData";
 import "../style/NovelMain.css";
-import axios from "axios";
-import useFetch from "../Hook/useFetch";
-
+import { styled } from "styled-components";
+import {Link} from "react-router-dom";
 //create function Novel Main
-function NovelMain() {
- const Api_Novel = "/novels";
- const {data} = useFetch(Api_Novel);
+function NovelMain({ data, className }) {
   return (
-    <div className="novel_main">
-      <Text size={25} family={'Times New Roman'}>ขายดี</Text>
-      {data.length > 0 ? (
+    <div className={className}>
+      <div className="novel_main">
+        <Text size={25} family={"Times New Roman"}>
+          ขายด
+        </Text>
+
         <ul className="Novel__Product">
           {data.map((novel) => (
-            <NovelProduct key={novel.id} item={novel}></NovelProduct>
+            <li key={novel.id}>
+              <Link to = {`/novel/${novel.id}`}>
+                <NovelProduct item={novel}></NovelProduct>
+              </Link>
+            </li>
           ))}
         </ul>
-      ) : (
-        <div className="load">Loading Novels....</div>
-      )}
+      </div>
     </div>
   );
 }
+export default styled(NovelMain)`
+  .novel_main{
+    border: 1px solid green;
+  }
+  .Novel__Product {
+    display: flex;
+    flex-wrap: wrap;
 
-//export
-export default NovelMain;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    border: 1px solid red;
+    text-align: center;
+    padding-left: 2rem;
+  }
+  li {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  a{
+    text-decoration: none;
+    color: #ffffff;
+  }
+`;

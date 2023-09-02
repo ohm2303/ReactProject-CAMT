@@ -1,15 +1,19 @@
-/* .Novel__Product{
+ /* .Novel__Product{
     display: flex;
     flex-wrap: wrap;
   
     list-style-type: none;
     padding: 0;
     margin: 0 auto;
-    border: 1px solid red;
-    width: 1300px;
+    
     text-align: center;
-    justify-content: center;
+    padding-left: 2rem;
 }
+li{
+    display: flex;
+    flex-wrap: wrap;
+} */
+/*
 .Novel-img{
     width: 200px;
     height: 250px;

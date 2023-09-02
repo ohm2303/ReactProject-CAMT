@@ -10,7 +10,7 @@ const MyCollection = ({ className }) => {
 
   return (
     <div className={className}>
-      <Nav />
+      {/* <Nav /> */}
       <div className="content">
         <div className="title">
           <Text size={50} family={"Anuphan"} weight="bold">
@@ -72,7 +72,7 @@ export default styled(MyCollection)`
   .title {
     display: flex;
     flex-direction: column;
-    justify-Content
+    /* justify-Content */
     align-items: center;
   }
   .MyCollection {
@@ -109,6 +109,7 @@ export default styled(MyCollection)`
     width: 100%;
     border: none;
     justify-content: center;
+    border: 1px solid red;
 }
 .Ordered_Books {
     display: flex;
