@@ -74,6 +74,7 @@ const App = () => {
         <Route path="/RegisterReader" element={<RegisterReader isOpen={true}></RegisterReader>}></Route>
         <Route path="/Rigister" element={<RegisterReader isOpen={true}></RegisterReader>}></Route>
         <Route path="/RegisterAuthor" element={<RegisterAuthor isOpen={true}></RegisterAuthor>}></Route>
+        <Route path="/Login" element={<Login isOpen={true}></Login>}></Route>
       </Routes>
       </BrowserRouter>
       </>}
