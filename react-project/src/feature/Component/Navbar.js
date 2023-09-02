@@ -1,10 +1,11 @@
-import React from "react";
+import React,{useContext} from "react";
 import styled from "styled-components";
+import Login from "./Login";
 import Input from "../SubComponent/Input";
 import RegisterReader from "./RegisterReader";
 import Search from "../SubComponent/Search";
 import { Link } from "react-router-dom";
-import {userContext,useContext} from "../../App";
+import {userContext} from "../../App";
 import DropdownMenuu from "../SubComponent/Dropdownmenuu";
 import Login from "./Login";
 
@@ -88,7 +89,6 @@ body {
         text-decoration: none;
         transition: all 0.3s ease-in-out;
         color: white;
-
         &:hover {
           color: #7BA2AE;
         }
@@ -138,6 +138,7 @@ body {
   transform: translate(-40px, -25px);
   .link {
     font-size: 12px;
+
 
     .fa-minus {
       opacity: 1 !important;
@@ -200,11 +201,11 @@ const Navbar = ({ onSearchResults }) => {
             <li class="parent">
               <Link to={`/`} className="link">Home</Link>
             </li>
-            <Search
+            {/* <Search
               onSearchResults={onSearchResults}
               size="400px"
               heightSize="20px"
-            />
+            /> */}
             <li class="parent">
               <Link to={`/basket`} className="link">Basket</Link>
             </li>
@@ -217,6 +218,8 @@ const Navbar = ({ onSearchResults }) => {
             </li>
           </ul>
         </nav>
+
+      
       </StyledNavbar>
       <ContentWrapper></ContentWrapper>
     </div>
