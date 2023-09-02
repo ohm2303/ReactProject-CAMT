@@ -11,7 +11,7 @@ function NovelMain({ data, className }) {
     <div className={className}>
       <div className="novel_main">
         <Text size={25} family={"Times New Roman"}>
-          ขายด
+          ขายดี
         </Text>
 
         <ul className="Novel__Product">
