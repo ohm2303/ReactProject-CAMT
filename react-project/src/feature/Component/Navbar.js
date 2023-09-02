@@ -4,6 +4,9 @@ import Input from "../SubComponent/Input";
 import RegisterReader from "./RegisterReader";
 import Search from "../SubComponent/Search";
 import { Link } from "react-router-dom";
+import {userContext,useContext} from "../../App";
+import DropdownMenuu from "../SubComponent/Dropdownmenuu";
+import Login from "./Login";
 
 const StyledNavbar = styled.header`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
@@ -180,6 +183,12 @@ const ContentWrapper = styled.div`
 `;
 
 const Navbar = ({ onSearchResults }) => {
+  const [isOpen,setIsOpen] = useContext(true)
+  const {dataCon, setDataCon}= useContext(userContext)
+
+  const renderLogin = () => {
+    <Login isOpen={isOpen}></Login>
+  }
   return (
     <div>
       <StyledNavbar>
@@ -189,7 +198,7 @@ const Navbar = ({ onSearchResults }) => {
           </div>
           <ul class="navigation">
             <li class="parent">
-              <Link to={`/home`} className="link">Home</Link>
+              <Link to={`/`} className="link">Home</Link>
             </li>
             <Search
               onSearchResults={onSearchResults}
@@ -200,9 +209,11 @@ const Navbar = ({ onSearchResults }) => {
               <Link to={`/basket`} className="link">Basket</Link>
             </li>
             <li class="parent">
-              <a class="link" href="#">
-                Login/Register
-              </a>
+            {!dataCon.displayname=='' ?
+                <div className="link" ><DropdownMenuu title={dataCon.displayname} email={dataCon.email}/></div>
+                : 
+                <div className="link" onClick={renderLogin}>login/register</div>
+              }
             </li>
           </ul>
         </nav>

@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
+import GrayBackground from "../SubComponent/GrayBackground";
 import Text from "../SubComponent/Text";
 import Input from "../SubComponent/Input";
 import Button from "../SubComponent/Button";
+import "../style/Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
+import Home from "../Page/Home";
+import { userContext } from "../../App";
+import Popup from "../SubComponent/Popup";
 
 const LoginPopup = styled.div`
   font-family: "Anuphan", sans-serif;
@@ -66,26 +72,26 @@ const LoginPopup = styled.div`
     color: #444;
   }
 
-  .FlexContainer{
+  .FlexContainer {
     display: flex;
-  line-height: 30px;
+    line-height: 30px;
   }
 
-  .FlexItem{
+  .FlexItem {
     display: block;
-  flex-grow: 1;
+    flex-grow: 1;
   }
 
-  .CenteredButtonContainer{
+  .CenteredButtonContainer {
     display: flex;
-  justify-content: center;
-  margin-top: 10px;
+    justify-content: center;
+    margin-top: 10px;
   }
 
   .button-q {
     display: flex;
     justify-content: center;
-    margin :3px;
+    margin: 3px;
     font-size: 15px;
     background-color: black; /* Change background color */
     border-radius: 30px;
@@ -99,108 +105,161 @@ const LoginPopup = styled.div`
     -webkit-user-select: none;
     touch-action: manipulation;
     align-items: center;
-    font-family: Anuphan
+    font-family: Anuphan;
   }
-  
+
   .button:hover {
     color: white; /* Change text color to white */
     background-color: black; /* Change background color to black */
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
   }
-  
+
   .button:active {
     box-shadow: none;
     transform: translateY(0);
   }
 `;
-function Login() {
+function Login({ isOpen }) {
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [data, setData] = useState("");
+  const { dataCon, setDataCon } = useContext(userContext);
+  const [popupOpen, setPopupOpen] = useState(isOpen);
+
+  const togglePopup = () => {
+    setPopupOpen(!popupOpen);
+  };
+
+  const checkUser = () => {
+    fetch(`${process.env.REACT_APP_API_PREME}/api/user/`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        if (data == "success") {
+          fetch(`${process.env.REACT_APP_API_PREME}/api/user/checkcookie`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              setData(data);
+              setDataCon({
+                displayname: data[0].display_name,
+                id: data[0].id,
+                email: data[0].email,
+              });
+            });
+          togglePopup();
+        }
+      });
+  };
+
   return (
-    <LoginPopup>
-      <FontAwesomeIcon
-        className="iconXmark"
-        icon={faCircleXmark}
-        size="xs"
-        onClick={() => console.log("test1")}
-      />
-      <div style={{ lineHeight: "0px" }}>
-        <Text
-          size={45}
-          family={"Anuphan"}
-          children={"The book-buster"}
-          weight={"600"}
-        />
-        <hr className="style2" />
-      </div>
-      <Text
-        size={22}
-        family={"Anuphan"}
-        children={"เข้าสู่ระบบด้วยบัญชี"}
-        weight={"600"}
-      />
-      <Input
-        type="text"
-        placeholder="username"
-        size={"60%"}
-        heightSize={"3vh"}
-      />
-      <Input
-        type="password"
-        placeholder="password"
-        size={"60%"}
-        heightSize={"3vh"}
-      />
-      <div className="FlexContainer" >
-        <div className="FlexItem">
-          <Text
-            size={12}
-            family={"Noto Serif Thai"}
-            children={"จำไว้ในระบบ"}
-            weight={"600"}
-          />
-        </div>
-        <div className="FlexItem">
-          <Text
-            size={12}
-            family={"Noto Serif Thai"}
-            children={"ลืมรหัสผ่าน?"}
-            weight={"600"}
-          />
-        </div>
-      </div>
-      <div className="CenteredButtonContainer">
-        <Button
-          className="button-q"
-          value={"ล็อกอินเข้าสู่ระบบ"}
-          functionBtn={() => console.log("test")}
-          css={"textButtonLogin"}
-        />
-      </div>
-      <div className="FlexContainer">
-      <div className="FlexItem">
-          <Text
-            size={16}
-            family={"Noto Serif Thai"}
-            children={"หากยังสมัครบัญชีโปรด"}
-            weight={"600"}
-          />
-        </div>
-      </div>
-      <div className="CenteredButtonContainer">
-        <Button
-        className="button-q"
-          value={"สมัครสมาชิกสำหรับผู้ขาย"}
-          functionBtn={() => console.log("test")}
-          css={"textButton"}
-        />
-        <Button
-          className="button-q"
-          value={"สมัครสมาชิกสำหรับผู้ขาย"}
-          functionBtn={() => console.log("test")}
-          css={"textButton"}
-        />
-      </div>
-    </LoginPopup>
+    <>
+      {popupOpen && (
+        <Popup handleClose={togglePopup}>
+          <LoginPopup>
+            <FontAwesomeIcon>
+              <div style={{ lineHeight: "0px" }}>
+                <Text
+                  size={45}
+                  family={"Anuphan"}
+                  children={"The book-buster"}
+                  weight={"600"}
+                />
+                <hr className="style2" />
+              </div>
+              <Text
+                size={22}
+                family={"Anuphan"}
+                children={"เข้าสู่ระบบด้วยบัญชี"}
+                weight={"600"}
+              />
+              <Input
+                type="text"
+                placeholder="username"
+                size={"60%"}
+                heightSize={"3vh"}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <Input
+                type="password"
+                placeholder="password"
+                size={"60%"}
+                heightSize={"3vh"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="FlexContainer">
+                <div className="FlexItem">
+                  <Text
+                    size={12}
+                    family={"Noto Serif Thai"}
+                    children={"จำไว้ในระบบ"}
+                    weight={"600"}
+                  />
+                </div>
+                <div className="FlexItem">
+                  <Text
+                    size={12}
+                    family={"Noto Serif Thai"}
+                    children={"ลืมรหัสผ่าน?"}
+                    weight={"600"}
+                  />
+                </div>
+              </div>
+              <div className="CenteredButtonContainer">
+                <Button
+                  className="button-q"
+                  value={"ล็อกอินเข้าสู่ระบบ"}
+                  onClick={checkUser}
+                  css={"textButtonLogin"}
+                />
+              </div>
+              <div className="FlexContainer">
+                <div className="FlexItem">
+                  <Text
+                    size={16}
+                    family={"Noto Serif Thai"}
+                    children={"หากยังสมัครบัญชีโปรด"}
+                    weight={"600"}
+                  />
+                </div>
+              </div>
+              <div className="CenteredButtonContainer">
+                <Button
+                  className="button-q"
+                  value={"สมัครสมาชิกสำหรับผู้ขาย"}
+                  functionBtn={() => console.log("test")}
+                  css={"textButton"}
+                />
+                <Button
+                  className="button-q"
+                  value={"สมัครสมาชิกสำหรับผู้ขาย"}
+                  functionBtn={() => console.log("test")}
+                  css={"textButton"}
+                />
+              </div>
+            </FontAwesomeIcon>
+          </LoginPopup>
+        </Popup>
+      )}
+    </>
   );
 }
 

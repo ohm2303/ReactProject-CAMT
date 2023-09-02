@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import "./App.css";
 import BankAccountPage from "./feature/Page/BankAccountPage"; // Adjust the path if needed
 import Payment from "./feature/Page/payment";
@@ -15,9 +15,16 @@ import Basket from "./feature/Page/Basket"
 import Pay from "./feature/Page/pay";
 import RegisterAuthor from "./feature/Component/RegisterAuthor"
 import Login from "./feature/Component/Login"
+import Load from "./feature/SubComponent/Load";
+
+
+const userContext = React.createContext();
+
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
+  const [dataCon, setDataCon] = useState({displayname :"", id:"", email:""})
+  const [isLoading, setLoading] = useState(true)
 
   const handlePrefixChange = (dataArray) => {
     setSearchResults(dataArray);
@@ -26,7 +33,29 @@ const App = () => {
   const Api_Novel = "/novels";
   const { data } = useFetch(Api_Novel);
 
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_PREME}/api/user/checkcookie`,{    
+      method:"POST",
+      credentials: 'include',
+      headers:{
+          "Content-Type": "application/json",
+      },
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data.status == "Failed") {
+          setDataCon({displayname :"", id:"", email:""})
+          setLoading(false)
+          return
+        }
+      setDataCon({displayname :data[0].display_name, id:data[0].id, email:data[0].email})
+      setLoading(false)
+      })
+  },[])
   return (
+    <>
+    <userContext.Provider value={{dataCon,setDataCon}}>
+    {isLoading ? <Load/> : 
     <>
       <BrowserRouter>
       <Navbar onSearchResults={handlePrefixChange}></Navbar>
@@ -43,13 +72,14 @@ const App = () => {
         <Route path="/payPage" element={<PayPage></PayPage>}></Route>
 
         <Route path="/RegisterReader" element={<RegisterReader isOpen={true}></RegisterReader>}></Route>
-        <Route path="/Login" element={<Login isOpen={true}></Login>}></Route>
         <Route path="/Rigister" element={<RegisterReader isOpen={true}></RegisterReader>}></Route>
         <Route path="/RegisterAuthor" element={<RegisterAuthor isOpen={true}></RegisterAuthor>}></Route>
       </Routes>
       </BrowserRouter>
+      </>}
+    </userContext.Provider>
     </>
   );
 };
-
+export {userContext}
 export default App;

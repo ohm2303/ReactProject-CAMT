@@ -21,7 +21,7 @@ exports.getAllReview = async (req,res)=>{
 
 exports.getReviewByIdNovel = async (req,res)=>{
   connection.execute(
-      'SELECT * FROM user_review WHERE id_novel= ?;',[req.params.idNovel],
+      'SELECT id_user,id_novel,details,num_like,display_name FROM user_review r join user_detail d WHERE id_novel= ? AND id_user=d.id;',[req.params.idNovel],
       (err, results, fields) => {
         res.json(results )
       })
@@ -83,13 +83,63 @@ exports.checkCokkie = async (req,res)=>{
   }
   try{
     connection.execute(
-      'SELECT username,id,email FROM user_detail where id = ?;',[req.cookies.id],
+      'SELECT display_name,id,email FROM user_detail where id = ?;',[req.cookies.id],
         (err, results, fields) => {
           if(results.length > 0){
             res.json(results);
           }
           else{
             res.json("Failed");
+          }
+  
+        })
+  }
+  catch(err){
+    res.json("error")
+  }
+}
+
+exports.pullidnovel = async (req,res)=>{
+  if(!req.params.idUser){
+    return res.status(400).json({
+      status: 'Failed',
+      message: 'No data',
+    });
+  }
+  try{
+    connection.execute(
+      'SELECT id,`name`,price,category,author,file_pic FROM novel_detail WHERE id in(SELECT id_novel FROM user_buy where id_user = ?);',[req.params.idUser],
+        (err, results, fields) => {
+          if(results.length > 0){
+            res.json(results);
+          }
+          else{
+            res.json("Failed");
+          }
+  
+        })
+  }
+  catch(err){
+    res.json("error")
+  }
+}
+
+exports.passReviewByIdNovel = async (req,res)=>{
+  if(!req.body){
+    return res.status(400).json({
+      status: 'Failed',
+      message: 'No data',
+    });
+  }
+  try{
+    connection.execute(
+      'INSERT INTO user_review (id_user, id_novel, details, num_like`) VALUES (?, ?, ?, ?);',[req.body.id_user,req.body.id_novel,req.body.details,req.body.num_like],
+        (err, results, fields) => {
+          if(results.length > 0){
+            res.json(results);
+          }
+          else{
+            res.json("wrong");
           }
   
         })
