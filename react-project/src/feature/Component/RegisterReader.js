@@ -62,6 +62,7 @@ const RegisterReader = ({ isOpen, className }) => {
       alert("password doesn't match")
       setPassword("")
       setRetypePassword("")
+      return; // ไม่ต้องดำเนินการถัดไปถ้ารหัสผ่านไม่ตรงกัน
     }
     const postDataToServer = async () => {
       try{

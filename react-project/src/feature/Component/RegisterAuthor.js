@@ -6,6 +6,7 @@ import CheckBoxCircle from "../SubComponent/CheckBoxCircle";
 import Text from "../SubComponent/Text";
 import styled from "styled-components";
 import axios from "axios";
+import useFetch from "../Hook/useFetch";
 // create register for author
 
 function RegisterArthor({ isOpen, className }) {
@@ -17,7 +18,14 @@ function RegisterArthor({ isOpen, className }) {
   const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [gender, setGender] = useState("");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [idcard, setIdcard] = useState("");
+  const [numbank, setNumbank] = useState("");
+  const [namebank, setNamebank] = useState("");
 
+  const Api_Novel = `/users`;
+  const { data } = useFetch(Api_Novel);
   // Set Popup
   const togglePopup = () => {
     setPopupOpen(!popupOpen);
@@ -28,40 +36,61 @@ function RegisterArthor({ isOpen, className }) {
   };
 
   // Add event (e)
-  const onSubmit = () => {
+  const onSubmit = async () => {
     console.log(username);
     console.log(email);
     console.log(password);
     console.log(passwordRetype);
     console.log(gender);
     console.log(displayName);
-
-    if(password !== passwordRetype){
-      alert("password doesn't match")
-      setPassword("")
-      setPasswordRetype("")
+  
+    if (password !== passwordRetype) {
+      alert("password doesn't match");
+      setPassword("");
+      setPasswordRetype("");
+      return; // ไม่ต้องดำเนินการถัดไปถ้ารหัสผ่านไม่ตรงกัน
     }
-    const postDataToServer = async () => {
-      try{
-        const url = "/users";
-        const dataToSan = {
-          email:email,
-          username:username,
-          password:password,
-          gender:gender,
-          display_name:displayName,
-          level:1
+  
+    try {
+      // สร้างผู้ใช้และรับข้อมูลผู้ใช้ที่สร้างกลับมา
+      const createUserResponse = await axios.post("/users/bank", {
+        email: email,
+        username: username,
+        password: password,
+        gender: gender,
+        display_name: displayName,
+        level: 1,
+      });
+  
+      const createdUser = createUserResponse.data;
+  
+      console.log("คำขอ POST สำเร็จ:", createdUser);
+  
+      // ทำการ POST ข้อมูลธนาคารด้วย ID ของผู้ใช้ที่สร้าง
+      const postDataToServerBank = async () => {
+        try {
+          const url = `/banks/add/${createdUser}`;
+          const dataToSan = {
+            bank_account_number: numbank,
+            id_card_number: idcard,
+            identity: name + " " + surname,
+            namebank: namebank,
+          };
+          const response = await axios.post(url, dataToSan);
+  
+          console.log("คำขอ POST สำเร็จ:", response.data);
+        } catch (error) {
+          console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST ข้อมูลธนาคาร:", error);
         }
-        const response = await axios.post(url,dataToSan);
-
-        console.log("คำขอ POST สำเร็จ:", response.data);
-      } catch (error) {
-        console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST:", error);
-      }
+      };
+  
+      // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST ข้อมูลธนาคาร
+      postDataToServerBank();
+    } catch (error) {
+      console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST ผู้ใช้:", error);
     }
-    // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST เมื่อคอมโพเนนต์ถูกโหลด
-    postDataToServer();
-  }
+  };
+  
 
   /* JSX retrun */
   // Icon exit
@@ -202,6 +231,91 @@ function RegisterArthor({ isOpen, className }) {
                       onClick={(e) => setGender("Other")}
                     />
                   </div>
+                </div>
+
+                {/* BANK */}
+                <Text size={30} family={"Anuphan"} weight="bold">
+                  ข้อมูลธนาคาร
+                </Text>
+
+                <div className="details-box">
+                  <div className="text-name">
+                    <Text size={20} family={"Anuphan"} weight="600">
+                      Name
+                      <span className="red-asterisk">*</span>
+                    </Text>
+                  </div>
+                  <Input
+                    type="text"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    size={"560px"}
+                  />
+                </div>
+
+                <div className="details-box">
+                  <div className="text-name">
+                    <Text size={20} family={"Anuphan"} weight="600">
+                      Surname
+                      <span className="red-asterisk">*</span>
+                    </Text>
+                  </div>
+                  <Input
+                    type="text"
+                    placeholder="Surname"
+                    value={surname}
+                    onChange={(e) => setSurname(e.target.value)}
+                    size={"560px"}
+                  />
+                </div>
+
+                <div className="details-box">
+                  <div className="text-name">
+                    <Text size={20} family={"Anuphan"} weight="600">
+                      เลขบัตรประชาชน
+                      <span className="red-asterisk">*</span>
+                    </Text>
+                  </div>
+                  <Input
+                    type="text"
+                    placeholder="เลขบัตรประชาชน"
+                    value={idcard}
+                    onChange={(e) => setIdcard(e.target.value)}
+                    size={"560px"}
+                  />
+                </div>
+
+                <div className="details-box">
+                  <div className="text-name">
+                    <Text size={20} family={"Anuphan"} weight="600">
+                      เลขบัญชีธนาคาร
+                      <span className="red-asterisk">*</span>
+                    </Text>
+                  </div>
+                  <Input
+                    type="text"
+                    placeholder="เลขบัญชีธนาคาร"
+                    value={numbank}
+                    onChange={(e) => setNumbank(e.target.value)}
+                    size={"560px"}
+                  />
+                </div>
+
+                <div className="details-box">
+                  <div className="text-name">
+                    <Text size={20} family={"Anuphan"} weight="600">
+                      ชื่อธนาคาร
+                      <span className="red-asterisk">*</span>
+                    </Text>
+                  </div>
+                  <Input
+                    type="text"
+                    placeholder="ชื่อธนาคาร"
+                    value={namebank}
+                    onChange={(e) => setNamebank(e.target.value)}
+                    size={"560px"}
+                  />
                 </div>
 
                 <Button
