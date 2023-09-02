@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import Text from "../SubComponent/Text";
 import Navbar from "../Component/Navbar";
 import SelectForPay from "../SubComponent/SelectForPay";
 import { useState,useEffect } from "react";
 import Load from "../SubComponent/Load";
-
- const Busket =() =>{
-const [load,setLoad] = useState(true)
-
+import {userContext} from "../../Testapp";
+const Busket =() =>{
+  const [load,setLoad] = useState(true)
   const [content, setContent] = useState([]);
-  const reloadContent = async () =>{
-    fetch((`${process.env.REACT_APP_API_PREME}/api/user/basket/1`),{    
-      method:"GET",                                     
-  })
-  .then(response => response.json())
-  .then(data=>{ 
-    setContent([])
-    data.forEach(element => {
-      setContent(old => [...old, <div style={{marginTop: "10px"}}><SelectForPay keys={element.name} props={element} setContent={reloadContent} /></div>])
-    });
-    setLoad(false)
-  })
-  }
-  useEffect( () => {
-    reloadContent()
-  },[])
-
+  const {dataCon, setDataCon}= useContext(userContext)
+  
+  
+    const reloadContent = async () =>{
+      fetch((`${process.env.REACT_APP_API_PREME}/api/user/basket/${dataCon.id}`),{    
+        method:"GET",                                     
+    })
+    .then(response => response.json())
+    .then(data=>{ 
+      setContent([])
+      data.forEach(element => {
+        setContent(old => [...old, <div style={{marginTop: "10px"}}><SelectForPay keys={element.name} props={element} setContent={reloadContent} /></div>])
+      });
+      setLoad(false)
+    })
+    }
+    useEffect( () => {
+      reloadContent()
+    },[])
+    console.log("from busket")
+    console.log(dataCon.displayname, dataCon.id, dataCon.email)
   return   (
     <>
 
@@ -45,7 +48,6 @@ const [load,setLoad] = useState(true)
     <hr className="style2"/>
     </div>
     <div className="busketselect">
-
     {content.length > 0 ? content : <><h1 className="textS">คุณยังไม่ได้เพิ่มหนังสือใส่ในตะกร้า</h1></>}
     </div>
     </div>
