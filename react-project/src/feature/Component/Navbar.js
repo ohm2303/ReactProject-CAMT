@@ -1,10 +1,12 @@
-import React from "react";
+import React,{useContext} from "react";
 import styled from "styled-components";
+import Login from "./Login";
 import Input from "../SubComponent/Input";
 import RegisterReader from "./RegisterReader";
 import Search from "../SubComponent/Search";
 import { Link } from "react-router-dom";
-
+import {userContext} from "../../Testapp";
+import DropdownMenuu from "../SubComponent/Dropdownmenuu";
 const StyledNavbar = styled.header`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
 position: fixed;
@@ -85,7 +87,6 @@ body {
         text-decoration: none;
         transition: all 0.3s ease-in-out;
         color: white;
-
         &:hover {
           color: #7BA2AE;
         }
@@ -136,6 +137,7 @@ body {
   .link {
     font-size: 12px;
 
+
     .fa-minus {
       opacity: 1 !important;
       font-size: 8px;
@@ -176,7 +178,12 @@ const ContentWrapper = styled.div`
   padding-top: 60px;
 `;
 
-const Navbar = ({ onSearchResults }) => {
+const Navbar = ({ onSearchResults , setLogin }) => {
+  const renderLogin =() => {
+    setLogin(<Login setlogin={setLogin}/>)
+  }
+  const {dataCon, setDataCon}= useContext(userContext)
+
   return (
     <div>
       <StyledNavbar>
@@ -190,23 +197,29 @@ const Navbar = ({ onSearchResults }) => {
                 Home
               </a>
             </li>
-            <Search
+            {/* <Search
               onSearchResults={onSearchResults}
               size="400px"
               heightSize="20px"
-            />
+            /> */}
             <li class="parent">
-              <a class="link" href="#">
-                Basket
+              <a class="link" >
+              <Link to="/Basket">Basket</Link>
               </a>
             </li>
             <li class="parent">
-              <a class="link" href="#">
-                Login/Register
+              <a>
+              {!dataCon.displayname=='' ?
+                <div className="link" ><DropdownMenuu title={dataCon.displayname} email={dataCon.email}/></div>
+                : 
+                <div className="link" onClick={renderLogin}>login/register</div>
+              }
               </a>
             </li>
           </ul>
         </nav>
+
+      
       </StyledNavbar>
       <ContentWrapper></ContentWrapper>
     </div>
