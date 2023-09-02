@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState,useEffect,useContext } from "react";
 import styled from "styled-components";
+import GrayBackground from "../SubComponent/GrayBackground";
 import Text from "../SubComponent/Text";
 import Input from "../SubComponent/Input";
 import Button from "../SubComponent/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
+import '../style/Login.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
+import { Link } from "react-router-dom";
+import Home from "../Page/Home";
+import Testapp from "../../Testapp";
+import {userContext} from "../../Testapp";
+
+
 
 const LoginPopup = styled.div`
   font-family: "Anuphan", sans-serif;
@@ -114,14 +122,55 @@ const LoginPopup = styled.div`
     transform: translateY(0);
   }
 `;
-function Login() {
+function Login({setlogin}) {
+  const [password,setPassword] = useState('')
+    const [username,setUsername] = useState('')
+    const [data,setData] = useState('')
+    const {dataCon, setDataCon}= useContext(userContext)
+    
+ 
+
+    const checkUser =() => {
+        fetch(`${process.env.REACT_APP_API_PREME}/api/user/`,{    
+          method:"POST",
+          credentials: 'include',
+          headers:{
+              "Content-Type": "application/json",
+          },
+        body: JSON.stringify({
+          username:username,
+          password: password
+        })
+  })
+  .then(response => response.json())
+  .then(data => {
+    setData(data)
+    if(data=="success"){
+      fetch(`${process.env.REACT_APP_API_PREME}/api/user/checkcookie`,{    
+        method:"POST",
+        credentials: 'include',
+        headers:{
+            "Content-Type": "application/json",
+        },
+        })
+        .then(response => response.json())
+        .then(data => {
+        setData(data)
+        setDataCon({displayname :data[0].display_name, id:data[0].id, email:data[0].email})
+        })
+      setlogin()
+    }
+  })
+  
+}
+
   return (
     <LoginPopup>
       <FontAwesomeIcon
         className="iconXmark"
         icon={faCircleXmark}
         size="xs"
-        onClick={() => console.log("test1")}
+        onClick={()=>setlogin()}
       />
       <div style={{ lineHeight: "0px" }}>
         <Text
@@ -143,12 +192,14 @@ function Login() {
         placeholder="username"
         size={"60%"}
         heightSize={"3vh"}
+        value={username} onChange={(e)=>setUsername(e.target.value) } 
       />
       <Input
         type="password"
         placeholder="password"
         size={"60%"}
         heightSize={"3vh"}
+        value={password} onChange={(e)=>setPassword(e.target.value) }
       />
       <div className="FlexContainer" >
         <div className="FlexItem">
@@ -172,7 +223,7 @@ function Login() {
         <Button
           className="button-q"
           value={"ล็อกอินเข้าสู่ระบบ"}
-          functionBtn={() => console.log("test")}
+          onClick={checkUser}
           css={"textButtonLogin"}
         />
       </div>
@@ -205,3 +256,7 @@ function Login() {
 }
 
 export default Login;
+            
+//export
+//
+
