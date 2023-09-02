@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { userContext } from "../../App";
+
 //Component
 import Text from "../SubComponent/Text";
 import Button from "../SubComponent/Button";
@@ -11,6 +11,7 @@ import Report from "../Component/Report";
 import Promotion from "../Component/Promotion";
 import Input from "../SubComponent/Input";
 import Nav from "../Component/Navbar";
+import axios from 'axios';
 
 //Hook
 import useFetch from "../Hook/useFetch";
@@ -27,34 +28,35 @@ import shareHovered from "../../pics/Icon/shareHovered.png";
 import likeDefault from "../../pics/Icon/likeDefault.png";
 import likeHovered from "../../pics/Icon/likeHovered.png";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { userContext } from "../../Testapp";
+import { useDispatch, useSelector } from "react-redux";
+import { setReview } from "../../store/reviewSlice";
 const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
-
   const {dataCon, setDataCon} = useContext(userContext)
-  const [review,setReview]=useState([])
   const [loading,setLoading]=useState(true)
+
+  //redux
+  const dispatch = useDispatch();
+  const reviews = useSelector((state) => state.review.review);
+
   // pull id from novel
   const { id } = useParams();
- 
-  console.log(id);
 
-  // //post
-  // const [formData, setFormData] = useState({
-  //   title: "",
-  //   body: "",
-  // });
+  //post
+  const [formData, setFormData] = useState({
+    title: "",
+    body: "",
+  });
   //Api
   const Api_Novel = `/novels/${id}`;
   const { data } = useFetch(Api_Novel);
 
-  console.log(data);
 
   //Report
   const [isReportOpen, setIsReportOpen] = useState(false);
   const handleReportButtonClick = () => {
     setIsReportOpen(!isReportOpen);
   };
-
 
   // HeartClick
   const [clickedHearts, setClickedHearts] = useState([]);
@@ -79,63 +81,32 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
   const editIcon = require("../../pics/Icon/edit.png");
   const user = require("../../pics/Icon/circle-user.png");
 
-  //post
-
-  const reviewSubmit = () => {
-    console.log(inputReview)
-    const heart = clickedHearts.length
-    console.log(heart)
-    console.log(dataCon.id)
-    console.log(heart)
-    const postDataToServerView = async () => {
-      try {
-        const url = `/reviews/${dataCon.id}/${id}`;
-        const dataToSan = {
-          details:inputReview,
-          num_like:heart
-        };
-        const response = await axios.post(url, dataToSan);
-
-        console.log("คำขอ POST สำเร็จ:", response.data);
-      } catch (error) {
-        console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST ข้อมูลธนาคาร:", error);
-      }
-    };
-
-    // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST ข้อมูลธนาคาร
-    postDataToServerView();
-  }
-
-  const basketSubmit = () => {
-    const postDataToServerOrder = async () => {
-      try {
-        const url = `/orders/basket/${dataCon.id}/${id}`;
-        const response = await axios.post(url);
-
-        console.log("คำขอ POST สำเร็จ:", response.data);
-      } catch (error) {
-        console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST ข้อมูลธนาคาร:", error);
-      }
-    };
-
-    // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST ข้อมูลธนาคาร
-    postDataToServerOrder();
-  }
+  //post api
+  const onClick = () => {
+    const url = `http://localhost:8080/baskets/{${id}/${dataCon.id}}`;
+    axios.post(url)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+  
 
   useEffect(()=> {
-    fetch((`${process.env.REACT_APP_API_PREME}/api/user/Review/${id}`),{    
+    fetch((`${process.env.REACT_APP_API_PREME}/api/user/Review/2`),{    
       method:"GET",                                     
   })
   .then(response => response.json())
   .then(data=>{ 
-  setReview(data)
+  dispatch(setReview(data))
   setLoading(false)
   console.log("review")
-  console.log(dataCon)
+  console.log( )
   })
 },[loading])
 
-  console.log(data.author);
   return (
     <div className={className}>
       <div className="total-content">
@@ -187,11 +158,11 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
 
               <div className="button-icon">
                 <ButtonIcon
+                onClick={onClick}
                   defaultImg={basketDefault}
                   hoveredImg={basketHovered}
                   text={"ตระกร้า"}
                   className="icon-button"
-                  onClick={basketSubmit}
                 />
                 <ButtonIcon
                   defaultImg={saveDefault}
@@ -221,7 +192,7 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
                   <ul>
                     <li>pdf, epub(สารบัญ) </li>
                     <li>{data.release_date}</li>
-                    <li>{data.numpage} หน้า</li>
+                    <li>{data.numpage}</li>
                     <li>{data.coverPrice} บาท</li>
                   </ul>
                 </Text>
@@ -232,7 +203,20 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
 
         <div className="synopsis">
           <Text size={16} family={"Anuphan"} weight="500">
-            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {data.description}
+            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; ถึงเวลาสิ้นสุดทางเปย์ (เรื่องนี้)
+            เรียบร้อยแล้ว ใครกำลังรอบทสรุปการเงิน ความรักแสนน่ารักนี้
+            ตอนนี้เดินทางมาถึงเรียบร้อยแล้วค่ะ ถ้าเป็นเมื่อก่อน
+            เธอไม่มีทางยอมรับคำขอโทษนี้หรอก
+            ทว่าตอนนี้เธอรู้ว่าเธอไม่ได้เป็นเพียงสวี่รุ่ย
+            แต่เธอยังเป็นจู้จื่อรุ่ยด้วย จู้ไม่ใช่แค่นามสกุล
+            มันมีความหมายมากกว่านั้น มีทั้งอำนาจและความรับผิดชอบ
+            สิ่งนี้ทำให้เธอเติบโตขึ้นอย่างรวดเร็ว เหมือนกับประโยคที่ว่า
+            เป็นเด็กไม่มีเรื่องให้ต้องคิดมาก
+            แต่ผู้ใหญ่กลับมีเรื่องให้ต้องรับผิดชอบเต็มไปหมด
+            มาถึงบทสรุปและภารกิจยากระดับสูงสุดภารกิจสุดท้ายของสวี่รุ่ย
+            ที่ต้องใช้เงินหนึ่งหมื่นล้านให้หมดโดยไม่เหลือทรัพย์สินใดๆ ไว้
+            ภารกิจนี้จะผ่านไปได้ด้วยดีไหม ลั่วหานจะอยู่เคียงข้างให้กำลังใจยังไง
+            และสุดท้ายเจ้าระบบที่อยู่ด้วยกันมาตลอดจะอยู่หรือไป มาลุ้นกัน
           </Text>
         </div>
 
@@ -240,12 +224,14 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
           <Text size={30} family={"Anuphan"} weight="600">
             เขียนรีวิวและให้เรตติ้ง
           </Text>
+
           <div className="user">
             <img src={user}></img>
             <Text size={18} family={"Anuphan"} weight="500">
-             {dataCon.displayname}
+              Kanokwan Mahakham
             </Text>
           </div>
+
           <div className="writing-review">
             <div className="give-heart">
               {Array.from({ length: 5 }, (_, index) => (
@@ -269,10 +255,10 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
                 placeholder="เริ่มการรีวิวได้เลยจ้า"
                 value={inputReview}
                 onChange={handleInputChange}
-                width="622.8px"
+                width="703px"
               />
               <div className="button-review">
-                <Button value="ส่งรีวิว" onClick={reviewSubmit} />
+                <Button value="ส่งรีวิว" />
               </div>
             </div>
           </div>
@@ -282,23 +268,26 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
           <Text size={30} family={"Anuphan"} weight="600">
             รีวิวทั้งหมด
           </Text>
-          {review.map((e)=>
+          {reviews.map((e)=>
           <div className="box-reviews">
             <div className="user-review">
               <img src={user}></img>
               <div className="heart-user-review">
                 <Text size={15} family={"Anuphan"} weight="500">
-                {e.display_name}
+                  
                 </Text>
                 <Heart heartCount={e.num_like} />
               </div>
             </div>
-
+            
+            <>
             <div className="details-review">
               <Text size={15} family={"Anuphan"} weight="500">
-              { e.details}
+                { e.details}
               </Text>
             </div>
+            </>
+          
             <div className="like">
               <ButtonIcon
                 defaultImg={likeDefault}
@@ -306,11 +295,11 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
                 className="icon-button"
               />
               <Text size={12} family={"Anuphan"} weight="500">
-              {e.display_name}
+                {e.display_name}
               </Text>
             </div>
           </div>
-           )}
+            )}
         </div>
       </div>
     </div>
@@ -598,7 +587,10 @@ export default styled(NovelPage)`
     line-height: 3;
     margin: 50px;
   }
-  
+  .give-heart {
+    display: flex;
+    align-items: center;
+  }
 
   /*review*/
   .review {
@@ -611,7 +603,7 @@ export default styled(NovelPage)`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: #2b4560;
   }
   .heart-icon {
     width: 30px;
@@ -642,7 +634,6 @@ export default styled(NovelPage)`
   .button-review {
     display: flex;
     justify-content: flex-end;
-    
   }
 
   .button-review .ButtonNormal {
@@ -693,7 +684,6 @@ export default styled(NovelPage)`
   .button-review .ButtonNormal:active {
     box-shadow: none;
     transform: translateY(0);
-    color:black;
   }
 
   .user {
@@ -711,16 +701,11 @@ export default styled(NovelPage)`
   .total-review {
     width: 50%;
     margin-bottom: 30px;
-    
   }
   .box-reviews {
     width: 100%;
     height: fit-content;
     background-color: #e1e7e0;
-    margin-bottom: 10px; /* เพิ่มระยะห่างด้านล่างของแต่ละรีวิว */
-    border: 1px solid #ccc; /* เพิ่มขอบรอบ */
-    padding: 10px; /* เพิ่มระยะห่างด้านในขอบรอบ */
-    
   }
   .user-review {
     display: flex;

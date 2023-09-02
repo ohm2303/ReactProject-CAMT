@@ -7,7 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import Popup from "../SubComponent/Popup";
 import { userContext } from "../../App";
-import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import { hidelogin } from "../../store/showloginSlice"
 
 const LoginPopup = styled.div`
   font-family: "Anuphan", sans-serif;
@@ -15,7 +17,7 @@ const LoginPopup = styled.div`
   border-radius: 20px;
   padding: 30px;
   position: fixed;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
@@ -123,7 +125,7 @@ function Login(isOpen) {
   const [username, setUsername] = useState("");
   const [data, setData] = useState("");
   const { dataCon, setDataCon } = useContext(userContext);
-
+  const dispatch = useDispatch();
   const togglePopup = () => {
     setPopupOpen(!popupOpen);
   };
@@ -155,7 +157,9 @@ if(data=="success"){
     .then(data => {
     setData(data)
     setDataCon({displayname :data[0].display_name, id:data[0].id, email:data[0].email})
+
     })
+    dispatch(hidelogin())
   togglePopup()
 }
 })
@@ -173,7 +177,8 @@ if(data=="success"){
                 className="iconXmark"
                 icon={faCircleXmark}
                 size="xs"
-                onClick={togglePopup}
+                onClick={dispatch(hidelogin)}
+
               />
               <div style={{ lineHeight: "0px" }}>
                 <Text
@@ -241,16 +246,16 @@ if(data=="success"){
                 </div>
               </div>
               <div className="CenteredButtonContainer">
-                <Button
+              <Link to={`/RegisterReader`} ><Button
+                  className="button-q"
+                  value={"สมัครสมาชิกสำหรับผู้ซื้อ"}
+                  css={"textButton"}
+                /></Link>
+                <Link to={`/RegisterAuthor`} ><Button
                   className="button-q"
                   value={"สมัครสมาชิกสำหรับผู้ขาย"}
                   css={"textButton"}
-                />
-                <Button
-                  className="button-q"
-                  value={"สมัครสมาชิกสำหรับผู้ขาย"}
-                  css={"textButton"}
-                />
+                /></Link>
               </div>
             </LoginPopup>
           }
@@ -259,9 +264,5 @@ if(data=="success"){
     </>
   );
 }
-
-Login.propType = {
-  isOpen: PropTypes.bool.isRequired,
-};
 
 export default Login;
