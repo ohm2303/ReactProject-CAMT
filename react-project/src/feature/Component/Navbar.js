@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext, useState} from "react";
 import styled from "styled-components";
 import Login from "./Login";
 import Input from "../SubComponent/Input";
@@ -7,7 +7,6 @@ import Search from "../SubComponent/Search";
 import { Link } from "react-router-dom";
 import {userContext} from "../../App";
 import DropdownMenuu from "../SubComponent/Dropdownmenuu";
-import Login from "./Login";
 
 const StyledNavbar = styled.header`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
@@ -184,12 +183,14 @@ const ContentWrapper = styled.div`
 `;
 
 const Navbar = ({ onSearchResults }) => {
-  const [isOpen,setIsOpen] = useContext(true)
   const {dataCon, setDataCon}= useContext(userContext)
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
-  const renderLogin = () => {
-    <Login isOpen={isOpen}></Login>
-  }
+
+  const handleLoginButtonClick = () => {
+    setIsLoginOpen(!isLoginOpen)
+  };
+
   return (
     <div>
       <StyledNavbar>
@@ -201,19 +202,19 @@ const Navbar = ({ onSearchResults }) => {
             <li class="parent">
               <Link to={`/`} className="link">Home</Link>
             </li>
-            {/* <Search
+            <Search
               onSearchResults={onSearchResults}
               size="400px"
               heightSize="20px"
-            /> */}
+            />
             <li class="parent">
               <Link to={`/basket`} className="link">Basket</Link>
             </li>
             <li class="parent">
-            {!dataCon.displayname=='' ?
+            {dataCon.displayname !=='' ?
                 <div className="link" ><DropdownMenuu title={dataCon.displayname} email={dataCon.email}/></div>
                 : 
-                <div className="link" onClick={renderLogin}>login/register</div>
+                <div className="link" onClick={handleLoginButtonClick}>login/register</div>
               }
             </li>
           </ul>
@@ -221,6 +222,7 @@ const Navbar = ({ onSearchResults }) => {
 
       
       </StyledNavbar>
+              {isLoginOpen && <Login isOpen={isLoginOpen} />}
       <ContentWrapper></ContentWrapper>
     </div>
   );
