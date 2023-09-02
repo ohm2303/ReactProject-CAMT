@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +28,7 @@ public class NovelDetailController {
     // post
     @PostMapping("/novels")
     public ResponseEntity<String> createNovel(@RequestBody NovelDetail novel) {
+        novel.setRelease_date(LocalDateTime.now());
         novelDetailRepository.save(novel);
         return ResponseEntity.ok("novel created");
     }

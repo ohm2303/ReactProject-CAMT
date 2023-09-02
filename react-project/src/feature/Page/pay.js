@@ -9,7 +9,6 @@ const PayPage = ({ className }) => {
   return (
     <div className={className}>
       <div className="total-content">
-      <Navbar />
       <div className="container">
         <Text size={40} weight="bold"  family={"Anuphan"}>
           The book-buster

@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,9 +32,12 @@ public class NovelDetail {
     private String file_pic;
     private String file_test;
     private String file_real;
-
+    private String author;
+    private String description;
+    private int coverPrice;
+    
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date release_date;
+    private LocalDateTime release_date;
 
     // reration
     @OneToMany(mappedBy = "id_novel")
@@ -49,7 +53,8 @@ public class NovelDetail {
     }
 
     public NovelDetail(Long id, String name, int price, String category, int numpage, double rating, String promotion,
-            String file_pic, String file_test, String file_real, Date release_date) {
+            String file_pic, String file_test, String file_real, LocalDateTime release_date, String author,
+            String description, int coverPrice) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -61,6 +66,33 @@ public class NovelDetail {
         this.file_test = file_test;
         this.file_real = file_real;
         this.release_date = release_date;
+        this.author = author;
+        this.description = description;
+        this.coverPrice = coverPrice;
+    }
+
+    public int getCoverPrice() {
+        return coverPrice;
+    }
+
+    public void setCoverPrice(int coverPrice) {
+        this.coverPrice = coverPrice;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     public Long getId() {
@@ -103,7 +135,7 @@ public class NovelDetail {
         return file_real;
     }
 
-    public Date getRelease_date() {
+    public LocalDateTime getRelease_date() {
         return release_date;
     }
 
@@ -147,8 +179,8 @@ public class NovelDetail {
         this.file_real = file_real;
     }
 
-    public void setRelease_date(Date release_date) {
-        this.release_date = release_date;
+    public void setRelease_date(LocalDateTime localDateTime) {
+        this.release_date = localDateTime;
     }
 
 }

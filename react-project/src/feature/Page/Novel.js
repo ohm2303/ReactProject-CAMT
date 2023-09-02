@@ -26,19 +26,30 @@ import shareDefault from "../../pics/Icon/shareDefault.png";
 import shareHovered from "../../pics/Icon/shareHovered.png";
 import likeDefault from "../../pics/Icon/likeDefault.png";
 import likeHovered from "../../pics/Icon/likeHovered.png";
+import { useParams } from "react-router-dom";
 
+const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
+  // pull id from novel
+  const { id } = useParams();
+  console.log(id);
 
-const NovelPage = ({ className, idNovel }) => {
-
+  // //post
+  // const [formData, setFormData] = useState({
+  //   title: "",
+  //   body: "",
+  // });
   //Api
-  const Api_Novel = `https://jsonplaceholder.typicode.com/users/${idNovel}`;
-  const {data} = useFetch(Api_Novel);
+  const Api_Novel = `/novels/${id}`;
+  const { data } = useFetch(Api_Novel);
+
+  console.log(data);
 
   //Report
   const [isReportOpen, setIsReportOpen] = useState(false);
   const handleReportButtonClick = () => {
     setIsReportOpen(!isReportOpen);
   };
+
 
   // HeartClick
   const [clickedHearts, setClickedHearts] = useState([]);
@@ -63,9 +74,9 @@ const NovelPage = ({ className, idNovel }) => {
   const editIcon = require("../../pics/Icon/edit.png");
   const user = require("../../pics/Icon/circle-user.png");
 
+  console.log(data.author);
   return (
     <div className={className}>
-      {/* <Nav /> */}
       <div className="total-content">
         <div className="detail-novel">
           <div className="name">
@@ -76,8 +87,11 @@ const NovelPage = ({ className, idNovel }) => {
 
           <div className="content">
             <div className="photo-novel">
-              <img src={photoNovel} alt=" " />
-              <Promotion discountPercentage={38} fullPrice={300} />
+              <img src={data.file_pic} alt=" " />
+              <Promotion
+                discountPercentage={data.promotion}
+                fullPrice={data.price}
+              />
             </div>
 
             <div className="detail-left-box">
@@ -91,20 +105,23 @@ const NovelPage = ({ className, idNovel }) => {
                 </Text>
                 <Text size={15} family={"Anuphan"} weight="500">
                   <ul>
-                    <li>ชลาลัย </li>
-                    <li>นิยายรัก </li>
-                    <li>300 บาท </li>
+                    <li>{data.author}</li>
+                    <li>{data.category}</li>
+                    <li>{data.price} บาท </li>
                   </ul>
                 </Text>
               </div>
               <div className="total-button">
                 <Button value="ทดลองอ่าน" className="button-buy" />
-                <Button value="ซื้อ 300 บาท" className="button-buy" />
+                <Button
+                  value={`ซื้อ ${data.price} บาท`}
+                  className="button-buy"
+                />
               </div>
 
               <div className="rating">
                 <Heart heartCount={4.96} />
-                <div className="num-rating">560 Rating</div>
+                <div className="num-rating">{data.rating} Rating</div>
               </div>
 
               <div className="button-icon">
@@ -115,21 +132,9 @@ const NovelPage = ({ className, idNovel }) => {
                   className="icon-button"
                 />
                 <ButtonIcon
-                  defaultImg={heartDefault}
-                  hoveredImg={heartHovered}
-                  text={"ติดตาม"}
-                  className="icon-button"
-                />
-                <ButtonIcon
                   defaultImg={saveDefault}
                   hoveredImg={saveHovered}
                   text={"บันทึก"}
-                  className="icon-button"
-                />
-                <ButtonIcon
-                  defaultImg={shareDefault}
-                  hoveredImg={shareHovered}
-                  text={"แชร์"}
                   className="icon-button"
                 />
                 <div className="report">
@@ -153,9 +158,9 @@ const NovelPage = ({ className, idNovel }) => {
                 <Text size={15} family={"Anuphan"} weight="500">
                   <ul>
                     <li>pdf, epub(สารบัญ) </li>
-                    <li>23 กรกฎาคม 2566</li>
-                    <li>765 หน้า(116,485คำ)</li>
-                    <li>370 บาท(ประหยัด 38%)</li>
+                    <li>{data.release_date}</li>
+                    <li>{data.numpage} หน้า</li>
+                    <li>{data.coverPrice} บาท</li>
                   </ul>
                 </Text>
               </div>
@@ -165,20 +170,7 @@ const NovelPage = ({ className, idNovel }) => {
 
         <div className="synopsis">
           <Text size={16} family={"Anuphan"} weight="500">
-            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; ถึงเวลาสิ้นสุดทางเปย์ (เรื่องนี้)
-            เรียบร้อยแล้ว ใครกำลังรอบทสรุปการเงิน ความรักแสนน่ารักนี้
-            ตอนนี้เดินทางมาถึงเรียบร้อยแล้วค่ะ ถ้าเป็นเมื่อก่อน
-            เธอไม่มีทางยอมรับคำขอโทษนี้หรอก
-            ทว่าตอนนี้เธอรู้ว่าเธอไม่ได้เป็นเพียงสวี่รุ่ย
-            แต่เธอยังเป็นจู้จื่อรุ่ยด้วย จู้ไม่ใช่แค่นามสกุล
-            มันมีความหมายมากกว่านั้น มีทั้งอำนาจและความรับผิดชอบ
-            สิ่งนี้ทำให้เธอเติบโตขึ้นอย่างรวดเร็ว เหมือนกับประโยคที่ว่า
-            เป็นเด็กไม่มีเรื่องให้ต้องคิดมาก
-            แต่ผู้ใหญ่กลับมีเรื่องให้ต้องรับผิดชอบเต็มไปหมด
-            มาถึงบทสรุปและภารกิจยากระดับสูงสุดภารกิจสุดท้ายของสวี่รุ่ย
-            ที่ต้องใช้เงินหนึ่งหมื่นล้านให้หมดโดยไม่เหลือทรัพย์สินใดๆ ไว้
-            ภารกิจนี้จะผ่านไปได้ด้วยดีไหม ลั่วหานจะอยู่เคียงข้างให้กำลังใจยังไง
-            และสุดท้ายเจ้าระบบที่อยู่ด้วยกันมาตลอดจะอยู่หรือไป มาลุ้นกัน
+            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; {data.description}
           </Text>
         </div>
 
@@ -262,7 +254,7 @@ const NovelPage = ({ className, idNovel }) => {
 };
 
 NovelPage.propTypes = {
-  idNovel: PropTypes.number.isRequired
+  idNovel: PropTypes.number.isRequired,
 };
 
 /*kanokwan Mahakham */
@@ -298,14 +290,12 @@ export default styled(NovelPage)`
     margin-top: 20px;
     width: 85%;
     display: flex;
-    
   }
 
   .photo-novel {
     width: 45%; /* ความกว้างของพื้นที่ภาพ */
     padding-right: 20px; /* ระยะห่างจากเนื้อหาด้านบน */
     align-items: center;
-    
   }
 
   .photo-novel img {
@@ -385,10 +375,10 @@ export default styled(NovelPage)`
     justify-content: center;
     font-size: 15px;
   }
-  
+
   .total-button .ButtonNormal {
     appearance: none;
-    background-color: #E1E7E0; /* Change background color */
+    background-color: #e1e7e0; /* Change background color */
     border-radius: 30px;
     box-sizing: border-box;
     color: black; /* Change text color to black */
@@ -417,11 +407,11 @@ export default styled(NovelPage)`
     align-items: center;
     justify-content: center;
   }
-  
+
   .total-button .ButtonNormal:disabled {
     pointer-events: none;
   }
-  
+
   .total-button .ButtonNormal:hover {
     color: white; /* Change text color to white */
     background-color: black; /* Change background color to black */
@@ -429,12 +419,12 @@ export default styled(NovelPage)`
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
   }
-  
+
   .total-button .ButtonNormal:active {
     box-shadow: none;
     transform: translateY(0);
   }
-  
+
   .ButtonNormal {
     width: 120px;
     height: 45px;
@@ -454,7 +444,6 @@ export default styled(NovelPage)`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
   }
 
   .heart {
@@ -480,7 +469,6 @@ export default styled(NovelPage)`
   .num-rating {
     font-size: 12px;
     margin: 0px 30px 30px 0px;
-    
   }
   .button-icon {
     display: flex;
@@ -594,7 +582,7 @@ export default styled(NovelPage)`
     display: flex;
     justify-content: flex-end;
   }
-  
+
   .button-review .ButtonNormal {
     appearance: none;
     background-color: black; /* Change background color to black */
@@ -627,11 +615,11 @@ export default styled(NovelPage)`
     align-items: center;
     justify-content: center;
   }
-  
+
   .button-review .ButtonNormal:disabled {
     pointer-events: none;
   }
-  
+
   .button-review .ButtonNormal:hover {
     color: white; /* Change text color to white */
     background-color: gray; /* Change background color to gray */
@@ -639,12 +627,12 @@ export default styled(NovelPage)`
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
   }
-  
+
   .button-review .ButtonNormal:active {
     box-shadow: none;
     transform: translateY(0);
   }
-  
+
   .user {
     display: flex;
     align-items: center;

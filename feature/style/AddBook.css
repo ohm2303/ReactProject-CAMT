@@ -1,0 +1,33 @@
+/* @font-face {
+    font-family: Doknatle;
+    src: url("/src/asset/Doknatle-d9YRE.otf") format("opentype");
+}
+
+body {
+    font-family: 'Doknatle', serif;
+    font-size: 48px;
+    text-align: center;
+}
+
+.Title {
+    font-family: 'Anuphan', sans-serif;
+}
+
+hr { border-left: 0; }
+hr.style1{
+	border-top: 2px solid #000000 ;
+    width: 50%
+} 
+.text{
+    font-family: 'Noto Serif Thai', serif;
+    font-size:large;
+    font-weight: 500;
+}
+
+.h1{
+    font-family: 'Anuphan';
+    font-size:60px;
+    font-weight: 600;
+}
+
+ */

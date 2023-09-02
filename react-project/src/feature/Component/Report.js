@@ -6,6 +6,7 @@ import UploadFile from "../SubComponent/UploadFile";
 import Button from "../SubComponent/Button";
 import Text from "../SubComponent/Text";
 import styled from "styled-components";
+import axios from "axios";
 
 const Report = ({ isOpen,className }) => {
   const [popupOpen, setPopupOpen] = useState(isOpen);
@@ -16,17 +17,41 @@ const Report = ({ isOpen,className }) => {
 
   const [inputValue, setInputValue] = useState("");
   const [inputValue1, setInputValue1] = useState("");
+  const [checkBox1, setCheckBox1] = useState("");
+  const [checkBox2, setCheckBox2] = useState("");
+  const [checkBox3, setCheckBox3] = useState("");
+  const [checkBox4, setCheckBox4] = useState("");
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
+    console.log(event.target.value)
   };
 
   const handleInputChange1 = (event) => {
     setInputValue1(event.target.value);
+    console.log(event.target.value)
   };
 
-  const handleReportSubmit = () => {
-    togglePopup(); // ปิด Popup เมื่อกดปุ่มส่งรายงาน
+  const handleReportSubmit = async () => {
+    // // แก้ไข URL ของ API ที่ต้องการ POST ข้อมูลตรงนี้
+    // const postUrl = "/reports/1/2";
+
+    // try {
+    //   const response = await axios.post(postUrl, {
+    //     descrip_problem: "inputValue", // รายละเอียดปัญหา
+    //     tel: "inputValue1", // เบอร์โทรศัพท์
+    //     file_photo: "test",
+    //   });
+
+    //   if (response.status === 200) {
+    //     togglePopup(); // ปิด Popup เมื่อส่งรายงานสำเร็จ
+    //   } else {
+    //     console.error("Failed to submit report.");
+    //   }
+    // } catch (error) {
+    //   console.error("Error submitting report:", error);
+    // }
+    console.log(inputValue1)
   };
 
   return (
@@ -51,10 +76,10 @@ const Report = ({ isOpen,className }) => {
                       <span className="red-asterisk">*</span>
                     </Text>
                   </div>
-                  <CheckBoxCircle value={"มีปัญหาไม่สามารถอ่านได้"} />
-                  <CheckBoxCircle value={"มีเนื้อหาไม่เหมาะสม"} />
-                  <CheckBoxCircle value={"มีปัญหาเรื่องการละเมิดสิทธิ์"} />
-                  <CheckBoxCircle value={"อื่นๆ"} />
+                  <CheckBoxCircle value={"มีปัญหาไม่สามารถอ่านได้"} valueOfText={checkBox1}/>
+                  <CheckBoxCircle value={"มีเนื้อหาไม่เหมาะสม"} valueOfText={checkBox2}/>
+                  <CheckBoxCircle value={"มีปัญหาเรื่องการละเมิดสิทธิ์"} valueOfText={checkBox3}/>
+                  <CheckBoxCircle value={"อื่นๆ"} valueOfText={checkBox4}/>
                 </div>
               </div>
 
@@ -108,6 +133,7 @@ const Report = ({ isOpen,className }) => {
                   value={"ส่งรายงาน"}
                   functionBtn={handleReportSubmit}
                   handleClose={togglePopup}
+                  onChange={handleReportSubmit}
                 />
               </div>
           }

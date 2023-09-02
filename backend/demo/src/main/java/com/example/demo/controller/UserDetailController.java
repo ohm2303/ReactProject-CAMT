@@ -28,6 +28,12 @@ public class UserDetailController {
         userDetailRepository.save(user);
         return ResponseEntity.ok("created user");
     }
+    //post user back
+    @PostMapping("/users/bank")
+    public ResponseEntity<Long> createUserBank(@RequestBody UserDetail user){
+        userDetailRepository.save(user);
+        return ResponseEntity.ok(user.getId());
+    }
     //get all user
     @GetMapping("/users")
     public Collection<UserDetail> getAllUser(){
