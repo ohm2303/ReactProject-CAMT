@@ -13,35 +13,31 @@ const style = {
 const Search = ({ size, onSearchResults }) => {
   const inputStyle = { ...style, width: size };
   const [prefix, setPrefix] = useState("");
-  const [debouncedPrefix, setDebouncedPrefix] = useState(""); // Debounced prefix for API requests
+  const [debouncedPrefix, setDebouncedPrefix] = useState("");
   const Api_Novel = `/novels/search/${debouncedPrefix}`;
   const { data } = useFetch(Api_Novel);
 
   useEffect(() => {
     const debounceTimeout = setTimeout(() => {
       setDebouncedPrefix(prefix);
-    }, ); // Adjust the debounce time as needed
+    }, 10); // Adjust the debounce time as needed
 
     return () => {
       clearTimeout(debounceTimeout);
     };
   }, [prefix]);
 
-  const dataPrefix = JSON.stringify(data);
-  const dataArray = JSON.parse(dataPrefix);
-
   useEffect(() => {
-    if (Array.isArray(dataArray)) {
-      const searchResults = dataArray.filter((item) =>
+    if (Array.isArray(data)) {
+      const searchResults = data.filter((item) =>
         item.name.toLowerCase().includes(debouncedPrefix.toLowerCase())
       );
 
       onSearchResults(searchResults);
     } else {
-      // Handle the case when dataArray is not an array (e.g., null or non-array object)
       onSearchResults([]);
     }
-  }, [dataArray, debouncedPrefix, onSearchResults]); // Adjust dependencies here
+  }, [data]);
 
   const handlePrefixChange = (event) => {
     setPrefix(event.target.value);
@@ -57,23 +53,13 @@ const Search = ({ size, onSearchResults }) => {
         onChange={handlePrefixChange}
         className="search-component"
       />
-
-      {dataArray[0] && dataArray[0].name && (
-        <div className="suggestions">
-          {dataArray.map((item, index) => (
-            <div key={index} className="suggestion">
-              {item.name}
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };
 
+
 Search.propTypes = {
   value: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
   size: PropTypes.string,
 };
 

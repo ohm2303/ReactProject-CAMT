@@ -1,10 +1,9 @@
 import GrayBackground from "./GrayBackground";
-import Button from "./Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { styled } from 'styled-components';
 import { useEffect, useState } from "react";
-
+import Button from "./Button";
 
 
 const SelectForPay = (props) => {
@@ -16,13 +15,7 @@ const SelectForPay = (props) => {
         })
           .then(response => response.json())
           .then(data => {
-            fetch(('http://localhost:3001/api/user/basket/1'),{    
-                method:"GET",                                     
-            }).then(res => res.json())
-            .then(data => {
-                props.setContent([])
-                props.setContent(old => [...old, data])
-            })    
+                props.setContent()
         })
         }
     return (
@@ -46,7 +39,7 @@ const SelectForPay = (props) => {
                 </div>
             </div>
             <div className="icon">
-            <Button className="DeleteBTN" icon={<FontAwesomeIcon icon={faTrashCan} size="2xl" style={{color:"#ffffff"}}s/> }  value={"ลบ"} onClick={() => del(idel)}></Button>
+            <Button key={idel} className="DeleteBTN" icon={<FontAwesomeIcon icon={faTrashCan} size="2xl" style={{color:"#ffffff"}}s/> }  value={"ลบ"} onClick={() => del(idel)}></Button>
             </div>
             </div>
         </GrayBackground> 

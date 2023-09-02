@@ -10,11 +10,14 @@ function NovelProduct({ item, className }) {
   // book name
   // name of author
   // category
+
+
+
   return (
     <div className={className}>
       <div className="Novel">
         <div className="Novel-img-container">
-          <img className="Novel-img" src={item.file_pic} alt={item.name} />
+          {item.file_pic && <img className="Novel-img" src={item.file_pic} alt={item.name} />}
         </div>
         <div className="Novel-text">
           <Text
@@ -41,7 +44,7 @@ function NovelProduct({ item, className }) {
             <div className="num-rating">{item.rating} Rating</div>
           </div>
           <div className="price">
-            <Text size={15} family={"Anuphan"} weight="600">560 บาท</Text>
+            <Text size={15} family={"Anuphan"} weight="600" color="#666666">560 บาท</Text>
           </div>
         </div>
       </div>

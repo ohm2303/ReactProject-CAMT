@@ -18,12 +18,14 @@ public class UserDetail {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String ID_card_number;
     private String email;
     private String username;
     private String password;
     private String gender;
     private String display_name;
     private int level;
+
 
     //reration
     @OneToMany(mappedBy = "id_user")
@@ -32,9 +34,12 @@ public class UserDetail {
     @OneToMany(mappedBy = "user_id")
     private Set<Report> reports = new HashSet<>();
 
+    @OneToMany(mappedBy = "seller_id")
+    private Set<Bank> banks = new HashSet<>();
+
     public UserDetail(){}
 
-    public UserDetail(Long id, String email, String username, String password, String gender, String display_name,int level) {
+    public UserDetail(Long id, String email, String username, String password, String gender, String display_name,int level ,String ID_card_number) {
         this.id = id;
         this.email = email;
         this.username = username;
@@ -42,6 +47,13 @@ public class UserDetail {
         this.gender = gender;
         this.display_name = display_name;
         this.level = level;
+        this.ID_card_number = ID_card_number;
+    }
+    public String getID_card_number() {
+        return ID_card_number;
+    }
+    public void setID_card_number(String iD_card_number) {
+        ID_card_number = iD_card_number;
     }
 
     public int getLevel() {

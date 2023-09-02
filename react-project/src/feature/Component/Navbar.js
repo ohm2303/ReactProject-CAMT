@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Input from "../SubComponent/Input";
 import RegisterReader from "./RegisterReader";
 import Search from "../SubComponent/Search";
+import { Link } from "react-router-dom";
 
 const StyledNavbar = styled.header`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
@@ -166,7 +167,10 @@ body {
   opacity: 0 !important;
   transform: translate(50px, 0);
 }
-
+.link{
+  text-decoration: none;
+  color: white;
+}
 
  
 `;
@@ -179,17 +183,29 @@ const Navbar = ({ onSearchResults }) => {
   return (
     <div>
       <StyledNavbar>
-      <nav class="navigationWrapper">
-  <div class="logoWrapper">
-    <span class="logo">Logo</span>
-  </div>
-  <ul class="navigation">
-    <li class="parent"><a class="link" href="#">Home</a></li>
-    <Input placeholder="Search for anything" size="400px" heightSize="20px" />
-    <li class="parent"><a class="link" href="#">Basket</a></li>
-    <li class="parent"><a class="link" href="#">Login/Register</a></li>
-  </ul>
-</nav>
+        <nav class="navigationWrapper">
+          <div class="logoWrapper">
+            <span class="logo">Logo</span>
+          </div>
+          <ul class="navigation">
+            <li class="parent">
+              <Link to={`/home`} className="link">Home</Link>
+            </li>
+            <Search
+              onSearchResults={onSearchResults}
+              size="400px"
+              heightSize="20px"
+            />
+            <li class="parent">
+              <Link to={`/basket`} className="link">Basket</Link>
+            </li>
+            <li class="parent">
+              <a class="link" href="#">
+                Login/Register
+              </a>
+            </li>
+          </ul>
+        </nav>
       </StyledNavbar>
       <ContentWrapper></ContentWrapper>
     </div>

@@ -5,6 +5,7 @@ import Input from "../SubComponent/Input";
 import Text from "../SubComponent/Text";
 import Button from "../SubComponent/Button";
 import CheckBoxCircle from "../SubComponent/CheckBoxCircle";
+import axios from "axios";
 
 const RegisterReader = ({ isOpen, className }) => {
   const [popupOpen, setPopupOpen] = useState(isOpen);
@@ -48,6 +49,41 @@ const RegisterReader = ({ isOpen, className }) => {
     //send data
     togglePopup();
   };
+
+  const onSubmit = () => {
+    console.log(username)
+    console.log(email)
+    console.log(password)
+    console.log(selectedGender)
+    console.log(displayName)
+    console.log(retypePassword)
+
+    if(password != retypePassword){
+      alert("password doesn't match")
+      setPassword("")
+      setRetypePassword("")
+      return; // ไม่ต้องดำเนินการถัดไปถ้ารหัสผ่านไม่ตรงกัน
+    }
+    const postDataToServer = async () => {
+      try{
+        const url = "/users";
+        const dataToSan = {
+          email:email,
+          username:username,
+          password:password,
+          gender:selectedGender,
+          display_name:displayName
+        }
+        const response = await axios.post(url,dataToSan);
+
+        console.log("คำขอ POST สำเร็จ:", response.data);
+      } catch (error) {
+        console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST:", error);
+      }
+    }
+    // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST เมื่อคอมโพเนนต์ถูกโหลด
+    postDataToServer();
+  }
 
 
 return (
@@ -153,9 +189,9 @@ return (
                     <span className="red-asterisk">*</span>
                   </Text>
                 </div>
-                <CheckBoxCircle value="Male"  checked={selectedGender === "Male"} onChange={() => handleGenderChange("Male")} />
-                <CheckBoxCircle value="Female" checked={selectedGender === "Female"} onChange={() => handleGenderChange("Female")} />
-                <CheckBoxCircle value="Other"   checked={selectedGender === "Other"} onChange={() => handleGenderChange("Other")} />
+                <CheckBoxCircle value="Male"  checked={selectedGender === "Male"} onClick={() => handleGenderChange("Male")} />
+                <CheckBoxCircle value="Female" checked={selectedGender === "Female"} onClick={() => handleGenderChange("Female")} />
+                <CheckBoxCircle value="Other"   checked={selectedGender === "Other"} onClick={() => handleGenderChange("Other")} />
               </div>
             </div>
 
@@ -165,6 +201,7 @@ return (
                 value={"ส่งรายงาน"}
                 functionBtn={handleRegisterSubmit}
                 handleClose={togglePopup}
+                onClick={onSubmit}
               />
             </div>
         }

@@ -1,6 +1,13 @@
 import { createGlobalStyle } from "styled-components";
-
 const  GlobalStyle = createGlobalStyle`
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+
+
 .GrayBackground{
     background-color: #e7e7e7;
     border-radius: 5px;
@@ -310,7 +317,7 @@ flex-direction: column;
   animation-delay: .3s;
 }
 
-//
+// 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
 html {

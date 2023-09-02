@@ -1,71 +1,103 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import photo1 from "../../pics/imgSlide/banner_img1.jpeg";
-import photo2 from "../../pics/imgSlide/banner_img2.jpeg";
-import photo3 from "../../pics/imgSlide/banner_img3.jpeg";
-import photo4 from "../../pics/imgSlide/banner_img4.jpeg";
-import photo5 from "../../pics/imgSlide/banner_img5.jpeg";
+import React, { useState } from "react";
+import styled from "styled-components";
+import photo1 from "../../pics/imgSlide/img1.png";
+import photo2 from "../../pics/imgSlide/img2.jpeg";
+import photo3 from "../../pics/imgSlide/img3.jpeg";
 
-// Styled component for the image slider
 const ImageSlider = styled.div`
-  position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 1200px;
   margin: 0 auto;
 
-  .image-set {
-    display: flex;
+  .mask {
     overflow: hidden;
+    width: 100%;
+    position: relative;
   }
 
-  .slider-image {
-    width: 100%;
-    height: auto;
+  .overflow {
+    display: flex;
     transition: transform 0.3s ease-in-out;
   }
 
-  .slider-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 24px;
+  .slide {
+    flex: 0 0 100%;
+    background-size: cover;
+    height: 300px; /* Set your desired height */
+  }
+
+  #controls {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  #controls label {
+    display: inline-block;
+    background: #ddd;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
     cursor: pointer;
   }
 
-  .prev-button {
-    left: 10px;
+  input.set {
+    display: none;
   }
 
-  .next-button {
-    right: 10px;
+  input#slide1:checked ~ .mask .overflow {
+    transform: translateX(0%);
+  }
+
+  input#slide2:checked ~ .mask .overflow {
+    transform: translateX(-100%);
+  }
+
+  input#slide3:checked ~ .mask .overflow {
+    transform: translateX(-200%);
+  }
+
+  input#slide4:checked ~ .mask .overflow {
+    transform: translateX(-300%);
   }
 `;
 
-const PhotoSlide = ({ size }) => {
+const PhotoSlide = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const images = [photo1, photo2, photo3, photo4, photo5];
+  const images = [photo1, photo2, photo3];
 
-  const nextSlide = () => {
-    setCurrentSlide(prevSlide => (prevSlide + 1) % images.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(prevSlide => (prevSlide - 1 + images.length) % images.length);
+  const handleSlideChange = (index) => {
+    setCurrentSlide(index);
   };
 
   return (
-    <ImageSlider>
-      <button className="slider-button prev-button" onClick={prevSlide}>
-        {'<'}
-      </button>
-      <img src={images[currentSlide]} alt={`Slide ${currentSlide}`} className="slider-image" />
-      <button className="slider-button next-button" onClick={nextSlide}>
-        {'>'}
-      </button>
-    </ImageSlider>
+    <>
+      <ImageSlider>
+        <div className="mask">
+          <div
+            className="overflow"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className="slide"
+                style={{ backgroundImage: `url(${image})` }}
+              />
+            ))}
+          </div>
+        </div>
+        <div id="controls">
+          {images.map((_, index) => (
+            <label
+              key={index}
+              htmlFor={`slide${index + 1}`}
+              onClick={() => handleSlideChange(index)}
+            />
+          ))}
+        </div>
+      </ImageSlider>
+    </>
   );
 };
 

@@ -114,7 +114,6 @@ const LoginPopup = styled.div`
     transform: translateY(0);
   }
 `;
-
 function Login() {
   return (
     <LoginPopup>

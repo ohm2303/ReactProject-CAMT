@@ -448,16 +448,16 @@ flex-direction: column;
 
 .DropdownMenu_menu:not(:hover) > .DropdownMenu_menu-dropdown {
   padding: 4px 0;
-  background: #white;
+  background: white;
   z-index: 99;
 }
 
 .DropdownMenu_menu:not(:hover) > .DropdownMenu_menu-dropdown:after {
-  border-top-color: #white;
+  border-top-color: white;
 }
 
 .DropdownMenu_menu:not(:hover) > .DropdownMenu_menu-title:after {
-  border-bottom-color: #white;
+  border-bottom-color: white;
 }
 
 .DropdownMenu_menu-dropdown > * {
