@@ -1,16 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState,useContext } from "react";
 import styled from "styled-components";
-import GrayBackground from "../SubComponent/GrayBackground";
 import Text from "../SubComponent/Text";
 import Input from "../SubComponent/Input";
 import Button from "../SubComponent/Button";
-import "../style/Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
-import { Link } from "react-router-dom";
-import Home from "../Page/Home";
-import { userContext } from "../../App";
 import Popup from "../SubComponent/Popup";
+import { userContext } from "../../App";
 
 const LoginPopup = styled.div`
   font-family: "Anuphan", sans-serif;
@@ -120,60 +116,64 @@ const LoginPopup = styled.div`
     transform: translateY(0);
   }
 `;
-function Login({ isOpen }) {
+function Login(isOpen) {
+  const [popupOpen, setPopupOpen] = useState(isOpen);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [data, setData] = useState("");
   const { dataCon, setDataCon } = useContext(userContext);
-  const [popupOpen, setPopupOpen] = useState(isOpen);
 
   const togglePopup = () => {
     setPopupOpen(!popupOpen);
   };
 
-  const checkUser = () => {
-    fetch(`${process.env.REACT_APP_API_PREME}/api/user/`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
+  const checkUser =() => {
+    fetch(`${process.env.REACT_APP_API_PREME}/api/user/`,{    
+      method:"POST",
+      credentials: 'include',
+      headers:{
+          "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
+    body: JSON.stringify({
+      username:username,
+      password: password
     })
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-        if (data == "success") {
-          fetch(`${process.env.REACT_APP_API_PREME}/api/user/checkcookie`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              setData(data);
-              setDataCon({
-                displayname: data[0].display_name,
-                id: data[0].id,
-                email: data[0].email,
-              });
-            });
-          togglePopup();
-        }
-      });
-  };
+})
+.then(response => response.json())
+.then(data => {
+setData(data)
+if(data=="success"){
+  fetch(`${process.env.REACT_APP_API_PREME}/api/user/checkcookie`,{    
+    method:"POST",
+    credentials: 'include',
+    headers:{
+        "Content-Type": "application/json",
+    },
+    })
+    .then(response => response.json())
+    .then(data => {
+    setData(data)
+    setDataCon({displayname :data[0].display_name, id:data[0].id, email:data[0].email})
+    })
+  togglePopup()
+}
+})
 
+}
+  
   return (
     <>
       {popupOpen && (
-        <Popup handleClose={togglePopup}>
-          <LoginPopup>
-            <FontAwesomeIcon>
+        <Popup
+          handleClose={togglePopup}
+          content={
+            <LoginPopup>
+              <FontAwesomeIcon
+                className="iconXmark"
+                icon={faCircleXmark}
+                size="xs"
+                onClick={togglePopup}
+              />
               <div style={{ lineHeight: "0px" }}>
                 <Text
                   size={45}
@@ -194,16 +194,14 @@ function Login({ isOpen }) {
                 placeholder="username"
                 size={"60%"}
                 heightSize={"3vh"}
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={username} onChange={(e)=>setUsername(e.target.value) } 
               />
               <Input
                 type="password"
                 placeholder="password"
                 size={"60%"}
                 heightSize={"3vh"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={password} onChange={(e)=>setPassword(e.target.value) }
               />
               <div className="FlexContainer">
                 <div className="FlexItem">
@@ -227,8 +225,8 @@ function Login({ isOpen }) {
                 <Button
                   className="button-q"
                   value={"ล็อกอินเข้าสู่ระบบ"}
-                  onClick={checkUser}
                   css={"textButtonLogin"}
+                  onClick={checkUser}
                 />
               </div>
               <div className="FlexContainer">
@@ -245,26 +243,20 @@ function Login({ isOpen }) {
                 <Button
                   className="button-q"
                   value={"สมัครสมาชิกสำหรับผู้ขาย"}
-                  functionBtn={() => console.log("test")}
                   css={"textButton"}
                 />
                 <Button
                   className="button-q"
                   value={"สมัครสมาชิกสำหรับผู้ขาย"}
-                  functionBtn={() => console.log("test")}
                   css={"textButton"}
                 />
               </div>
-            </FontAwesomeIcon>
-          </LoginPopup>
-        </Popup>
+            </LoginPopup>
+          }
+        />
       )}
     </>
   );
 }
 
 export default Login;
-            
-//export
-//
-
