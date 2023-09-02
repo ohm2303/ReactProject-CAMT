@@ -1,13 +1,26 @@
-import React ,{useState} from "react";
+import React ,{useState,useContext, useEffect} from "react";
 import Text from "../SubComponent/Text";
 import Nav from "../Component/Navbar";
 import NovelProduct from "../../feature/Novel_Product";
 import novelData from "../../asset/novelData";
 import styled from "styled-components";
-
+import { userContext } from "../../Testapp";
 const MyCollection = ({ className }) => {
-  const [novels, Setnovel] = useState(novelData);
-
+  const [novels, setNovel] = useState('');
+  const {dataCon, setDataCon}= useContext(userContext)
+  useEffect(() => {
+    fetch((`${process.env.REACT_APP_API_PREME}/api/user/myCollection/buy/${dataCon.id}`),{    
+      method:"GET",                                     
+  })
+  .then(response => response.json())
+  .then(data=>{ 
+  console.log("from mycollection")
+  console.log(data)
+  setNovel(data)
+  })
+  
+  },[])
+  
   return (
     <div className={className}>
       {/* <Nav /> */}

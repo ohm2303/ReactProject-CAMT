@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -27,11 +27,13 @@ import shareHovered from "../../pics/Icon/shareHovered.png";
 import likeDefault from "../../pics/Icon/likeDefault.png";
 import likeHovered from "../../pics/Icon/likeHovered.png";
 import { useParams } from "react-router-dom";
-
+import { userContext } from "../../Testapp";
 const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
+  const {dataCon, setDataCon} = useContext(userContext)
+  const [review,setReview]=useState([])
+  const [loading,setLoading]=useState(true)
   // pull id from novel
   const { id } = useParams();
-  console.log(id);
 
   //post
   const [formData, setFormData] = useState({
@@ -42,7 +44,6 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
   const Api_Novel = `/novels/${id}`;
   const { data } = useFetch(Api_Novel);
 
-  console.log(data);
 
   //Report
   const [isReportOpen, setIsReportOpen] = useState(false);
@@ -73,7 +74,20 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
   const editIcon = require("../../pics/Icon/edit.png");
   const user = require("../../pics/Icon/circle-user.png");
 
-  console.log(data.author);
+
+  useEffect(()=> {
+    fetch((`${process.env.REACT_APP_API_PREME}/api/user/Review/2`),{    
+      method:"GET",                                     
+  })
+  .then(response => response.json())
+  .then(data=>{ 
+  setReview(data)
+  setLoading(false)
+  console.log("review")
+  console.log( )
+  })
+},[loading])
+
   return (
     <div className={className}>
       <div className="total-content">
@@ -190,12 +204,14 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
           <Text size={30} family={"Anuphan"} weight="600">
             เขียนรีวิวและให้เรตติ้ง
           </Text>
+
           <div className="user">
             <img src={user}></img>
             <Text size={18} family={"Anuphan"} weight="500">
               Kanokwan Mahakham
             </Text>
           </div>
+
           <div className="writing-review">
             <div className="give-heart">
               {Array.from({ length: 5 }, (_, index) => (
@@ -232,22 +248,26 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
           <Text size={30} family={"Anuphan"} weight="600">
             รีวิวทั้งหมด
           </Text>
+          {review.map((e)=>
           <div className="box-reviews">
             <div className="user-review">
               <img src={user}></img>
               <div className="heart-user-review">
                 <Text size={15} family={"Anuphan"} weight="500">
-                  Kanokwan Mahakham
+                  
                 </Text>
-                <Heart heartCount={3} />
+                <Heart heartCount={e.num_like} />
               </div>
             </div>
-
+            
+            <>
             <div className="details-review">
               <Text size={15} family={"Anuphan"} weight="500">
-                หน้าอ่านมากค่ะ
+                { e.details}
               </Text>
             </div>
+            </>
+          
             <div className="like">
               <ButtonIcon
                 defaultImg={likeDefault}
@@ -255,10 +275,11 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
                 className="icon-button"
               />
               <Text size={12} family={"Anuphan"} weight="500">
-                รีวิวเมื่อ 1 วันที่ผ่านมา
+                {e.display_name}
               </Text>
             </div>
           </div>
+            )}
         </div>
       </div>
     </div>

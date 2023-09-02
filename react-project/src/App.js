@@ -15,7 +15,8 @@ import Basket from "./feature/Page/Basket"
 import Pay from "./feature/Page/pay";
 import Login from "./feature/Component/Login"
 
-
+import Dropdownmenuu from "./feature/SubComponent/Dropdownmenuu";
+import GlobalStyle from "./feature/GlobalStyle";
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
 
@@ -28,23 +29,8 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>
-      <Navbar onSearchResults={handlePrefixChange}></Navbar>
-      <Routes>
-        <Route path="/home" element={<Home handlePrefixChange = {handlePrefixChange} data={data} searchResults={searchResults} />}/>
-        <Route path="/novel/:id" element={<Novel handlePrefixChange={handlePrefixChange}/>}/>
-        <Route path="/myCollection" element={<MyCollection />}/>
-        <Route path="/addBook" element={<AddBook></AddBook>}></Route>
-        <Route path="/bankAccount" element={<BankAccountPage></BankAccountPage>}></Route>
-        <Route path="/basket" element={<Basket></Basket>}></Route>
-        <Route path="/payment" element={<Payment></Payment>}></Route>
-        <Route path="/pay" element={<Pay></Pay>}></Route>
-        <Route path="/payPage" element={<PayPage></PayPage>}></Route>
-
-        <Route path="/RegisterReader" element={<RegisterReader isOpen={true}></RegisterReader>}></Route>
-        <Route path="/Login" element={<Login isOpen={true}></Login>}></Route>
-      </Routes>
-      </BrowserRouter>
+    <GlobalStyle/>
+    <MyCollection/>
     </>
   );
 };

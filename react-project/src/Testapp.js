@@ -38,7 +38,7 @@ const Testapp = () => {
         setData(data)
         setDataCon({displayname :data[0].display_name, id:data[0].id, email:data[0].email})
         setLoading(false)
-        },[dataCon])
+        },[])
     })
   return (
     <>

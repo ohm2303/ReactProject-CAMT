@@ -508,17 +508,20 @@ flex-direction: column;
   margin-left: 0;
 }
 .DropdownMenu_pic{
+  box-shadow:0 0 16px 7px #78A3D4,
+  0 0 13px 1.5px #48abe0;
+  ;
   
   border-radius:50% ;
   width: 40px;
   height: 40px;
-
 }
+
 .DropdownMenu_titleDetail{
-  font-size: 6px;
-  margin-top: -3.5vh;
+  font-size: 18px;
+  margin-top: -4.5vh;
   margin-left: 3.5vh;
-  color: #000;
+  color: #fff;
   font-family: 'Anuphan';
 }
 .DropdownMenu_titlepic {

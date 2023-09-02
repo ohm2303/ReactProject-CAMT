@@ -18,13 +18,23 @@ const SelectForPay = (props) => {
                 props.setContent()
         })
         }
+
+        function myFunction() {
+        const checkBox = document.getElementById(props.props.file_pic);
+            
+            if (checkBox.checked == true){
+              console.log("checked");
+            } else {
+               console.log("not checked");
+            }
+          }
     return (
    <div className={className} >
         <GrayBackground >
             <div style={{display:"flex",justifyContent:"space-between"}}>
             <div style={{display:"block"}}>
                 <div style={{display:"flex"}}>
-                <input type="checkbox" id="checkbox" />
+                <input type="checkbox" id={props.props.file_pic} onclick={myFunction}/>
                 <div className="pic">
                 <img src={props.props.file_pic} alt={props.props.name}/>
                 </div>
