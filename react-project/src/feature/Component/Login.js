@@ -9,7 +9,7 @@ import Popup from "../SubComponent/Popup";
 import { userContext } from "../../App";
 import { Link } from "react-router-dom";
 import {useDispatch} from "react-redux";
-import { hidelogin } from "../../store/showloginSlice"
+import { hidelogin, showregister, showregister2 } from "../../store/showloginSlice"
 
 const LoginPopup = styled.div`
   font-family: "Anuphan", sans-serif;
@@ -156,7 +156,8 @@ if(data=="success"){
     .then(response => response.json())
     .then(data => {
     setData(data)
-    setDataCon({displayname :data[0].display_name, id:data[0].id, email:data[0].email})
+    console.log(data)
+    setDataCon({displayname :data[0].display_name, id:data[0].id, email:data[0].email,level:data[0].level})
 
     })
     dispatch(hidelogin())
@@ -177,7 +178,7 @@ if(data=="success"){
                 className="iconXmark"
                 icon={faCircleXmark}
                 size="xs"
-                onClick={dispatch(hidelogin)}
+                onClick={()=>dispatch(hidelogin())}
 
               />
               <div style={{ lineHeight: "0px" }}>
@@ -246,16 +247,18 @@ if(data=="success"){
                 </div>
               </div>
               <div className="CenteredButtonContainer">
-              <Link to={`/RegisterReader`} ><Button
+              <Button
                   className="button-q"
                   value={"สมัครสมาชิกสำหรับผู้ซื้อ"}
                   css={"textButton"}
-                /></Link>
-                <Link to={`/RegisterAuthor`} ><Button
+                  onClick={()=>{dispatch(hidelogin()); dispatch(showregister())} }
+                />
+                <Button
                   className="button-q"
                   value={"สมัครสมาชิกสำหรับผู้ขาย"}
                   css={"textButton"}
-                /></Link>
+                  onClick={()=>{dispatch(hidelogin()); dispatch(showregister2())} }
+                />
               </div>
             </LoginPopup>
           }

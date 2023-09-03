@@ -28,12 +28,13 @@ import shareHovered from "../../pics/Icon/shareHovered.png";
 import likeDefault from "../../pics/Icon/likeDefault.png";
 import likeHovered from "../../pics/Icon/likeHovered.png";
 import { useParams } from "react-router-dom";
-import { userContext } from "../../Testapp";
 import { useDispatch, useSelector } from "react-redux";
 import { setReview } from "../../store/reviewSlice";
+import { userContext } from "../../App";
+
 const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
-  const {dataCon, setDataCon} = useContext(userContext)
   const [loading,setLoading]=useState(true)
+  const {dataCon,setDataCon}=useContext(userContext)
 
   //redux
   const dispatch = useDispatch();
@@ -51,7 +52,34 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
   const Api_Novel = `/novels/${id}`;
   const { data } = useFetch(Api_Novel);
 
+  //post
 
+  const reviewSubmit = () => {
+    console.log(inputReview)
+    const heart = clickedHearts.length
+    console.log(heart)
+    console.log(dataCon.id)
+    console.log(heart)
+    const postDataToServerView = async () => {
+      try {
+        const url = `/reviews/${dataCon.id}/${id}`;
+        const dataToSan = {
+          details:inputReview,
+          num_like:heart
+        };
+        const response = await axios.post(url, dataToSan);
+
+        console.log("คำขอ POST สำเร็จ:", response.data);
+        alert(`review success`)
+      } catch (error) {
+        console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST ข้อมูลธนาคาร:", error);
+        alert(`error`)
+      }
+    };
+
+    // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST ข้อมูลธนาคาร
+    postDataToServerView();
+  }
   //Report
   const [isReportOpen, setIsReportOpen] = useState(false);
   const handleReportButtonClick = () => {
@@ -81,21 +109,45 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
   const editIcon = require("../../pics/Icon/edit.png");
   const user = require("../../pics/Icon/circle-user.png");
 
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
   //post api
   const onClick = () => {
-    const url = `http://localhost:8080/baskets/{${id}/${dataCon.id}}`;
+    const url = `/baskets/{${id}/${getCookie("id")}}`;
     axios.post(url)
       .then(response => {
         console.log(response.data);
+        alert(`basket success`)
       })
       .catch(error => {
         console.error('Error:', error);
+        alert(`error`)
       });
   };
-  
+  const basketSubmit = () => {
+    const postDataToServerOrder = async () => {
+      try {
+        const url = `/orders/basket/${dataCon.id}/${id}`;
+        const response = await axios.post(url);
+
+        console.log("คำขอ POST สำเร็จ:", response.data);
+        alert("review create")
+      } catch (error) {
+        console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST ข้อมูลธนาคาร:", error);
+        alert("คุณลูกค้าได้เพิ่มไปในตระกล้าแล้ว")
+      }
+    };
+
+    // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST ข้อมูลธนาคาร
+    postDataToServerOrder();
+  }
 
   useEffect(()=> {
-    fetch((`${process.env.REACT_APP_API_PREME}/api/user/Review/2`),{    
+    fetch((`${process.env.REACT_APP_API_PREME}/api/user/Review/${id}`),{    
       method:"GET",                                     
   })
   .then(response => response.json())
@@ -146,7 +198,7 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
               <div className="total-button">
                 <Button value="ทดลองอ่าน" className="button-buy" />
                 <Button
-                  value={`ซื้อ ${data.price} บาท`}
+                  value={`ซื้อ ${data.coverPrice} บาท`}
                   className="button-buy"
                 />
               </div>
@@ -158,7 +210,7 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
 
               <div className="button-icon">
                 <ButtonIcon
-                onClick={onClick}
+                onClick={basketSubmit}
                   defaultImg={basketDefault}
                   hoveredImg={basketHovered}
                   text={"ตระกร้า"}
@@ -193,7 +245,7 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
                     <li>pdf, epub(สารบัญ) </li>
                     <li>{data.release_date}</li>
                     <li>{data.numpage}</li>
-                    <li>{data.coverPrice} บาท</li>
+                    <li>${data.price} บาท</li>
                   </ul>
                 </Text>
               </div>
@@ -224,11 +276,11 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
           <Text size={30} family={"Anuphan"} weight="600">
             เขียนรีวิวและให้เรตติ้ง
           </Text>
-
+          
           <div className="user">
             <img src={user}></img>
             <Text size={18} family={"Anuphan"} weight="500">
-              Kanokwan Mahakham
+            {dataCon.displayname}
             </Text>
           </div>
 
@@ -258,7 +310,7 @@ const NovelPage = ({ className, idNovel, handlePrefixChange }) => {
                 width="703px"
               />
               <div className="button-review">
-                <Button value="ส่งรีวิว" />
+                <Button value="ส่งรีวิว" onClick={reviewSubmit}/>
               </div>
             </div>
           </div>
@@ -331,6 +383,7 @@ export default styled(NovelPage)`
     justify-content: center; /* จัดกลางแนวนอน */
     flex-direction: column;
     align-items: center;
+    margin-top:80px;
   }
 
   .name p {

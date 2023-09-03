@@ -1,16 +1,30 @@
-import React ,{useState} from "react";
+import React ,{useContext, useState,useEffect} from "react";
 import Text from "../SubComponent/Text";
 import Nav from "../Component/Navbar";
 import NovelProduct from "../../feature/Novel_Product";
 import novelData from "../../asset/novelData";
 import styled from "styled-components";
+import { userContext } from "../../App";
 
 const MyCollection = ({ className }) => {
-  const [novels, Setnovel] = useState(novelData);
+  const [novels, setNovel] = useState([]);
+  const {dataCon,setDatacon} = useContext(userContext)
 
+  console.log(dataCon.id)
+  useEffect(() => {
+    fetch((`${process.env.REACT_APP_API_PREME}/api/user/myCollection/buy/${dataCon.id}`),{    
+      method:"GET",                                     
+  })
+  .then(response => response.json())
+  .then(data=>{ 
+    setNovel(data)
+    console.log("from Buy")
+    console.log(novels[0])
+  })
+  },[])
   return (
     <div className={className}>
-      {/* <Nav /> */}
+      
       <div className="content">
         <div className="title">
           <Text size={50} family={"Anuphan"} weight="bold">
@@ -90,7 +104,7 @@ export default styled(MyCollection)`
     width: 100%;
     border: none;
     justify-content: center;
-    border: 1px solid red;
+    background-color:#e1e7e0;
 }
 .Ordered_Books {
     display: flex;

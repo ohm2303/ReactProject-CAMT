@@ -36,17 +36,17 @@ NovelMain.propType = {
 
 export default styled(NovelMain)`
   .novel_main{
-    border: 1px solid green;
+
   }
   .Novel__Product {
     display: flex;
     flex-wrap: wrap;
-    list-style-type: none;
-    padding: 0;
-    margin: 0 auto;
-    border: 1px solid red;
-    text-align: center;
-    padding-left: 2rem;
+    margin-top: 20px;
+    padding: 0px;
+    width: 100%;
+    border: none;
+    justify-content: center;
+    background-color:#e1e7e0;
   }
   li {
     display: flex;

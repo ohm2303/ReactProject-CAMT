@@ -203,7 +203,7 @@ border: 1.5px solid #000000;
 .busketPage{
 display: flex;
 flex-direction: column;
-margin-top:0px;
+margin-top:70px;
 }
  
 .textS{

@@ -99,6 +99,9 @@ const AddBook = (className) => {
   const [exam, setExam] = useState("");
   const [file, setFile] = useState("");
   const [data, setData] = useState("");
+  const [promotion,setPromotion] = useState('');
+  const [description,setDescription] = useState('');
+  const [author,setAuthor] = useState('')
 
   // function onSubmit(event) {
   //   event.preventDefault();
@@ -153,6 +156,9 @@ const AddBook = (className) => {
           file_real: file,
           file_test: exam,
           category: type,
+          description:description,
+          promotion:promotion,
+          author:author
         }; // แทนที่ด้วยข้อมูลที่คุณต้องการส่ง
 
         const response = await axios.post(url, dataToSend);
@@ -160,8 +166,10 @@ const AddBook = (className) => {
         // อัปเดตสถานะเพื่อแสดงข้อมูลที่ได้จากเซิร์ฟเวอร์
         setData(response.data);
         console.log("คำขอ POST สำเร็จ:", response.data);
+        alert("created success")
       } catch (error) {
         console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST:", error);
+        alert("arror")
       }
     };
 
@@ -170,7 +178,7 @@ const AddBook = (className) => {
   };
   useEffect(() => {
     console.log("ค่า file ถูกอัปเดต:", file, exam, imageURL);
-  }, [file]);
+  }, []);
 
   return (
     <StyledAddBook>
@@ -259,6 +267,58 @@ const AddBook = (className) => {
                 onChange={(event) => setName(event.target.value)}
               />
             </div>
+
+            <div className="input-group">
+              <label htmlFor="name" className="text1">
+                นามปากา
+              </label>
+              <br />
+              <br />
+              <Input
+                name="name"
+                type="text"
+                id="author"
+                placeholder="Enter something..."
+                size={"90%"}
+                value={author}
+                onChange={(event) => setAuthor(event.target.value)}
+              />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="name" className="text1">
+                โปรโมชั่น
+              </label>
+              <br />
+              <br />
+              <Input
+                name="name"
+                type="text"
+                id="promotion"
+                placeholder="Enter something..."
+                size={"90%"}
+                value={promotion}
+                onChange={(event) => setPromotion(event.target.value)}
+              />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="name" className="text1">
+                คํานํา
+              </label>
+              <br />
+              <br />
+              <Input
+                name="name"
+                type="text"
+                id="description"
+                placeholder="Enter something..."
+                size={"90%"}
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+              />
+            </div>
+
             <div className=" input-group">
               <label htmlFor="price" className="text1">
                 ราคา
@@ -275,19 +335,24 @@ const AddBook = (className) => {
                 onChange={(event) => setPrice(event.target.value)}
               />
             </div>
-          </div>
-          <div className=" input-group">
-            <label htmlFor="imageURL" className="text2">
+            <div className=" input-group">
+              <label htmlFor="price" className="text1">
               รูปหน้าปก
-            </label>
-            <br />
-            <br />
-            <UploadFile
-              value={imageURL}
-              onChange={onChangeImg}
-              accept="image/jpeg, image/png, image/gif"
-            />
+              </label>
+              <br />
+              <br />
+              <Input
+                name="price"
+                type="text"
+                id="price"
+                placeholder="Enter something..."
+                size={"90%"}
+                value={imageURL}
+                onChange={(event) => setImageURL(event.target.value)}
+              />
+            </div>
           </div>
+          
           <div className=" input-group">
             <label htmlFor="exam" className="text2">
               อัพตัวอย่างหนังสือ
@@ -319,12 +384,6 @@ const AddBook = (className) => {
           className="ButtonADD"
           onClick={onClick}
         ></Button>
-        {
-          <img
-            src="blob:http://localhost:3000/dd95a5b1-b46a-4f53-acf4-c99dc6fb41e7"
-            alt="รูปภาพ"
-          />
-        }
       </div>
     </StyledAddBook>
   );

@@ -7,12 +7,14 @@ import photo3 from "../../pics/imgSlide/img3.jpeg";
 const ImageSlider = styled.div`
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  
 
   .mask {
     overflow: hidden;
     width: 100%;
     position: relative;
+    margin-top:60px;
+    margin-left:120px;
   }
 
   .overflow {
@@ -24,11 +26,13 @@ const ImageSlider = styled.div`
     flex: 0 0 100%;
     background-size: cover;
     height: 300px; /* Set your desired height */
+    
   }
 
   #controls {
     text-align: center;
     margin-top: 10px;
+    margin-left:240px;
   }
 
   #controls label {
@@ -39,6 +43,7 @@ const ImageSlider = styled.div`
     height: 12px;
     margin: 0 5px;
     cursor: pointer;
+    
   }
 
   input.set {

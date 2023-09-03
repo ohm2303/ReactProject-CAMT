@@ -10,7 +10,10 @@ import DropdownMenuu from "../SubComponent/Dropdownmenuu";
 
 //Redux
 import {useSelector, useDispatch} from "react-redux";
-import { hidelogin, showlogin } from "../../store/showloginSlice";
+import { hidelogin, showlogin, showregister } from "../../store/showloginSlice";
+
+
+import RegisterAuthor from "./RegisterAuthor";
 
 const StyledNavbar = styled.header`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
@@ -82,7 +85,7 @@ const StyledNavbar = styled.header`
       }
 
       .parent {
-        padding: 10px 70px;
+        padding: 2px 55px;
         cursor: pointer;
 
         .link {
@@ -207,7 +210,9 @@ const ContentWrapper = styled.div`
 
 const Navbar = ({onSearchResults}) => {
   const { dataCon, setDataCon } = useContext(userContext);
-
+  const[level,setLevel]=useState(dataCon.level)
+  {console.log("from test level")}
+  {console.log(level)}
   const user = require("../../pics/Icon/proflie.png");
   const logout = require("../../pics/Icon/logout.png");
 
@@ -219,7 +224,14 @@ const Navbar = ({onSearchResults}) => {
 
   const dispatch = useDispatch();
   const isLoginOpen = useSelector((state) => state.login.login);
-  console.log(dataCon);
+  const isRegisterOpen = useSelector((state) => state.login.register);
+  const isRegister2Open = useSelector((state) => state.login.register2);
+
+  const Register = () => {
+    dispatch(hidelogin());
+    dispatch(showregister());
+  }
+
   return (
     <div>
       {dataCon.level == 0 ? (
@@ -243,9 +255,10 @@ const Navbar = ({onSearchResults}) => {
                   <span className="link-text">Basket</span>
                 </Link>
               </li>
-
+              {console.log(dataCon.displayname)}
+                      {console.log(dataCon.level)}
               <li class="parent">
-                <Link to={`/`} className="link">
+                <Link to={`/myCollection`} className="link">
                   <span className="link-text">My Collection</span>
                 </Link>
               </li>
@@ -253,9 +266,9 @@ const Navbar = ({onSearchResults}) => {
               <li class="parent">
                 {dataCon.displayname !== "" ? (
                   <div className="pic">
-                    <img src={user}/>
+                    <img alt="" src={user}/>
                     <p>{dataCon.displayname}</p>
-                    <img src={logout} onClick={()=>logOut()}/>
+                    <img alt="" src={logout} onClick={()=>logOut()}/>
                     </div>
                 ) : (
                   <div className="link"onClick={()=>dispatch(showlogin())}><span className="link-text">login/register</span>
@@ -290,21 +303,26 @@ const Navbar = ({onSearchResults}) => {
                     <span className="link-text">My Collection</span>
                   </Link>
                 </li>
+                {console.log(dataCon.displayname)}
+                      {console.log(dataCon.level)}
                 <li class="parent">
-                  <Link to={`/`} className="link">
+                  <Link to={`/addBook`} className="link">
                     <span className="link-text">For Selling</span>
                   </Link>
                 </li>
                 <li class="parent">
                   {dataCon.displayname !== "" ? (
                     <div className="pic">
-                      <img className="user" src={user} />
+                      <img alt="" className="user" src={user} />
                       <p>{dataCon.displayname}</p>
-                      <img className="logout" src={logout} onClick={()=>logOut()}/>
+                      <img alt="" className="logout" src={logout} onClick={()=>logOut()}/>
+                  
                     </div>
+                    //for test{
+               
                   ) : (
                     <div className="link" >
-                      <span className="link-text" onClick={dispatch(hidelogin)} >login/</span><Link to={`/Rigister`}><span>/register</span></Link>
+                      <span className="link-text" onClick={()=>dispatch(showlogin())} >login</span><span onClick={()=> Register()}>/register</span>
                     </div>
                   )}
                 </li>
@@ -314,6 +332,8 @@ const Navbar = ({onSearchResults}) => {
         </div>
       )}
       {isLoginOpen && <Login  />}
+      {isRegisterOpen && <RegisterReader />}
+      {isRegister2Open && <RegisterAuthor />}
       <ContentWrapper></ContentWrapper>
     </div>
   );

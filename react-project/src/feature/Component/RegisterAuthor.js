@@ -10,9 +10,12 @@ import useFetch from "../Hook/useFetch";
 import PropTypes from "prop-types";
 // create register for author
 
-function RegisterArthor({ isOpen, className }) {
+
+import {useDispatch, useSelector} from "react-redux";
+import { hideregister2 } from "../../store/showloginSlice"
+
+function RegisterArthor({ className }) {
   // Set useState
-  const [popupOpen, setPopupOpen] = useState(isOpen);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRetype, setPasswordRetype] = useState("");
@@ -25,11 +28,14 @@ function RegisterArthor({ isOpen, className }) {
   const [numbank, setNumbank] = useState("");
   const [namebank, setNamebank] = useState("");
 
+  const popupOpen = useSelector((state) => state.login.register2);
+  const dispatch = useDispatch();
+
   const Api_Novel = `/users`;
   const { data } = useFetch(Api_Novel);
   // Set Popup
   const togglePopup = () => {
-    setPopupOpen(!popupOpen);
+    dispatch(hideregister2())
   };
   // close popup when user do something
   const closePopup = () => {
@@ -80,8 +86,10 @@ function RegisterArthor({ isOpen, className }) {
           const response = await axios.post(url, dataToSan);
   
           console.log("คำขอ POST สำเร็จ:", response.data);
+          alert("success")
         } catch (error) {
           console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST ข้อมูลธนาคาร:", error);
+          alert("wrong")
         }
       };
   
@@ -351,6 +359,7 @@ export default styled(RegisterArthor)`
     justify-content: center;
     align-items: center;
     margin-top:50px;
+    z-index: 2;
   }
 
   .box {

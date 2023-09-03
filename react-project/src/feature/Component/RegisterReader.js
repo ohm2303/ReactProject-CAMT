@@ -8,11 +8,15 @@ import CheckBoxCircle from "../SubComponent/CheckBoxCircle";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-const RegisterReader = ({ isOpen, className }) => {
-  const [popupOpen, setPopupOpen] = useState(isOpen);
+import {useDispatch, useSelector} from "react-redux";
+import { hideregister } from "../../store/showloginSlice"
+
+const RegisterReader = ({ className }) => {
+  const popupOpen = useSelector((state) => state.login.register);
+  const dispatch = useDispatch();
 
   const togglePopup = () => {
-    setPopupOpen(!popupOpen);
+    dispatch(hideregister())
   };
 
   const [username, setUsername] = useState("");
@@ -78,8 +82,10 @@ const RegisterReader = ({ isOpen, className }) => {
         const response = await axios.post(url,dataToSan);
 
         console.log("คำขอ POST สำเร็จ:", response.data);
+        alert(`create success`)
       } catch (error) {
         console.error("เกิดข้อผิดพลาดในการส่งคำขอ POST:", error);
+        alert(`error`)
       }
     }
     // เรียกใช้งานฟังก์ชันสำหรับการส่งคำขอ POST เมื่อคอมโพเนนต์ถูกโหลด
@@ -230,6 +236,7 @@ export default styled(RegisterReader)`
   justify-content: center;
   align-items: center;
   margin-top:50px;
+  z-index: 2;
 }
 
 .box {

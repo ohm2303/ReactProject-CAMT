@@ -57,7 +57,7 @@ exports.checkUser = async (req,res)=>{
   }
   try{
     connection.execute(
-    'SELECT username,`password`,id FROM user_detail where username= ? And password= ?;',[req.body.username,req.body.password],
+    'SELECT username,`password`,id,level FROM user_detail where username= ? And password= ?;',[req.body.username,req.body.password],
       (err, results, fields) => {
         if(results.length > 0){
           res.cookie('id',results[0].id);
@@ -83,7 +83,7 @@ exports.checkCokkie = async (req,res)=>{
   }
   try{
     connection.execute(
-      'SELECT pic,display_name,id,email FROM user_detail where id = ?;',[req.cookies.id],
+      'SELECT pic,display_name,id,email,level FROM user_detail where id = ?;',[req.cookies.id],
         (err, results, fields) => {
           if(results.length > 0){
             res.json(results);

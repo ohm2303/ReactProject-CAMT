@@ -17,13 +17,14 @@ import RegisterAuthor from "./feature/Component/RegisterAuthor"
 import Login from "./feature/Component/Login"
 import Load from "./feature/SubComponent/Load";
 import GlobalStyle from "./feature/GlobalStyle";
-
+import { Provider } from "react-redux";
+import store from './store/store'
 const userContext = React.createContext();
 
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
-  const [dataCon, setDataCon] = useState({displayname :"", id:"", email:"",pic:""})
+  const [dataCon, setDataCon] = useState({displayname :"", id:"", email:"",pic:"",level:""})
   const [isLoading, setLoading] = useState(true)
 
   const handlePrefixChange = (dataArray) => {
@@ -48,12 +49,13 @@ const App = () => {
           setLoading(false)
           return
         }
-      setDataCon({displayname :data[0].display_name, id:data[0].id, email:data[0].email})
+      setDataCon({displayname :data[0].display_name, id:data[0].id, email:data[0].email,level:data[0].level})
       setLoading(false)
       })
   },[])
   return (
     <>
+    <Provider store={store}>
     <userContext.Provider value={{dataCon,setDataCon}}>
       <GlobalStyle/>
     {isLoading ? <Load/> : 
@@ -80,6 +82,7 @@ const App = () => {
       </BrowserRouter>
       </>}
     </userContext.Provider>
+    </Provider>
     </>
   );
 };
